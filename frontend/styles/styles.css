@@ -1,0 +1,5 @@
+
+h1.logo {
+    font-size: 1em;
+    margin: var(--lumo-space-m);
+}
