@@ -10,6 +10,6 @@ public class HomeView extends VerticalLayout {
     public HomeView() {
         H1 welcomeMessage = new H1("Witaj w aplikacji I-Legal!");
         welcomeMessage.addClassName("welcome-message");
-        this.add(welcomeMessage);
+        add(welcomeMessage);
     }
 }
