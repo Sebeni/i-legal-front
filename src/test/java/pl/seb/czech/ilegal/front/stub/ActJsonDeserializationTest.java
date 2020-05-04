@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pl.seb.czech.ilegal.front.domain.Act;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -17,7 +20,7 @@ class ActJsonDeserializationTest {
     ObjectMapper objectMapper;
     
     @Test
-    void serializationTest() {
+    void shouldDeserializeJsonToAct() {
         String upiolActJson = "{\n" +
                 "  \"address\": \"WDU19910090031\",\n" +
                 "  \"publisher\": \"WDU\",\n" +
@@ -34,9 +37,7 @@ class ActJsonDeserializationTest {
                 "  \"entryIntoForce\": \"1991-01-30\",\n" +
                 "  \"validFrom\": \"1991-01-30\",\n" +
                 "  \"repealDate\": null}";
-
-       
- 
+        
         
         Act actFromJson = new Act();
         try {
@@ -44,8 +45,15 @@ class ActJsonDeserializationTest {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
-        System.out.println(actFromJson.getChangeDate());
-        System.out.println(actFromJson.getPromulgation());
+        
+        String idFromJson = actFromJson.getId();
+        LocalDate promulgationDate = actFromJson.getPromulgation();
+        LocalDateTime lastChange = actFromJson.getChangeDate();
+        
+        assertAll(
+                () -> assertEquals("WDU19910090031", idFromJson),
+                () -> assertEquals(LocalDate.of(1991, 1, 30), promulgationDate),
+                () -> assertEquals(LocalDateTime.of(2019, 6, 28, 13, 39, 43), lastChange)
+        );
     }
 }

@@ -10,10 +10,9 @@ import com.vaadin.flow.data.renderer.LocalDateTimeRenderer;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import pl.seb.czech.ilegal.front.domain.Act;
 
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class GridSavedAct extends Grid<Act> {
+public class SavedActsGrid extends Grid<Act> {
     private ListDataProvider<Act> gridContent;
     private Column<Act> yearColumn;
     private Column<Act> positionColumn;
@@ -22,7 +21,7 @@ public class GridSavedAct extends Grid<Act> {
     private Column<Act> lastChangeColumn;
     private static final String FILTER_PLACEHOLDER = "Filtr";
 
-    public GridSavedAct(ListDataProvider<Act> gridContent) {
+    public SavedActsGrid(ListDataProvider<Act> gridContent) {
         super(Act.class);
         this.gridContent = gridContent;
         setClassName("act-grid");

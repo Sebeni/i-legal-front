@@ -53,7 +53,7 @@ public class MainLayout extends AppLayout {
         VerticalLayout drawerContent = new VerticalLayout(
                 new HorizontalLayout(new Icon(VaadinIcon.HOME), homeViewLink), 
                 new HorizontalLayout(new Icon(VaadinIcon.FOLDER_OPEN), savedActsLink),
-                themeSwitch
+                new HorizontalLayout(new Icon(VaadinIcon.MOON), themeSwitch)
         );
         
         addToDrawer(drawerContent);
