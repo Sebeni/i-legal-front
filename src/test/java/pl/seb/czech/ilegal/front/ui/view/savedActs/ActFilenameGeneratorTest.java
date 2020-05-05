@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import pl.seb.czech.ilegal.front.client.ActFilenameGenerator;
 import pl.seb.czech.ilegal.front.domain.Act;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,11 +21,8 @@ class ActFilenameGeneratorTest {
     static void initAct() {
         upiol = new Act();
         upiol.setId("WDU19910090031");
-        upiol.setYear(1991);
-        
         taxRates = new Act();
         taxRates.setId("WMP20190000738");
-        taxRates.setYear(2019);
     }
     
     @Test

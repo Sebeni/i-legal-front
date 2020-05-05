@@ -38,6 +38,9 @@ public class Act {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate entryIntoForce;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate repealDate;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

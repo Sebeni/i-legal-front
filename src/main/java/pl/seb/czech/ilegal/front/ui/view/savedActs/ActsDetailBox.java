@@ -4,6 +4,7 @@ import com.vaadin.flow.component.accordion.Accordion;
 import com.vaadin.flow.component.accordion.AccordionPanel;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.details.DetailsVariant;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -17,10 +18,8 @@ import pl.seb.czech.ilegal.front.stub.ActService;
 import java.net.URI;
 import java.time.LocalDate;
 
-public class SavedActsDetailBox extends VerticalLayout {
+public class ActsDetailBox extends VerticalLayout {
     private Act currentAct = new Act();
-    
-    private ActService actService;
     private IsapClient isapClient;
     
     private Accordion detailsAccordion;
@@ -28,17 +27,17 @@ public class SavedActsDetailBox extends VerticalLayout {
     private AccordionPanel statusPanel;
     private AccordionPanel promulgationPanel;
     private AccordionPanel entryIntoForcePanel;
+    private AccordionPanel repealPanel;
+    
     private Paragraph lastChange;
     private HorizontalLayout showTextBar;
-    private Button deleteButton;
     private Anchor originalTextShowAnchor;
     private Anchor unifiedTextShowAnchor;
     private Button originalTextButton = new Button("Ogłoszony");
     private Button unifiedTextButton = new Button("Ujednolicony");
-   
 
-    public SavedActsDetailBox(ActService actService, IsapClient isapClient) {
-        this.actService = actService;
+
+    public ActsDetailBox(IsapClient isapClient) {
         this.isapClient = isapClient;
         setClassName("act-details");
         configure();
@@ -48,26 +47,12 @@ public class SavedActsDetailBox extends VerticalLayout {
         setSizeFull();
         
         actTitle = new H2();
-
-        configureDeleteButton();
-        
         lastChange = new Paragraph();
         
         configureShowTextBar();
         configureAccordion();
         
-        add(actTitle, deleteButton, lastChange, showTextBar, new H3("Szczegóły"), detailsAccordion);
-    }
-
-    private void configureDeleteButton() {
-        deleteButton = new Button("Usuń akt", new Icon(VaadinIcon.TRASH));
-        deleteButton.addThemeVariants(ButtonVariant.LUMO_ERROR);
-        deleteButton.addClickListener(event -> {
-            actService.deleteActById(currentAct.getId());
-//            TODO REFRESH
-        });
-        
-        
+        add(actTitle, lastChange, showTextBar, new H3("Szczegóły"), detailsAccordion);
     }
     
     private void configureShowTextBar() {
@@ -82,16 +67,23 @@ public class SavedActsDetailBox extends VerticalLayout {
         unifiedTextShowAnchor.setMaxHeight(unifiedTextButton.getHeight());
         
         showTextBar = new HorizontalLayout(download, originalTextShowAnchor, unifiedTextShowAnchor);
-//        showTextBar.setSizeFull();
         showTextBar.setMaxHeight(unifiedTextButton.getHeight());
     }
 
     private void configureAccordion() {
         detailsAccordion = new Accordion();
         detailsAccordion.setSizeFull();
-        statusPanel = detailsAccordion.add("Status", new Span("stat"));
-        promulgationPanel = detailsAccordion.add("Data ogłoszenia", new Span("promul"));
-        entryIntoForcePanel = detailsAccordion.add("Data wejścia w życie", new Span("entry"));
+        statusPanel = detailsAccordion.add("Status:", new Span("status"));
+        statusPanel.addThemeVariants(DetailsVariant.FILLED);
+        
+        promulgationPanel = detailsAccordion.add("Data ogłoszenia:", new Span("promulgation"));
+        promulgationPanel.addThemeVariants(DetailsVariant.FILLED);
+        
+        entryIntoForcePanel = detailsAccordion.add("Data wejścia w życie:", new Span("entry"));
+        entryIntoForcePanel.addThemeVariants(DetailsVariant.FILLED);
+        
+        repealPanel = detailsAccordion.add("Data uchylenia:", new Span("repeal"));
+        repealPanel.addThemeVariants(DetailsVariant.FILLED);
     }
 
     public void setCurrentActAndUpdateBox(Act currentAct) {
@@ -122,12 +114,20 @@ public class SavedActsDetailBox extends VerticalLayout {
         statusPanel.setContent(new Span(currentAct.getStatus()));
         promulgationPanel.setContent(new Span(currentAct.getPromulgation().toString()));
 
-        LocalDate entryIntoForce = currentAct.getEntryIntoForce();
-        if(entryIntoForce != null){
-            entryIntoForcePanel.setContent(new Span(entryIntoForce.toString()));
-            entryIntoForcePanel.setVisible(true);
+        LocalDate entryIntoForceDate = currentAct.getEntryIntoForce();
+        enableOptionalPanels(entryIntoForcePanel, entryIntoForceDate);
+
+        LocalDate repealDate = currentAct.getRepealDate();
+        enableOptionalPanels(repealPanel, repealDate);
+        
+    }
+
+    private void enableOptionalPanels(AccordionPanel optionalPanel, LocalDate correspondingDate) {
+        if(correspondingDate != null){
+            optionalPanel.setContent(new Span(correspondingDate.toString()));
+            optionalPanel.setVisible(true);
         } else {
-            entryIntoForcePanel.setVisible(false);
+            optionalPanel.setVisible(false);
         }
     }
 }

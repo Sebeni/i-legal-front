@@ -12,7 +12,7 @@ import pl.seb.czech.ilegal.front.domain.Act;
 
 import java.util.List;
 
-public class SavedActsGrid extends Grid<Act> {
+public class ActsGrid extends Grid<Act> {
     private ListDataProvider<Act> gridContent;
     private Column<Act> yearColumn;
     private Column<Act> positionColumn;
@@ -21,7 +21,7 @@ public class SavedActsGrid extends Grid<Act> {
     private Column<Act> lastChangeColumn;
     private static final String FILTER_PLACEHOLDER = "Filtr";
 
-    public SavedActsGrid(ListDataProvider<Act> gridContent) {
+    public ActsGrid(ListDataProvider<Act> gridContent) {
         super(Act.class);
         this.gridContent = gridContent;
         setClassName("act-grid");
@@ -40,8 +40,6 @@ public class SavedActsGrid extends Grid<Act> {
         lastChangeColumn = getColumnByKey("changeDate")
                 .setHeader("Ost. zmiana")
                 .setFlexGrow(4);
-        
-//addColumn(new LocalDateTimeRenderer<Act>(Act::getChangeDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
 
         addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
         addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
