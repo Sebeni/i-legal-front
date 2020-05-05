@@ -1,19 +1,15 @@
-package pl.seb.czech.ilegal.front.ui.view.savedActs;
+package pl.seb.czech.ilegal.front.ui.components;
 
 import com.vaadin.flow.component.accordion.Accordion;
 import com.vaadin.flow.component.accordion.AccordionPanel;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.details.DetailsVariant;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import pl.seb.czech.ilegal.front.client.ActTextType;
 import pl.seb.czech.ilegal.front.client.IsapClient;
 import pl.seb.czech.ilegal.front.domain.Act;
-import pl.seb.czech.ilegal.front.stub.ActService;
 
 import java.net.URI;
 import java.time.LocalDate;
@@ -100,7 +96,7 @@ public class ActsDetailBox extends VerticalLayout {
         originalTextShowAnchor.setTarget("_blank");
         
         URI unifiedTextUri = isapClient.generateDownloadActURI(currentAct, ActTextType.UNIFIED);
-        if(isapClient.checkIfFileExists(unifiedTextUri)){
+        if(isapClient.checkIfActTxtFileExists(unifiedTextUri)){
             unifiedTextShowAnchor.setHref(unifiedTextUri.toString());
             unifiedTextShowAnchor.setTarget("_blank");
             unifiedTextButton.setEnabled(true);

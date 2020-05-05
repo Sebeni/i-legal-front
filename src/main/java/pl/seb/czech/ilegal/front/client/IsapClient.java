@@ -13,6 +13,7 @@ import pl.seb.czech.ilegal.front.domain.Act;
 import java.io.IOException;
 import java.net.URI;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -40,22 +41,30 @@ public class IsapClient {
                 generator.generateUnifiedTxtFilename(actToDownload) 
                 : generator.generatePublishedTxtFileName(actToDownload);
         params.put("fileName", fileName);
+        
         return UriComponentsBuilder.fromUriString(downloadEndpointURL).buildAndExpand(params).toUri();
     }
     
-    public boolean checkIfFileExists(URI uri) {
+    public boolean checkIfActTxtFileExists(URI uri) {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-        ClientHttpRequest request = null;
         HttpStatus responseStatus = null;
         try {
-            request = factory.createRequest(uri, HttpMethod.GET);
+            ClientHttpRequest request = factory.createRequest(uri, HttpMethod.GET);
             responseStatus = request.execute().getStatusCode();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
         return responseStatus == HttpStatus.OK;
-
-
     }
+    
+//    TODO ideally get this only periodically (no need for fetching each time the form is created) 
+//     because there are 2k+ keywords; 
+//     Create entity to store it?
+    public List<String> getAllKeywordsAndNames() {
+        String endpointURL = "/keywords";
+        @SuppressWarnings("unchecked")
+        List<String> result = restTemplate.getForEntity(ISAP_API_URL + endpointURL, List.class).getBody();
+        return result;
+    }
+    
 }

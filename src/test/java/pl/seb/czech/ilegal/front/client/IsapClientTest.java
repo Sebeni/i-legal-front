@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pl.seb.czech.ilegal.front.domain.Act;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -34,5 +36,15 @@ class IsapClientTest {
     void shouldGenerateURIToUnifiedAct() {
         String uri = isapClient.generateDownloadActURI(actToDownload, ActTextType.UNIFIED).toString();
         assertEquals("http://isap.sejm.gov.pl/api/isap/deeds/WDU/1991/31/text/U/D19910031Lj.pdf", uri);
+    }
+    
+    @Test
+    void shouldReturnAllKeywords() {
+        List<String> resultKeywords = isapClient.getAllKeywordsAndNames();
+        
+        assertTrue(resultKeywords.contains("absolwenci"));
+        assertTrue(resultKeywords.contains("Australia"));
+        assertTrue(resultKeywords.contains("fundusze emerytalne"));
+        assertTrue(resultKeywords.contains("leśnictwo"));
     }
 }

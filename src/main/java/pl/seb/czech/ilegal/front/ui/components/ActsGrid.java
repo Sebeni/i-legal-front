@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.ui.view.savedActs;
+package pl.seb.czech.ilegal.front.ui.components;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -21,14 +21,14 @@ public class ActsGrid extends Grid<Act> {
     private Column<Act> lastChangeColumn;
     private static final String FILTER_PLACEHOLDER = "Filtr";
 
-    public ActsGrid(ListDataProvider<Act> gridContent) {
+    public ActsGrid(List<Act> gridContent) {
         super(Act.class);
-        this.gridContent = gridContent;
+        this.gridContent = new ListDataProvider<>(gridContent);
         setClassName("act-grid");
         setSizeFull();
         configureGridColumns();
         configureGridFilterRow();
-        setDataProvider(gridContent);
+        setDataProvider(this.gridContent);
     }
 
     private void configureGridColumns() {
@@ -41,8 +41,7 @@ public class ActsGrid extends Grid<Act> {
                 .setHeader("Ost. zmiana")
                 .setFlexGrow(4);
 
-        addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
-        addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
+        
     }
 
     private void configureGridFilterRow() {
@@ -95,6 +94,9 @@ public class ActsGrid extends Grid<Act> {
         gridContent.getItems().addAll(content);
         gridContent.refreshAll();
     }
-    
+
+    public Column<Act> getLastChangeColumn() {
+        return lastChangeColumn;
+    }
 }
 
