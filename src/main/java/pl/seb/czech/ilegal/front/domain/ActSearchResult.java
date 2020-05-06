@@ -7,6 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,5 +23,9 @@ public class ActSearchResult {
     
     private Integer count;
     private Integer totalCount;
+    
+    public List<Act> getFoundActsList() {
+        return foundActs != null ? Arrays.asList(foundActs) : new ArrayList<>();
+    }
     
 }

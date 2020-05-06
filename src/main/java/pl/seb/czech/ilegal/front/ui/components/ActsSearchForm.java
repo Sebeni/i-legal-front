@@ -1,8 +1,10 @@
 package pl.seb.czech.ilegal.front.ui.components;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
@@ -11,6 +13,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import pl.seb.czech.ilegal.front.client.IsapClient;
 import pl.seb.czech.ilegal.front.domain.ActSearchQuery;
+import pl.seb.czech.ilegal.front.domain.ActSearchResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +22,7 @@ public class ActsSearchForm extends FormLayout {
     private IsapClient isapClient;
     private List<String> actKeywords = new ArrayList<>();
     private List<String> actProperNames = new ArrayList<>();
-    private ActsGrid actsGrid;
+    
     private final ComboBox<String> onlyActInForce;
     private final TextField actName;
     private final ComboBox<String> keyWord;
@@ -27,7 +30,6 @@ public class ActsSearchForm extends FormLayout {
     private final ComboBox<String> publisher;
     private final TextField year;
     private final TextField position;
-    private ActSearchQuery currentQuery = new ActSearchQuery();
     
     public final static String IN_FORCE_ACTS_ITEM = "Obowiązujące";
     public final static String ALL_ACTS_ITEM = "Wszystkie";
@@ -36,15 +38,17 @@ public class ActsSearchForm extends FormLayout {
     public final static String DZ_U = "Dziennik ustaw";
     public final static String M_P = "Monitor Polski";
     
+    private ActSearchQuery currentQuery = new ActSearchQuery();
+    private final Binder<ActSearchQuery> binder;
 
 
-    public ActsSearchForm(IsapClient isapClient, ActsGrid actsGrid) {
+    public ActsSearchForm(IsapClient isapClient) {
         this.isapClient = isapClient;
-        this.actsGrid = actsGrid;
+       
         separateKeywordsAndNames();
 
         onlyActInForce = new ComboBox<>("Status aktu prawnego", IN_FORCE_ACTS_ITEM, ALL_ACTS_ITEM);
-        onlyActInForce.setValue(ALL_ACTS_ITEM);
+        currentQuery.setOnlyActInForce(ALL_ACTS_ITEM);
 
         actName = new TextField("Tytuł aktu", "całość lub część");
 
@@ -57,32 +61,32 @@ public class ActsSearchForm extends FormLayout {
         properName.setPlaceholder("Zacznij wpisywać lub wybierz z listy");
 
         publisher = new ComboBox<>("Wydawnictwo", ALL_PUBLISHERS, DZ_U, M_P);
-        publisher.setValue(ALL_PUBLISHERS);
+        currentQuery.setPublisher(ALL_PUBLISHERS);
 
         year = new TextField("Rok");
 
         position = new TextField("Pozycja");
         
         HorizontalLayout publisherFormInputs = new HorizontalLayout(publisher, year, position);
-        publisherFormInputs.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.END);
 
-
-        Button searchButton = new Button("Szukaj", new Icon(VaadinIcon.SEARCH));
-        Button clearButton = new Button("Wyczyść", new Icon(VaadinIcon.ERASER));
-        HorizontalLayout buttonsBar = new HorizontalLayout(searchButton, clearButton);
-
-        add(onlyActInForce, actName, keyWord, properName, publisherFormInputs, buttonsBar);
-
-        Binder<ActSearchQuery> binder = new Binder<>(ActSearchQuery.class);
-        binder.bindInstanceFields(this);
+        Button clearButton = new Button("Wyczyść pola", new Icon(VaadinIcon.ERASER));
+        clearButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
         
-        searchButton.addClickListener(event -> {
-            System.out.println(binder.getBean());
+        add(onlyActInForce, actName, keyWord, properName, publisherFormInputs, clearButton);
+
+        binder = new Binder<>(ActSearchQuery.class);
+        binder.bindInstanceFields(this);
+        binder.setBean(currentQuery);
+        
+        clearButton.addClickListener(event -> {
+            actName.clear();
+            keyWord.clear();
+            properName.clear();
+            year.clear();
+            position.clear();
         });
     }
-
-   
-
+    
     private void separateKeywordsAndNames() {
         List<String> allKeywordsAndName = isapClient.getAllKeywordsAndNames();
         allKeywordsAndName.forEach(s -> {
@@ -93,6 +97,8 @@ public class ActsSearchForm extends FormLayout {
             }
         });
     }
-    
-    
+
+    public Binder<ActSearchQuery> getBinder() {
+        return binder;
+    }
 }

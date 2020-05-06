@@ -40,26 +40,5 @@ public class Act {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate repealDate;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Act act = (Act) o;
-        return id.equals(act.id) &&
-                publisher.equals(act.publisher) &&
-                year.equals(act.year) &&
-                Objects.equals(volume, act.volume) &&
-                position.equals(act.position) &&
-                title.equals(act.title) &&
-                status.equals(act.status) &&
-                promulgation.equals(act.promulgation) &&
-                changeDate.equals(act.changeDate) &&
-                entryIntoForce.equals(act.entryIntoForce);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, publisher, year, volume, position, title, status, promulgation, changeDate, entryIntoForce);
-    }
+    
 }

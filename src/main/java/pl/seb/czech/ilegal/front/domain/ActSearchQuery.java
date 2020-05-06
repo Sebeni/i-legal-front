@@ -48,7 +48,7 @@ public class ActSearchQuery {
     }
 
     private void addToQueryParamsNotNull(String queryAPIParamName, String fieldValue) {
-        if (fieldValue != null) {
+        if (fieldValue != null && !fieldValue.isEmpty()) {
             queryParams.add(queryAPIParamName, fieldValue);
         }
     }
