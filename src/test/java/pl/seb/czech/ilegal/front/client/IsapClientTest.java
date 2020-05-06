@@ -1,10 +1,14 @@
 package pl.seb.czech.ilegal.front.client;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import pl.seb.czech.ilegal.front.domain.Act;
+import pl.seb.czech.ilegal.front.domain.ActSearchQuery;
+import pl.seb.czech.ilegal.front.domain.ActSearchResult;
+import pl.seb.czech.ilegal.front.ui.components.ActsSearchForm;
 
 import java.util.List;
 
@@ -15,29 +19,6 @@ class IsapClientTest {
     @Autowired
     IsapClient isapClient;
     
-    private static Act actToDownload;
-    
-    @BeforeAll
-    static void initAct(){
-        actToDownload = new Act();
-        actToDownload.setId("WDU19910090031");
-        actToDownload.setPublisher("WDU");
-        actToDownload.setYear(1991);
-        actToDownload.setPosition(31);
-    }
-
-    @Test
-    void shouldGenerateURIToPublishedAct() {
-        String uri = isapClient.generateDownloadActURI(actToDownload, ActTextType.PUBLISHED).toString();
-        assertEquals("http://isap.sejm.gov.pl/api/isap/deeds/WDU/1991/31/text/O/D19910031.pdf", uri);
-    }
-
-    @Test
-    void shouldGenerateURIToUnifiedAct() {
-        String uri = isapClient.generateDownloadActURI(actToDownload, ActTextType.UNIFIED).toString();
-        assertEquals("http://isap.sejm.gov.pl/api/isap/deeds/WDU/1991/31/text/U/D19910031Lj.pdf", uri);
-    }
-    
     @Test
     void shouldReturnAllKeywords() {
         List<String> resultKeywords = isapClient.getAllKeywordsAndNames();
@@ -46,5 +27,40 @@ class IsapClientTest {
         assertTrue(resultKeywords.contains("Australia"));
         assertTrue(resultKeywords.contains("fundusze emerytalne"));
         assertTrue(resultKeywords.contains("leśnictwo"));
+    }
+
+    @Test
+    void shouldReturnOnlyOneAct() {
+        ActSearchQuery query = new ActSearchQuery();
+        query.setPublisher(ActsSearchForm.DZ_U);
+        query.setYear("1991");
+        query.setPosition("31");
+        
+        ActSearchResult result = isapClient.performActSearchQuery(query);
+        Act upiolAct = result.getFoundActs()[0];
+        
+        
+        assertAll(
+                () -> assertEquals("Ustawa z dnia 12 stycznia 1991 r. o podatkach i opłatach lokalnych.", upiolAct.getTitle()),
+                () -> assertEquals("WDU", upiolAct.getPublisher()),
+                () -> assertEquals("1991", upiolAct.getYear().toString()),
+                () -> assertEquals("31", upiolAct.getPosition().toString()),
+                () -> assertEquals("1", result.getCount().toString()),
+                () -> assertEquals("1", result.getTotalCount().toString())
+        );
+    }
+
+    @Test
+    void shouldReturnZeroResult() {
+        ActSearchQuery query = new ActSearchQuery();
+        query.setYear("1");
+
+        ActSearchResult result = isapClient.performActSearchQuery(query);
+        assertAll(
+                () -> assertEquals("0", result.getCount().toString()),
+                () -> assertEquals("0", result.getTotalCount().toString()),
+                () -> assertEquals(0, result.getFoundActs().length)
+        );
+        
     }
 }
