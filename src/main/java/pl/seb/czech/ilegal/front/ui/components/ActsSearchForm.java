@@ -19,29 +19,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActsSearchForm extends FormLayout {
-    private IsapClient isapClient;
-    private List<String> actKeywords = new ArrayList<>();
-    private List<String> actProperNames = new ArrayList<>();
-    
-    private final ComboBox<String> onlyActInForce;
-    private final TextField actName;
-    private final ComboBox<String> keyWord;
-    private final ComboBox<String> properName;
-    private final ComboBox<String> publisher;
-    private final TextField year;
-    private final TextField position;
-    
     public final static String IN_FORCE_ACTS_ITEM = "Obowiązujące";
     public final static String ALL_ACTS_ITEM = "Wszystkie";
-    
     public final static String ALL_PUBLISHERS = "Wszystkie";
     public final static String DZ_U = "Dziennik ustaw";
     public final static String M_P = "Monitor Polski";
     
+    private IsapClient isapClient;
+    private List<String> actKeywords = new ArrayList<>();
+    private List<String> actProperNames = new ArrayList<>();
+
+    private ComboBox<String> onlyActInForce;
+    private TextField actName;
+    private ComboBox<String> keyWord;
+    private ComboBox<String> properName;
+    private ComboBox<String> publisher;
+    private TextField year;
+    private TextField position;
+    
     private ActSearchQuery currentQuery = new ActSearchQuery();
-    private final Binder<ActSearchQuery> binder;
-
-
+    private Binder<ActSearchQuery> binder;
+    
     public ActsSearchForm(IsapClient isapClient) {
         this.isapClient = isapClient;
        
@@ -68,23 +66,13 @@ public class ActsSearchForm extends FormLayout {
         position = new TextField("Pozycja");
         
         HorizontalLayout publisherFormInputs = new HorizontalLayout(publisher, year, position);
-
-        Button clearButton = new Button("Wyczyść pola", new Icon(VaadinIcon.ERASER));
-        clearButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
         
-        add(onlyActInForce, actName, keyWord, properName, publisherFormInputs, clearButton);
+        add(onlyActInForce, actName, keyWord, properName, publisherFormInputs);
 
         binder = new Binder<>(ActSearchQuery.class);
         binder.bindInstanceFields(this);
         binder.setBean(currentQuery);
         
-        clearButton.addClickListener(event -> {
-            actName.clear();
-            keyWord.clear();
-            properName.clear();
-            year.clear();
-            position.clear();
-        });
     }
     
     private void separateKeywordsAndNames() {
@@ -100,5 +88,25 @@ public class ActsSearchForm extends FormLayout {
 
     public Binder<ActSearchQuery> getBinder() {
         return binder;
+    }
+    
+    public TextField getActName() {
+        return actName;
+    }
+
+    public ComboBox<String> getKeyWord() {
+        return keyWord;
+    }
+
+    public ComboBox<String> getProperName() {
+        return properName;
+    }
+
+    public TextField getYear() {
+        return year;
+    }
+
+    public TextField getPosition() {
+        return position;
     }
 }

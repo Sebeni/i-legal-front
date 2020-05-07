@@ -7,16 +7,16 @@ h1.logo {
 
 
 
-.saved-acts .middle-content {
+.middle-content {
     display: flex;
 }
 
-.saved-acts .act-grid {
+.act-grid {
     flex: 2;
 }
 
 
 
-.saved-acts .act-details {
+.act-details {
     flex: 1;
 }

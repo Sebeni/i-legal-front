@@ -39,6 +39,10 @@ public class ActService {
         return repository.get(id);
     }
     
+    public boolean findIfExists(String id) {
+        return repository.containsKey(id);
+    }
+    
     public List<Act> findByTitle(String title){
         if(title == null || title.isEmpty()) {
             return getAllActs();
