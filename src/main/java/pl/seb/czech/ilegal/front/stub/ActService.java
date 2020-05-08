@@ -17,13 +17,11 @@ public class ActService {
 
     public ActService(ExampleData exampleData) {
         this.exampleData = exampleData;
+        populateRepository();
     }
 
 
     public List<Act> getAllActs() {
-        if(repository.isEmpty()) {
-            populateRepository();
-        }
         return new ArrayList<>(repository.values());
     }
     

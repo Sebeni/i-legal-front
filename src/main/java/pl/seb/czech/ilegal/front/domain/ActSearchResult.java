@@ -21,6 +21,7 @@ public class ActSearchResult {
     @JsonProperty("items")
     private Act[] foundActs;
     
+    private Integer offset;
     private Integer count;
     private Integer totalCount;
     

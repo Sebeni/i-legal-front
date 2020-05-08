@@ -19,7 +19,7 @@ public class ActsDetailBox extends VerticalLayout {
     private IsapClient isapClient;
 
     private Accordion detailsAccordion;
-    private H2 actTitle;
+    private H3 actTitle;
     private AccordionPanel statusPanel;
     private AccordionPanel promulgationPanel;
     private AccordionPanel entryIntoForcePanel;
@@ -42,7 +42,7 @@ public class ActsDetailBox extends VerticalLayout {
     private void configure() {
         setSizeFull();
 
-        actTitle = new H2();
+        actTitle = new H3();
         lastChange = new Paragraph();
 
         configureShowTextBar();

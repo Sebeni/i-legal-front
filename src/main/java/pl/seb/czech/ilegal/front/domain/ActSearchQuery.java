@@ -19,6 +19,9 @@ public class ActSearchQuery {
     private String year;
     private String position;
     private MultiValueMap<String, String> queryParams;
+    
+    private Integer resultLimit = 20;
+    private Integer offset = 0; 
 
     public MultiValueMap<String, String> getQueryParams() {
         queryParams = new LinkedMultiValueMap<>();
@@ -44,14 +47,24 @@ public class ActSearchQuery {
 
         addToQueryParamsNotNull("year", year);
         addToQueryParamsNotNull("position", position);
+        addToQueryParamsNotNull("limit", String.valueOf(resultLimit));
+        addToQueryParamsNotNull("offset", String.valueOf(offset));
         return queryParams;
     }
 
     private void addToQueryParamsNotNull(String queryAPIParamName, String fieldValue) {
-        if (fieldValue != null && !fieldValue.isEmpty()) {
+        if (fieldValue != null && !fieldValue.isEmpty() && !fieldValue.equals("null")) {
             queryParams.add(queryAPIParamName, fieldValue);
         }
     }
 
-
+    public void setPageNumber(int pageNumber) {
+        if(pageNumber > 0) {
+            offset = ((pageNumber - 1) * resultLimit);
+        } 
+    }
+    
+    public int getCurrentPageNumber() {
+        return (offset / resultLimit) + 1;
+    }
 }
