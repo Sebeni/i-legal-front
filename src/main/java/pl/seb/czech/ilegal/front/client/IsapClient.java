@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import pl.seb.czech.ilegal.front.domain.Act;
 import pl.seb.czech.ilegal.front.domain.ActSearchQuery;

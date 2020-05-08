@@ -1,7 +1,6 @@
 package pl.seb.czech.ilegal.front.ui.view;
 
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Span;
@@ -21,13 +20,14 @@ import pl.seb.czech.ilegal.front.stub.ActService;
 import pl.seb.czech.ilegal.front.ui.components.ActsDetailBox;
 import pl.seb.czech.ilegal.front.ui.components.ActsGrid;
 import pl.seb.czech.ilegal.front.ui.components.ActsSearchForm;
+import pl.seb.czech.ilegal.front.ui.components.PaginationBar;
 import pl.seb.czech.ilegal.front.ui.layout.MainLayout;
 
 import java.util.ArrayList;
 
 @PageTitle("I-Legal | Szukaj aktów prawnych")
 @Route(value = "searchActs", layout = MainLayout.class)
-public class SearchActsView extends VerticalLayout {
+public class SearchActsView extends VerticalLayout implements SearchView {
     private ActsDetailBox actsDetailBox;
     private IsapClient isapClient;
     private ActsSearchForm actsSearchForm;
@@ -37,9 +37,8 @@ public class SearchActsView extends VerticalLayout {
     private Button saveActButton;
     private ActSearchResult searchResult;
     private ActSearchQuery userQuery;
-    private Span pageInfo;
-  
-
+    private PaginationBar paginationBar;
+    private Button hideFormButton;
 
     @Autowired
     public SearchActsView(IsapClient isapClient, ActService actService) {
@@ -53,6 +52,7 @@ public class SearchActsView extends VerticalLayout {
         actsGrid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
         actsGrid.addThemeVariants(GridVariant.LUMO_COLUMN_BORDERS);
         actsGrid.asSingleSelect().addValueChangeListener(event -> showDetails(event.getValue()));
+        actsGrid.setHeightByRows(true);
         
         setSizeFull();
 
@@ -63,7 +63,9 @@ public class SearchActsView extends VerticalLayout {
         middleContent.setClassName("middle-content");
         actsDetailBox.setVisible(false);
         
-        add(actsSearchForm, getButtonBar(), middleContent, getPaginationBar());
+        paginationBar = new PaginationBar(this);
+        
+        add(actsSearchForm, getButtonBar(), paginationBar, middleContent);
     }
 
     private HorizontalLayout getButtonBar() {
@@ -71,8 +73,8 @@ public class SearchActsView extends VerticalLayout {
 
         Button searchButton = new Button("Szukaj", new Icon(VaadinIcon.SEARCH));
         searchButton.addClickListener(event -> {
-            searchAndSetGridAndPage(1);
-            resultCount.setText("Liczba znalezionych wyników: " + searchResult.getTotalCount());
+            performSearchAndSetGrid(1);
+            resultCount.setText("Liczba znalezionych wyników: " + searchResult.getNumOfResults());
         });
 
         Button clearButton = new Button("Wyczyść pola", new Icon(VaadinIcon.ERASER));
@@ -84,16 +86,12 @@ public class SearchActsView extends VerticalLayout {
             actsSearchForm.getPosition().clear();
         });
 
-        Button hideFormButton = new Button("Ukryj formularz", new Icon(VaadinIcon.ANGLE_DOUBLE_UP));
+        hideFormButton = new Button("Ukryj formularz", new Icon(VaadinIcon.ANGLE_DOUBLE_UP));
         hideFormButton.addClickListener(event -> {
             if (actsSearchForm.isVisible()) {
-                actsSearchForm.setVisible(false);
-                hideFormButton.setText("Pokaż formularz");
-                hideFormButton.setIcon(new Icon(VaadinIcon.ANGLE_DOUBLE_DOWN));
+                hideForm();
             } else {
-                actsSearchForm.setVisible(true);
-                hideFormButton.setText("Ukryj formularz");
-                hideFormButton.setIcon(new Icon(VaadinIcon.ANGLE_DOUBLE_UP));
+                showForm();
             }
         });
 
@@ -111,66 +109,33 @@ public class SearchActsView extends VerticalLayout {
             }
         });
 
-        HorizontalLayout searchAndResultBar = new HorizontalLayout(hideFormButton, clearButton, saveActButton, searchButton, resultCount);
+        HorizontalLayout searchAndResultBar = new HorizontalLayout(searchButton, clearButton, saveActButton, hideFormButton, resultCount);
         searchAndResultBar.setDefaultVerticalComponentAlignment(Alignment.CENTER);
         return searchAndResultBar;
     }
 
-    private void searchAndSetGridAndPage(int pageNumber) {
+    private void showForm() {
+        actsSearchForm.setVisible(true);
+        hideFormButton.setText("Ukryj formularz");
+        hideFormButton.setIcon(new Icon(VaadinIcon.ANGLE_DOUBLE_UP));
+    }
+
+    private void hideForm() {
+        actsSearchForm.setVisible(false);
+        hideFormButton.setText("Pokaż formularz");
+        hideFormButton.setIcon(new Icon(VaadinIcon.ANGLE_DOUBLE_DOWN));
+    }
+
+    @Override
+    public void performSearchAndSetGrid(int pageNumber) {
         userQuery = actsSearchForm.getBinder().getBean();
         userQuery.setPageNumber(pageNumber);
         searchResult = isapClient.performActSearchQuery(userQuery);
         actsGrid.setGridContent(searchResult.getFoundActsList());
-        pageInfo.setText("Strona " + (userQuery.getCurrentPageNumber()) + " z " + calculateMaxPageNumber());
+        paginationBar.updateQueryAndResult(userQuery, searchResult);
+        hideForm();
     }
-
-    private HorizontalLayout getPaginationBar() {
-        Button firstPageButton = new Button("Pierwsza", new Icon(VaadinIcon.ANGLE_DOUBLE_LEFT));
-        firstPageButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
-        firstPageButton.addClickListener(event -> {
-            if(userQuery != null && searchResult != null) {
-                searchAndSetGridAndPage(1);
-            }
-        });
-        
-        Button previousPageButton = new Button(new Icon(VaadinIcon.ANGLE_LEFT));
-        previousPageButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
-        previousPageButton.addClickListener(event -> {
-            if(userQuery != null && searchResult != null) {
-                int currentPage = userQuery.getCurrentPageNumber();
-                if(currentPage > 1) {
-                    searchAndSetGridAndPage(currentPage - 1);
-                }
-            }
-        });
-        
-        pageInfo = new Span();
-
-        Button nextPageButton = new Button(new Icon(VaadinIcon.ANGLE_RIGHT));
-        nextPageButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
-        nextPageButton.addClickListener(event -> {
-            if(userQuery != null && searchResult != null) {
-                int currentPage = userQuery.getCurrentPageNumber();
-                if(currentPage < calculateMaxPageNumber()) {
-                    searchAndSetGridAndPage(currentPage + 1);
-                }
-            }
-        });
-        
-        Button lastPageButton = new Button("Ostatnia", new Icon(VaadinIcon.ANGLE_DOUBLE_RIGHT));
-        lastPageButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
-        lastPageButton.addClickListener(event -> {
-            if(userQuery != null && searchResult != null) {
-                searchAndSetGridAndPage(calculateMaxPageNumber());
-            }
-        });
-        
-        HorizontalLayout paginationBar = new HorizontalLayout(firstPageButton, previousPageButton, pageInfo, nextPageButton, lastPageButton);
-        paginationBar.setDefaultVerticalComponentAlignment(Alignment.CENTER);
-      
-
-        return paginationBar;
-    }
+    
 
     private void showDetails(Act clickedAct) {
         selectedAct = clickedAct;
@@ -185,16 +150,15 @@ public class SearchActsView extends VerticalLayout {
         actsGrid.getGridContent().refreshAll();
     }
     
-    private int calculateMaxPageNumber(){
-        if(userQuery != null && searchResult != null) {
-            Integer resultLimit = userQuery.getResultLimit();
-            if (resultLimit.equals(0)) {
-                resultLimit = 1;
-            }
-            return (searchResult.getTotalCount() + resultLimit - 1) / resultLimit;
-        } else {
-            return 0;
-        }
+
+    @Override
+    public ActSearchResult getSearchResult() {
+        return searchResult;
+    }
+
+    @Override
+    public ActSearchQuery getSearchQuery() {
+        return userQuery;
     }
     
 }

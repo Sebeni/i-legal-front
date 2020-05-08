@@ -8,7 +8,6 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +59,12 @@ public class SavedActsView extends VerticalLayout {
         refreshButton.addClickListener(event -> refreshActs());
 
         hideDetailsButton = new Button("Ukryj szczegóły", new Icon(VaadinIcon.ANGLE_DOUBLE_RIGHT));
-        hideDetailsButton.addClickListener(event -> actsDetailBox.setVisible(false));
+        hideDetailsButton.addClickListener(event -> {
+            actsDetailBox.setVisible(false);
+            actsGrid.getGridContent().refreshAll();
+            hideDetailsButton.setEnabled(false);
+        });
+        hideDetailsButton.setEnabled(false);
         
         deleteButton = new Button("Usuń zaznaczony", new Icon(VaadinIcon.TRASH));
         deleteButton.addThemeVariants(ButtonVariant.LUMO_ERROR);

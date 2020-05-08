@@ -2,7 +2,6 @@ package pl.seb.czech.ilegal.front.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 import pl.seb.czech.ilegal.front.domain.Act;
 import pl.seb.czech.ilegal.front.domain.ActSearchQuery;

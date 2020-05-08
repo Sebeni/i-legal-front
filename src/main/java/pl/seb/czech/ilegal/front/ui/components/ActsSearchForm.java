@@ -1,19 +1,12 @@
 package pl.seb.czech.ilegal.front.ui.components;
 
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import pl.seb.czech.ilegal.front.client.IsapClient;
 import pl.seb.czech.ilegal.front.domain.ActSearchQuery;
-import pl.seb.czech.ilegal.front.domain.ActSearchResult;
 
 import java.util.ArrayList;
 import java.util.List;

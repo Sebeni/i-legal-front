@@ -1,12 +1,12 @@
 package pl.seb.czech.ilegal.front.ui.components;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.textfield.TextFieldVariant;
 import com.vaadin.flow.data.provider.ListDataProvider;
-import com.vaadin.flow.data.renderer.LocalDateTimeRenderer;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import pl.seb.czech.ilegal.front.domain.Act;
 
@@ -33,13 +33,14 @@ public class ActsGrid extends Grid<Act> {
 
     private void configureGridColumns() {
         setColumns("year", "position", "title", "status", "changeDate");
-        yearColumn = getColumnByKey("year").setHeader("Rok").setFlexGrow(2);
-        positionColumn = getColumnByKey("position").setHeader("Poz.").setFlexGrow(2);
+        yearColumn = getColumnByKey("year").setHeader("Rok").setFlexGrow(3).setWidth("20px");
+        positionColumn = getColumnByKey("position").setHeader("Poz.").setFlexGrow(2).setWidth("15px");
         titleColumn = getColumnByKey("title").setHeader("Tytuł").setFlexGrow(8);
-        statusColumn = getColumnByKey("status").setFlexGrow(6);
+        statusColumn = getColumnByKey("status").setFlexGrow(6).setWidth("30px");
         lastChangeColumn = getColumnByKey("changeDate")
                 .setHeader("Ost. zmiana")
-                .setFlexGrow(4);
+                .setFlexGrow(4)
+                .setWidth("25px");
 
         
     }
@@ -48,21 +49,25 @@ public class ActsGrid extends Grid<Act> {
         HeaderRow filterRow = appendHeaderRow();
 
         TextField yearFieldFilter = createAndAddFilterField();
+        yearFieldFilter.addThemeVariants(TextFieldVariant.LUMO_SMALL);
         yearFieldFilter.addValueChangeListener(event -> gridContent
                 .addFilter(act -> String.valueOf(act.getYear()).contains(yearFieldFilter.getValue())));
         filterRow.getCell(yearColumn).setComponent(yearFieldFilter);
         
         TextField posFieldFilter = createAndAddFilterField();
+        posFieldFilter.addThemeVariants(TextFieldVariant.LUMO_SMALL);
         posFieldFilter.addValueChangeListener(event -> gridContent
                 .addFilter(act -> String.valueOf(act.getPosition()).contains(posFieldFilter.getValue())));
         filterRow.getCell(positionColumn).setComponent(posFieldFilter);
         
         TextField titleFieldFilter = createAndAddFilterField();
+        titleFieldFilter.addThemeVariants(TextFieldVariant.LUMO_SMALL);
         titleFieldFilter.addValueChangeListener(event -> gridContent
                 .addFilter(act -> act.getTitle().toLowerCase().contains(titleFieldFilter.getValue().toLowerCase())));
         filterRow.getCell(titleColumn).setComponent(titleFieldFilter);
         
         TextField statusFieldFilter = createAndAddFilterField();
+        statusFieldFilter.addThemeVariants(TextFieldVariant.LUMO_SMALL);
         statusFieldFilter.addValueChangeListener(event -> gridContent
                 .addFilter(act -> act.getStatus().toLowerCase().contains(statusFieldFilter.getValue().toLowerCase())));
         filterRow.getCell(statusColumn).setComponent(statusFieldFilter);
@@ -74,6 +79,7 @@ public class ActsGrid extends Grid<Act> {
             titleFieldFilter.clear();
             statusFieldFilter.clear();
         });
+        clearButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
         filterRow.getCell(lastChangeColumn).setComponent(clearButton);
     }
 

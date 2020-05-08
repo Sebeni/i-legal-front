@@ -3,8 +3,6 @@ package pl.seb.czech.ilegal.front.client;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import pl.seb.czech.ilegal.front.domain.Act;
 import pl.seb.czech.ilegal.front.domain.ActSearchQuery;
 import pl.seb.czech.ilegal.front.domain.ActSearchResult;
@@ -46,7 +44,7 @@ class IsapClientTest {
                 () -> assertEquals("1991", upiolAct.getYear().toString()),
                 () -> assertEquals("31", upiolAct.getPosition().toString()),
                 () -> assertEquals("1", result.getCount().toString()),
-                () -> assertEquals("1", result.getTotalCount().toString())
+                () -> assertEquals("1", result.getNumOfResults().toString())
         );
     }
 
@@ -58,7 +56,7 @@ class IsapClientTest {
         ActSearchResult result = isapClient.performActSearchQuery(query);
         assertAll(
                 () -> assertEquals("0", result.getCount().toString()),
-                () -> assertEquals("0", result.getTotalCount().toString()),
+                () -> assertEquals("0", result.getNumOfResults().toString()),
                 () -> assertEquals(0, result.getFoundActs().length)
         );
         

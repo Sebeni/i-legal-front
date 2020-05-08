@@ -48,7 +48,7 @@ public class ActsDetailBox extends VerticalLayout {
         configureShowTextBar();
         configureAccordion();
 
-        add(actTitle, lastChange, showTextBar, new H3("Szczegóły"), detailsAccordion);
+        add(actTitle, lastChange, showTextBar, new H3("Szczegóły:"), detailsAccordion);
     }
 
     private void configureShowTextBar() {
