@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.domain;
+package pl.seb.czech.ilegal.front.domain.act;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.seb.czech.ilegal.front.domain.DummyEntity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,7 +19,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Act {
+public class Act implements DummyEntity<String> {
     @JsonProperty(value = "address")
     private String id;
     private String publisher;

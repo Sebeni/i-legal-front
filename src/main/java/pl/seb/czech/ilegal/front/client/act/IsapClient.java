@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.client;
+package pl.seb.czech.ilegal.front.client.act;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,9 +9,9 @@ import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import pl.seb.czech.ilegal.front.domain.Act;
-import pl.seb.czech.ilegal.front.domain.ActSearchQuery;
-import pl.seb.czech.ilegal.front.domain.ActSearchResult;
+import pl.seb.czech.ilegal.front.domain.act.Act;
+import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
+import pl.seb.czech.ilegal.front.domain.act.ActSearchResult;
 
 import java.io.IOException;
 import java.net.URI;

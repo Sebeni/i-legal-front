@@ -4,8 +4,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.seb.czech.ilegal.front.domain.Act;
-import pl.seb.czech.ilegal.front.domain.ActSearchQuery;
+import pl.seb.czech.ilegal.front.client.act.ActTextType;
+import pl.seb.czech.ilegal.front.client.act.IsapURIGenerator;
+import pl.seb.czech.ilegal.front.domain.act.Act;
+import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,7 +45,10 @@ class IsapURIGeneratorTest {
         query.setProperName("Australia");
         
         String uriResult = isapURIGenerator.generateSearchActQueryUri(query).toString();
+        
+        String expected = "http://isap.sejm.gov.pl/api/isap/search?keyword=absolwenci&keywordName=Australia" + 
+                String.format("&limit=%d&offset=%d", query.getResultLimitPerPage(), query.getOffset());
 
-        assertEquals("http://isap.sejm.gov.pl/api/isap/search?keyword=absolwenci&keywordName=Australia", uriResult);
+        assertEquals(expected, uriResult);
     }
 }

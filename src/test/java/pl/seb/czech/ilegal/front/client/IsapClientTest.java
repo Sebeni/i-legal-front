@@ -3,10 +3,11 @@ package pl.seb.czech.ilegal.front.client;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.seb.czech.ilegal.front.domain.Act;
-import pl.seb.czech.ilegal.front.domain.ActSearchQuery;
-import pl.seb.czech.ilegal.front.domain.ActSearchResult;
-import pl.seb.czech.ilegal.front.ui.components.ActsSearchForm;
+import pl.seb.czech.ilegal.front.client.act.IsapClient;
+import pl.seb.czech.ilegal.front.domain.act.Act;
+import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
+import pl.seb.czech.ilegal.front.domain.act.ActSearchResult;
+import pl.seb.czech.ilegal.front.ui.components.ActSearchForm;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ class IsapClientTest {
     @Test
     void shouldReturnOnlyOneAct() {
         ActSearchQuery query = new ActSearchQuery();
-        query.setPublisher(ActsSearchForm.DZ_U);
+        query.setPublisher(ActSearchForm.DZ_U);
         query.setYear("1991");
         query.setPosition("31");
         

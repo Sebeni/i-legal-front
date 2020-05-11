@@ -1,32 +1,20 @@
-package pl.seb.czech.ilegal.front.stub;
+package pl.seb.czech.ilegal.front.stub.act;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.seb.czech.ilegal.front.domain.Act;
+import pl.seb.czech.ilegal.front.domain.act.Act;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class ExampleData {
-    private final ObjectMapper objectMapper;
-    private final List<String> jsonActs = new ArrayList<>();
-    private final List<Act> dummyActDataList = new ArrayList<>();
+public class ActExampleData {
+    private List<String> jsonActs = new ArrayList<>();
 
-
-    public ExampleData(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
-        populateJsonActs();
-        convertJsonActs();
-    }
-
-    public List<Act> getDummyActDataList() {
-        return dummyActDataList;
-    }
-
-    private void populateJsonActs() {
+    public ActExampleData() {
         String piolActJson = "{\n" +
                 "  \"address\": \"WDU19910090031\",\n" +
                 "  \"publisher\": \"WDU\",\n" +
@@ -134,20 +122,10 @@ public class ExampleData {
                 "  \"validFrom\": null,\n" +
                 "  \"repealDate\": null}";
         
-        jsonActs.addAll(Arrays.asList(upiolRates2020NoticeJson, vatActJson, citActJson, pitActJson, pccActJson, piolActJson));
-   
-
+        jsonActs.addAll(Arrays.asList(piolActJson, pitActJson, citActJson, pccActJson, vatActJson, upiolRates2020NoticeJson));
     }
 
-    private void convertJsonActs() {
-        jsonActs.forEach(s -> {
-            try {
-                dummyActDataList.add(objectMapper.readValue(s, Act.class));
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-        });
+    public List<String> getJsonActs() {
+        return jsonActs;
     }
-    
-
 }

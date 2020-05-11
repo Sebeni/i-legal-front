@@ -1,10 +1,10 @@
-package pl.seb.czech.ilegal.front.client;
+package pl.seb.czech.ilegal.front.client.act;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
-import pl.seb.czech.ilegal.front.domain.Act;
-import pl.seb.czech.ilegal.front.domain.ActSearchQuery;
+import pl.seb.czech.ilegal.front.domain.act.Act;
+import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 
 import java.net.URI;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class IsapURIGenerator {
     }
 
 
-    protected URI generateDownloadActURI(Act actToDownload, ActTextType textType) {
+    public URI generateDownloadActURI(Act actToDownload, ActTextType textType) {
         String downloadEndpointURL = ISAP_API_URL + "/deeds/{publisher}/{year}/{position}/text/{type}/{fileName}";
         Map<String, String> params = new HashMap<String, String>();
         params.put("publisher", actToDownload.getPublisher());

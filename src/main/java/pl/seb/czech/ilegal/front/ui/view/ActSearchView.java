@@ -12,28 +12,28 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.seb.czech.ilegal.front.client.IsapClient;
-import pl.seb.czech.ilegal.front.domain.Act;
-import pl.seb.czech.ilegal.front.domain.ActSearchQuery;
-import pl.seb.czech.ilegal.front.domain.ActSearchResult;
-import pl.seb.czech.ilegal.front.stub.ActService;
-import pl.seb.czech.ilegal.front.ui.components.ActsDetailBox;
-import pl.seb.czech.ilegal.front.ui.components.ActsGrid;
-import pl.seb.czech.ilegal.front.ui.components.ActsSearchForm;
+import pl.seb.czech.ilegal.front.client.act.IsapClient;
+import pl.seb.czech.ilegal.front.domain.act.Act;
+import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
+import pl.seb.czech.ilegal.front.domain.act.ActSearchResult;
+import pl.seb.czech.ilegal.front.stub.act.ActDBService;
+import pl.seb.czech.ilegal.front.ui.components.ActDetailBox;
+import pl.seb.czech.ilegal.front.ui.components.ActGrid;
+import pl.seb.czech.ilegal.front.ui.components.ActSearchForm;
 import pl.seb.czech.ilegal.front.ui.components.PaginationBar;
 import pl.seb.czech.ilegal.front.ui.layout.MainLayout;
 
 import java.util.ArrayList;
 
 @PageTitle("I-Legal | Szukaj aktów prawnych")
-@Route(value = "searchActs", layout = MainLayout.class)
-public class SearchActsView extends VerticalLayout implements SearchView {
-    private ActsDetailBox actsDetailBox;
+@Route(value = "acts-search", layout = MainLayout.class)
+public class ActSearchView extends VerticalLayout implements SearchView {
+    private ActDetailBox actDetailBox;
     private IsapClient isapClient;
-    private ActsSearchForm actsSearchForm;
-    private ActsGrid actsGrid;
+    private ActSearchForm actSearchForm;
+    private ActGrid actGrid;
     private Act selectedAct;
-    private ActService actService;
+    private ActDBService actService;
     private Button saveActButton;
     private ActSearchResult searchResult;
     private ActSearchQuery userQuery;
@@ -41,31 +41,31 @@ public class SearchActsView extends VerticalLayout implements SearchView {
     private Button hideFormButton;
 
     @Autowired
-    public SearchActsView(IsapClient isapClient, ActService actService) {
+    public ActSearchView(IsapClient isapClient, ActDBService actService) {
         this.actService = actService;
         setSizeFull();
         this.isapClient = isapClient;
-        actsSearchForm = new ActsSearchForm(isapClient);
+        actSearchForm = new ActSearchForm(isapClient);
 
-        actsGrid = new ActsGrid(new ArrayList<Act>());
-        actsGrid.removeColumn(actsGrid.getLastChangeColumn());
-        actsGrid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
-        actsGrid.addThemeVariants(GridVariant.LUMO_COLUMN_BORDERS);
-        actsGrid.asSingleSelect().addValueChangeListener(event -> showDetails(event.getValue()));
-        actsGrid.setHeightByRows(true);
+        actGrid = new ActGrid(new ArrayList<Act>());
+        actGrid.removeColumn(actGrid.getLastChangeColumn());
+        actGrid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
+        actGrid.addThemeVariants(GridVariant.LUMO_COLUMN_BORDERS);
+        actGrid.asSingleSelect().addValueChangeListener(event -> showDetails(event.getValue()));
+        actGrid.setHeightByRows(true);
         
         setSizeFull();
 
-        actsDetailBox = new ActsDetailBox(isapClient);
+        actDetailBox = new ActDetailBox(isapClient);
 
-        Div middleContent = new Div(actsGrid, actsDetailBox);
+        Div middleContent = new Div(actGrid, actDetailBox);
         middleContent.setSizeFull();
         middleContent.setClassName("middle-content");
-        actsDetailBox.setVisible(false);
+        actDetailBox.setVisible(false);
         
         paginationBar = new PaginationBar(this);
         
-        add(actsSearchForm, getButtonBar(), paginationBar, middleContent);
+        add(actSearchForm, getButtonBar(), paginationBar, middleContent);
     }
 
     private HorizontalLayout getButtonBar() {
@@ -79,16 +79,16 @@ public class SearchActsView extends VerticalLayout implements SearchView {
 
         Button clearButton = new Button("Wyczyść pola", new Icon(VaadinIcon.ERASER));
         clearButton.addClickListener(event -> {
-            actsSearchForm.getActName().clear();
-            actsSearchForm.getKeyWord().clear();
-            actsSearchForm.getProperName().clear();
-            actsSearchForm.getYear().clear();
-            actsSearchForm.getPosition().clear();
+            actSearchForm.getActName().clear();
+            actSearchForm.getKeyWord().clear();
+            actSearchForm.getProperName().clear();
+            actSearchForm.getYear().clear();
+            actSearchForm.getPosition().clear();
         });
 
         hideFormButton = new Button("Ukryj formularz", new Icon(VaadinIcon.ANGLE_DOUBLE_UP));
         hideFormButton.addClickListener(event -> {
-            if (actsSearchForm.isVisible()) {
+            if (actSearchForm.isVisible()) {
                 hideForm();
             } else {
                 showForm();
@@ -104,7 +104,7 @@ public class SearchActsView extends VerticalLayout implements SearchView {
             if(actService.findIfExists(selectedAct.getId())) {
                 actAlreadyExistsNotification.open();
             } else {
-                actService.addAct(selectedAct);
+                actService.addElement(selectedAct);
                 actSuccessfullySaved.open();
             }
         });
@@ -115,23 +115,23 @@ public class SearchActsView extends VerticalLayout implements SearchView {
     }
 
     private void showForm() {
-        actsSearchForm.setVisible(true);
+        actSearchForm.setVisible(true);
         hideFormButton.setText("Ukryj formularz");
         hideFormButton.setIcon(new Icon(VaadinIcon.ANGLE_DOUBLE_UP));
     }
 
     private void hideForm() {
-        actsSearchForm.setVisible(false);
+        actSearchForm.setVisible(false);
         hideFormButton.setText("Pokaż formularz");
         hideFormButton.setIcon(new Icon(VaadinIcon.ANGLE_DOUBLE_DOWN));
     }
 
     @Override
     public void performSearchAndSetGrid(int pageNumber) {
-        userQuery = actsSearchForm.getBinder().getBean();
+        userQuery = actSearchForm.getBinder().getBean();
         userQuery.setPageNumber(pageNumber);
         searchResult = isapClient.performActSearchQuery(userQuery);
-        actsGrid.setGridContent(searchResult.getFoundActsList());
+        actGrid.setGridContent(searchResult.getFoundActsList());
         paginationBar.updateQueryAndResult(userQuery, searchResult);
         hideForm();
     }
@@ -140,14 +140,14 @@ public class SearchActsView extends VerticalLayout implements SearchView {
     private void showDetails(Act clickedAct) {
         selectedAct = clickedAct;
         if (clickedAct == null) {
-            actsDetailBox.setVisible(false);
+            actDetailBox.setVisible(false);
             saveActButton.setEnabled(false);
         } else {
-            actsDetailBox.setCurrentActAndUpdateBox(clickedAct);
-            actsDetailBox.setVisible(true);
+            actDetailBox.setCurrentActAndUpdateBox(clickedAct);
+            actDetailBox.setVisible(true);
             saveActButton.setEnabled(true);
         }
-        actsGrid.getGridContent().refreshAll();
+        actGrid.getGridContent().refreshAll();
     }
     
 

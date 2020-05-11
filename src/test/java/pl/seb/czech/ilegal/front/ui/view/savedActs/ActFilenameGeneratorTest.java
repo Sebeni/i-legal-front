@@ -4,8 +4,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.seb.czech.ilegal.front.client.ActFilenameGenerator;
-import pl.seb.czech.ilegal.front.domain.Act;
+import pl.seb.czech.ilegal.front.client.act.ActFilenameGenerator;
+import pl.seb.czech.ilegal.front.domain.act.Act;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -15,8 +15,9 @@ import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.Lumo;
 import pl.seb.czech.ilegal.front.ui.view.HomeView;
-import pl.seb.czech.ilegal.front.ui.view.SavedActsView;
-import pl.seb.czech.ilegal.front.ui.view.SearchActsView;
+import pl.seb.czech.ilegal.front.ui.view.ActSavedView;
+import pl.seb.czech.ilegal.front.ui.view.ActSearchView;
+import pl.seb.czech.ilegal.front.ui.view.JudgmentSearchView;
 
 @CssImport("./styles/styles.css")
 public class MainLayout extends AppLayout {
@@ -38,8 +39,9 @@ public class MainLayout extends AppLayout {
 
     private void createDrawer() {
         RouterLink homeViewLink = new RouterLink("Start", HomeView.class);
-        RouterLink savedActsLink = new RouterLink("Moje akty", SavedActsView.class);
-        RouterLink searchActsLink = new RouterLink("Szukaj aktów", SearchActsView.class);
+        RouterLink savedActsLink = new RouterLink("Moje akty", ActSavedView.class);
+        RouterLink searchActsLink = new RouterLink("Szukaj aktów", ActSearchView.class);
+        RouterLink searchJudgmentLink = new RouterLink("Szukaj orzeczeń", JudgmentSearchView.class);
         
         
         ToggleButton themeSwitch = new ToggleButton("Ciemny motyw", click -> {
@@ -55,7 +57,8 @@ public class MainLayout extends AppLayout {
         VerticalLayout drawerContent = new VerticalLayout(
                 new HorizontalLayout(new Icon(VaadinIcon.HOME), homeViewLink), 
                 new HorizontalLayout(new Icon(VaadinIcon.FOLDER_OPEN), savedActsLink),
-                new HorizontalLayout(new Icon(VaadinIcon.SEARCH), searchActsLink),
+                new HorizontalLayout(new Icon(VaadinIcon.INSTITUTION), searchActsLink),
+                new HorizontalLayout(new Icon(VaadinIcon.GAVEL), searchJudgmentLink),
                 
                 new HorizontalLayout(new Icon(VaadinIcon.MOON), themeSwitch)
         );

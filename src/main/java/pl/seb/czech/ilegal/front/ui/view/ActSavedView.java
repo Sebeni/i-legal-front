@@ -11,19 +11,19 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.seb.czech.ilegal.front.client.IsapClient;
-import pl.seb.czech.ilegal.front.domain.Act;
-import pl.seb.czech.ilegal.front.stub.ActService;
-import pl.seb.czech.ilegal.front.ui.components.ActsDetailBox;
-import pl.seb.czech.ilegal.front.ui.components.ActsGrid;
+import pl.seb.czech.ilegal.front.client.act.IsapClient;
+import pl.seb.czech.ilegal.front.domain.act.Act;
+import pl.seb.czech.ilegal.front.stub.act.ActDBService;
+import pl.seb.czech.ilegal.front.ui.components.ActDetailBox;
+import pl.seb.czech.ilegal.front.ui.components.ActGrid;
 import pl.seb.czech.ilegal.front.ui.layout.MainLayout;
 
 @PageTitle("I-Legal | Moje ustawy")
-@Route(value = "savedActs", layout = MainLayout.class)
-public class SavedActsView extends VerticalLayout {
-    private ActService actService;
-    private ActsGrid actsGrid;
-    private ActsDetailBox actsDetailBox;
+@Route(value = "acts-saved", layout = MainLayout.class)
+public class ActSavedView extends VerticalLayout {
+    private ActDBService actService;
+    private ActGrid actGrid;
+    private ActDetailBox actDetailBox;
     private Act selectedAct;
     
     private IsapClient isapClient;
@@ -31,27 +31,27 @@ public class SavedActsView extends VerticalLayout {
     private Button hideDetailsButton;
 
     @Autowired
-    public SavedActsView(ActService actService, IsapClient isapClient) {
+    public ActSavedView(ActDBService actService, IsapClient isapClient) {
         this.actService = actService;
         this.isapClient = isapClient;
-        this.actsGrid = new ActsGrid(actService.getAllActs());
+        this.actGrid = new ActGrid(actService.getAll());
         
-        this.actsGrid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
-        this.actsGrid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
+        this.actGrid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
+        this.actGrid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
         
-        this.actsDetailBox = new ActsDetailBox(isapClient); 
+        this.actDetailBox = new ActDetailBox(isapClient); 
 
         setClassName("saved-acts");
         setSizeFull();
         
-        Div middleContent = new Div(this.actsGrid, this.actsDetailBox);
-        this.actsDetailBox.setVisible(false);
+        Div middleContent = new Div(this.actGrid, this.actDetailBox);
+        this.actDetailBox.setVisible(false);
         middleContent.setSizeFull();
         middleContent.setClassName("middle-content");
         
         add(getButtonTopBar(), middleContent);
 
-        this.actsGrid.asSingleSelect().addValueChangeListener(event -> showDetailsAndEnableButtons(event.getValue()));
+        this.actGrid.asSingleSelect().addValueChangeListener(event -> showDetailsAndEnableButtons(event.getValue()));
     }
 
     private HorizontalLayout getButtonTopBar() {
@@ -60,8 +60,8 @@ public class SavedActsView extends VerticalLayout {
 
         hideDetailsButton = new Button("Ukryj szczegóły", new Icon(VaadinIcon.ANGLE_DOUBLE_RIGHT));
         hideDetailsButton.addClickListener(event -> {
-            actsDetailBox.setVisible(false);
-            actsGrid.getGridContent().refreshAll();
+            actDetailBox.setVisible(false);
+            actGrid.getGridContent().refreshAll();
             hideDetailsButton.setEnabled(false);
         });
         hideDetailsButton.setEnabled(false);
@@ -70,8 +70,8 @@ public class SavedActsView extends VerticalLayout {
         deleteButton.addThemeVariants(ButtonVariant.LUMO_ERROR);
         deleteButton.setEnabled(false);
         deleteButton.addClickListener(event -> {
-            actsDetailBox.setVisible(false);
-            actService.deleteActById(selectedAct.getId());
+            actDetailBox.setVisible(false);
+            actService.deleteById(selectedAct.getId());
             refreshActs();
             deleteButton.setEnabled(false);
         });
@@ -81,22 +81,22 @@ public class SavedActsView extends VerticalLayout {
 
 
     private void refreshActs() {
-        actsGrid.setGridContent(actService.getAllActs());
+        actGrid.setGridContent(actService.getAll());
     }
 
     private void showDetailsAndEnableButtons(Act act) {
         selectedAct = act;
         if (act == null) {
-            actsDetailBox.setVisible(false);
+            actDetailBox.setVisible(false);
             deleteButton.setEnabled(false);
             hideDetailsButton.setEnabled(false);
         } else {
-            actsDetailBox.setCurrentActAndUpdateBox(act);
-            actsDetailBox.setVisible(true);
+            actDetailBox.setCurrentActAndUpdateBox(act);
+            actDetailBox.setVisible(true);
             deleteButton.setEnabled(true);
             hideDetailsButton.setEnabled(true);
         }
-        actsGrid.getGridContent().refreshAll();
+        actGrid.getGridContent().refreshAll();
     }
 
 

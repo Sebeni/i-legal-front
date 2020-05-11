@@ -7,14 +7,14 @@ import com.vaadin.flow.component.details.DetailsVariant;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import pl.seb.czech.ilegal.front.client.ActTextType;
-import pl.seb.czech.ilegal.front.client.IsapClient;
-import pl.seb.czech.ilegal.front.domain.Act;
+import pl.seb.czech.ilegal.front.client.act.ActTextType;
+import pl.seb.czech.ilegal.front.client.act.IsapClient;
+import pl.seb.czech.ilegal.front.domain.act.Act;
 
 import java.net.URI;
 import java.time.LocalDate;
 
-public class ActsDetailBox extends VerticalLayout {
+public class ActDetailBox extends VerticalLayout {
     private Act currentAct = new Act();
     private IsapClient isapClient;
 
@@ -33,7 +33,7 @@ public class ActsDetailBox extends VerticalLayout {
     private Button unifiedTextButton = new Button("Ujednolicony");
 
 
-    public ActsDetailBox(IsapClient isapClient) {
+    public ActDetailBox(IsapClient isapClient) {
         this.isapClient = isapClient;
         setClassName("act-details");
         configure();

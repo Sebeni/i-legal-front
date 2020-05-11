@@ -8,11 +8,11 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.textfield.TextFieldVariant;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.data.value.ValueChangeMode;
-import pl.seb.czech.ilegal.front.domain.Act;
+import pl.seb.czech.ilegal.front.domain.act.Act;
 
 import java.util.List;
 
-public class ActsGrid extends Grid<Act> {
+public class ActGrid extends Grid<Act> {
     private ListDataProvider<Act> gridContent;
     private Column<Act> yearColumn;
     private Column<Act> positionColumn;
@@ -21,7 +21,7 @@ public class ActsGrid extends Grid<Act> {
     private Column<Act> lastChangeColumn;
     private static final String FILTER_PLACEHOLDER = "Filtr";
 
-    public ActsGrid(List<Act> gridContent) {
+    public ActGrid(List<Act> gridContent) {
         super(Act.class);
         this.gridContent = new ListDataProvider<>(gridContent);
         setClassName("act-grid");

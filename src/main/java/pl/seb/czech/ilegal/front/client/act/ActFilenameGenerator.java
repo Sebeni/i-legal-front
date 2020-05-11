@@ -1,19 +1,10 @@
-package pl.seb.czech.ilegal.front.client;
+package pl.seb.czech.ilegal.front.client.act;
 
 import org.springframework.stereotype.Service;
-import pl.seb.czech.ilegal.front.domain.Act;
+import pl.seb.czech.ilegal.front.domain.act.Act;
 
 @Service
 public class ActFilenameGenerator {
-    /*
-      files on isap are created in this pattern UyyyyPPPPLj
-      where: 
-      U - publisher symbol [D - Dz.U. WDU / M - M.P. WMP]
-      yyyy - year
-      PPPPP - position (if shorter padded left with 0's)
-      Lj - additional letters if file is unified text  
-     */
-    
     private final String unifiedTextSuffix = "Lj";
     private final String extension = ".pdf";
 
@@ -28,8 +19,4 @@ public class ActFilenameGenerator {
     public String generatePublishedTxtFileName(Act actToGenerate) {
         return generateUnifiedTxtFilename(actToGenerate).replaceAll(unifiedTextSuffix, "");
     }
-    
-   
-    
-
 }

@@ -1,9 +1,10 @@
-package pl.seb.czech.ilegal.front.domain;
+package pl.seb.czech.ilegal.front.domain.act;
 
 import lombok.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import pl.seb.czech.ilegal.front.ui.components.ActsSearchForm;
+import pl.seb.czech.ilegal.front.domain.SearchQuery;
+import pl.seb.czech.ilegal.front.ui.components.ActSearchForm;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,7 +27,7 @@ public class ActSearchQuery implements SearchQuery {
     public MultiValueMap<String, String> getQueryParams() {
         queryParams = new LinkedMultiValueMap<>();
         if (onlyActInForce != null) {
-            if (onlyActInForce.equals(ActsSearchForm.IN_FORCE_ACTS_ITEM)) {
+            if (onlyActInForce.equals(ActSearchForm.IN_FORCE_ACTS_ITEM)) {
                 queryParams.add("inForce", "1");
             }
         }
@@ -36,10 +37,10 @@ public class ActSearchQuery implements SearchQuery {
         addToQueryParamsNotNull("keywordName", properName);
 
         if (publisher != null) {
-            if (!publisher.equals(ActsSearchForm.ALL_PUBLISHERS)) {
-                if (publisher.equals(ActsSearchForm.DZ_U)) {
+            if (!publisher.equals(ActSearchForm.ALL_PUBLISHERS)) {
+                if (publisher.equals(ActSearchForm.DZ_U)) {
                     queryParams.add("publisher", "WDU");
-                } else if (publisher.equals(ActsSearchForm.M_P)) {
+                } else if (publisher.equals(ActSearchForm.M_P)) {
                     queryParams.add("publisher", "WMP");
                 }
             }

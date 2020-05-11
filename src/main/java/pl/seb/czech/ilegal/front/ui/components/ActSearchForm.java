@@ -5,13 +5,13 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import pl.seb.czech.ilegal.front.client.IsapClient;
-import pl.seb.czech.ilegal.front.domain.ActSearchQuery;
+import pl.seb.czech.ilegal.front.client.act.IsapClient;
+import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActsSearchForm extends FormLayout {
+public class ActSearchForm extends FormLayout {
     public final static String IN_FORCE_ACTS_ITEM = "Obowiązujące";
     public final static String ALL_ACTS_ITEM = "Wszystkie";
     public final static String ALL_PUBLISHERS = "Wszystkie";
@@ -33,7 +33,7 @@ public class ActsSearchForm extends FormLayout {
     private ActSearchQuery currentQuery = new ActSearchQuery();
     private Binder<ActSearchQuery> binder;
     
-    public ActsSearchForm(IsapClient isapClient) {
+    public ActSearchForm(IsapClient isapClient) {
         this.isapClient = isapClient;
        
         separateKeywordsAndNames();
