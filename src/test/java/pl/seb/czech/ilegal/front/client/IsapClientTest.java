@@ -17,15 +17,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class IsapClientTest {
     @Autowired
     IsapClient isapClient;
-    
+
     @Test
     void shouldReturnAllKeywords() {
         List<String> resultKeywords = isapClient.getAllKeywordsAndNames();
-        
-        assertTrue(resultKeywords.contains("absolwenci"));
-        assertTrue(resultKeywords.contains("Australia"));
-        assertTrue(resultKeywords.contains("fundusze emerytalne"));
-        assertTrue(resultKeywords.contains("leśnictwo"));
+
+        assertAll(
+                () -> assertTrue(resultKeywords.contains("absolwenci")),
+                () -> assertTrue(resultKeywords.contains("Australia")),
+                () -> assertTrue(resultKeywords.contains("fundusze emerytalne")),
+                () -> assertTrue(resultKeywords.contains("leśnictwo"))
+        );
     }
 
     @Test
@@ -34,11 +36,11 @@ class IsapClientTest {
         query.setPublisher(ActSearchForm.DZ_U);
         query.setYear("1991");
         query.setPosition("31");
-        
+
         ActSearchResult result = isapClient.performActSearchQuery(query);
         Act upiolAct = result.getFoundActs()[0];
-        
-        
+
+
         assertAll(
                 () -> assertEquals("Ustawa z dnia 12 stycznia 1991 r. o podatkach i opłatach lokalnych.", upiolAct.getTitle()),
                 () -> assertEquals("WDU", upiolAct.getPublisher()),
@@ -60,6 +62,6 @@ class IsapClientTest {
                 () -> assertEquals("0", result.getNumOfResults().toString()),
                 () -> assertEquals(0, result.getFoundActs().length)
         );
-        
+
     }
 }

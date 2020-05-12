@@ -7,10 +7,10 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class JudgmentExampleData {
+public class JudgmentSynopsisExampleData {
     private List<String> jsonActs = new ArrayList<>();
 
-    public JudgmentExampleData() {
+    public JudgmentSynopsisExampleData() {
         String commonCourt = " {\n" +
                 "            \"id\": 1,\n" +
                 "            \"href\": \"https://www.saos.org.pl/api/judgments/1\",\n" +
@@ -40,7 +40,8 @@ public class JudgmentExampleData {
                 "                    \"specialRoles\": []\n" +
                 "                }\n" +
                 "            ],\n" +
-                "            \"textContent\": \"Sygn. akt I ACa 1010/09 POSTANOWIENIE Dnia 14 września 2012 r. Sąd Apelacyjny w Krakowie – Wydział I Cywilny w składzie: Przewodniczący: SSA Andrzej Struzik Sędziowie: SSA Józef Wąsik SSA Teresa Rak Protokolant: st. prot. sądowy Marta Matys po rozpoznaniu na rozprawie w dniu 14 września 2012 r. w K. sprawy z powództwa H. C. przeciwko (...) Bank S.A. w W. o pozbawienie tytułu wykonawczego wykonalności w przedmiocie wniosku powódki H. C. o przywrócenie terminu do złożenia wniosku o doręczenie wyroku Sądu Apelacyjnego w Krakowie z dnia 21 grudnia 2009 r. wraz z uzasadnieniem p o s t a n a w i a: odrzucić wniosek o przywrócenie terminu oraz wniosek o doręczenie wyroku Sądu Apelacyjnego w Krakowie z dnia 21 grudnia 2009 r. wraz z uzasadnieniem. Sygn. akt I A Ca 1010/09 UZASADNIENIE Wyrokiem z d\",\n" +
+                "            \"textContent\": \"Sygn. akt I ACa 1010/09 POSTANOWIENIE Dnia 14 września" +
+                " 2012 r. Sąd Apelacyjny w Krakowie – Wydział I Cywilny w składzie: Przewodniczący: SSA Andrzej Struzik Sędziowie: SSA Józef Wąsik SSA Teresa Rak Protokolant: st. prot. sądowy Marta Matys po rozpoznaniu na rozprawie w dniu 14 września 2012 r. w K. sprawy z powództwa H. C. przeciwko (...) Bank S.A. w W. o pozbawienie tytułu wykonawczego wykonalności w przedmiocie wniosku powódki H. C. o przywrócenie terminu do złożenia wniosku o doręczenie wyroku Sądu Apelacyjnego w Krakowie z dnia 21 grudnia 2009 r. wraz z uzasadnieniem p o s t a n a w i a: odrzucić wniosek o przywrócenie terminu oraz wniosek o doręczenie wyroku Sądu Apelacyjnego w Krakowie z dnia 21 grudnia 2009 r. wraz z uzasadnieniem. Sygn. akt I A Ca 1010/09 UZASADNIENIE Wyrokiem z d\",\n" +
                 "            \"keywords\": [\n" +
                 "                \"przywrócenie terminu procesowego\"\n" +
                 "            ],\n" +

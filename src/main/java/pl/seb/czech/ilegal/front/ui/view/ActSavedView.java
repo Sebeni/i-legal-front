@@ -18,7 +18,7 @@ import pl.seb.czech.ilegal.front.ui.components.ActDetailBox;
 import pl.seb.czech.ilegal.front.ui.components.ActGrid;
 import pl.seb.czech.ilegal.front.ui.layout.MainLayout;
 
-@PageTitle("I-Legal | Moje ustawy")
+@PageTitle("I-Legal | Zapisane akty")
 @Route(value = "acts-saved", layout = MainLayout.class)
 public class ActSavedView extends VerticalLayout {
     private ActDBService actService;

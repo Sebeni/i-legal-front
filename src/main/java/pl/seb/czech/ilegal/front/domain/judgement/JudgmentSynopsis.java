@@ -4,11 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import pl.seb.czech.ilegal.front.domain.DummyEntity;
+import pl.seb.czech.ilegal.front.domain.judgement.deserializer.CaseNumberDeserializer;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,8 +16,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-@ToString
-public class Judgment implements DummyEntity<Long> {
+public class JudgmentSynopsis implements DummyEntity<Long> {
     private Long id;
     private String courtType;
     
@@ -30,8 +27,10 @@ public class Judgment implements DummyEntity<Long> {
     private String judgmentType;
     private String textContent;
     private String[] keywords;
-    private Division division;
-    private Court court;
+
+    
+    @Setter
+    private JudgmentDetails judgmentDetails;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate judgmentDate;
@@ -41,8 +40,8 @@ public class Judgment implements DummyEntity<Long> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Judgment judgment = (Judgment) o;
-        return id.equals(judgment.id);
+        JudgmentSynopsis judgmentSynopsis = (JudgmentSynopsis) o;
+        return id.equals(judgmentSynopsis.id);
     }
 
     @Override

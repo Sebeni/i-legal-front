@@ -14,10 +14,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.Lumo;
-import pl.seb.czech.ilegal.front.ui.view.HomeView;
-import pl.seb.czech.ilegal.front.ui.view.ActSavedView;
-import pl.seb.czech.ilegal.front.ui.view.ActSearchView;
-import pl.seb.czech.ilegal.front.ui.view.JudgmentSearchView;
+import pl.seb.czech.ilegal.front.ui.view.*;
 
 @CssImport("./styles/styles.css")
 public class MainLayout extends AppLayout {
@@ -39,8 +36,9 @@ public class MainLayout extends AppLayout {
 
     private void createDrawer() {
         RouterLink homeViewLink = new RouterLink("Start", HomeView.class);
-        RouterLink savedActsLink = new RouterLink("Moje akty", ActSavedView.class);
-        RouterLink searchActsLink = new RouterLink("Szukaj aktów", ActSearchView.class);
+        RouterLink savedActsLink = new RouterLink("Zapisane akty prawne", ActSavedView.class);
+        RouterLink searchActsLink = new RouterLink("Szukaj aktów prawnych", ActSearchView.class);
+        RouterLink savedJudgmentLink = new RouterLink("Zapisane orzeczenia", JudgmentSavedView.class);
         RouterLink searchJudgmentLink = new RouterLink("Szukaj orzeczeń", JudgmentSearchView.class);
         
         
@@ -56,10 +54,10 @@ public class MainLayout extends AppLayout {
         
         VerticalLayout drawerContent = new VerticalLayout(
                 new HorizontalLayout(new Icon(VaadinIcon.HOME), homeViewLink), 
-                new HorizontalLayout(new Icon(VaadinIcon.FOLDER_OPEN), savedActsLink),
+                new HorizontalLayout(new Icon(VaadinIcon.ARCHIVE), savedActsLink),
                 new HorizontalLayout(new Icon(VaadinIcon.INSTITUTION), searchActsLink),
+                new HorizontalLayout(new Icon(VaadinIcon.BRIEFCASE), savedJudgmentLink),
                 new HorizontalLayout(new Icon(VaadinIcon.GAVEL), searchJudgmentLink),
-                
                 new HorizontalLayout(new Icon(VaadinIcon.MOON), themeSwitch)
         );
         

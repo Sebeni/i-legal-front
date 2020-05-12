@@ -6,17 +6,15 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.seb.czech.ilegal.front.domain.act.Act;
-import pl.seb.czech.ilegal.front.domain.judgement.Judgment;
+import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsis;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class JudgmentDeserializationTest {
+public class JudgmentSynopsisDeserializationTest {
     
     @Autowired
     ObjectMapper objectMapper;
@@ -76,9 +74,9 @@ public class JudgmentDeserializationTest {
                 "        }";
 
 
-        Judgment judgementFromJson = new Judgment();
+        JudgmentSynopsis judgementFromJson = new JudgmentSynopsis();
         try {
-            judgementFromJson = objectMapper.readValue(supremeCourt, Judgment.class);
+            judgementFromJson = objectMapper.readValue(supremeCourt, JudgmentSynopsis.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
