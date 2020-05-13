@@ -18,16 +18,20 @@ import java.util.Objects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class JudgmentSynopsis implements DummyEntity<Long> {
     private Long id;
-    private String courtType;
-    
+    private CourtType courtType;
+
     @JsonProperty(value = "courtCases")
     @JsonDeserialize(using = CaseNumberDeserializer.class)
     private List<String> caseNumbers;
-    
-    private String judgmentType;
-    private String textContent;
-    private String[] keywords;
 
+    private JudgmentType judgmentType;
+    
+    @Setter
+    private String customName;
+    
+    @JsonProperty(value = "textContent")
+    private String synopsis;
+    private String[] keywords;
     
     @Setter
     private JudgmentDetails judgmentDetails;
@@ -35,6 +39,14 @@ public class JudgmentSynopsis implements DummyEntity<Long> {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate judgmentDate;
 
+
+    public String getCustomName() {
+        if(customName == null) {
+            return caseNumbers.get(0);
+        } else {
+            return customName;
+        }
+    }
 
     @Override
     public boolean equals(Object o) {

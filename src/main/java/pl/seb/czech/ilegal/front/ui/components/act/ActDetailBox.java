@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.ui.components;
+package pl.seb.czech.ilegal.front.ui.components.act;
 
 import com.vaadin.flow.component.accordion.Accordion;
 import com.vaadin.flow.component.accordion.AccordionPanel;
@@ -75,12 +75,7 @@ public class ActDetailBox extends VerticalLayout {
 
         promulgationPanel = detailsAccordion.add("Data ogłoszenia:", new Span("brak"));
         promulgationPanel.addThemeVariants(DetailsVariant.FILLED);
-
-        entryIntoForcePanel = detailsAccordion.add("Data wejścia w życie:", new Span("brak"));
-        entryIntoForcePanel.addThemeVariants(DetailsVariant.FILLED);
-
-        repealPanel = detailsAccordion.add("Data uchylenia:", new Span("brak"));
-        repealPanel.addThemeVariants(DetailsVariant.FILLED);
+        
     }
 
     public void setCurrentActAndUpdateBox(Act currentAct) {
@@ -113,11 +108,6 @@ public class ActDetailBox extends VerticalLayout {
         LocalDate promulgationDate = currentAct.getPromulgation();
         enableOptionalPanels(promulgationPanel, promulgationDate);
         
-        LocalDate entryIntoForceDate = currentAct.getEntryIntoForce();
-        enableOptionalPanels(entryIntoForcePanel, entryIntoForceDate);
-
-        LocalDate repealDate = currentAct.getRepealDate();
-        enableOptionalPanels(repealPanel, repealDate);
     }
 
     private void enableOptionalPanels(AccordionPanel optionalPanel, LocalDate correspondingDate) {

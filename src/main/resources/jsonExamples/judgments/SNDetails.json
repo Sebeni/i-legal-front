@@ -1,0 +1,120 @@
+{
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://www.saos.org.pl/api/judgments/76256"
+    }
+  ],
+  "data": {
+    "id": 76256,
+    "courtType": "SUPREME",
+    "href": "https://www.saos.org.pl/api/judgments/76256",
+    "courtCases": [
+      {
+        "caseNumber": "SNO 10/10"
+      }
+    ],
+    "judgmentType": "SENTENCE",
+    "judgmentDate": "2010-03-15",
+    "judges": [
+      {
+        "name": "Marian Buliński",
+        "function": "SSN",
+        "specialRoles": []
+      },
+      {
+        "name": "Piotr Hofmański",
+        "function": "SSN",
+        "specialRoles": [
+          "PRESIDING_JUDGE"
+        ]
+      },
+      {
+        "name": "Przemysław Kalinowski",
+        "function": "SSN",
+        "specialRoles": [
+          "REASONS_FOR_JUDGMENT_AUTHOR",
+          "REPORTING_JUDGE"
+        ]
+      }
+    ],
+    "source": {
+      "code": "SUPREME_COURT",
+      "judgmentUrl": "http://www.sn.pl/orzecznictwo/SitePages/Baza_orzeczen",
+      "judgmentId": "6e502c9f4727434350513f84f74225c2",
+      "publisher": null,
+      "reviser": null,
+      "publicationDate": "2013-01-22"
+    },
+    "courtReporters": [],
+    "decision": null,
+    "summary": null,
+    "textContent": "WYROK Z DNIA 15 MARCA 2010 R.\nSNO 10/10\nPrzewodniczący: sędzia SN Piotr Hofmański.\nSędziowie SN: Przemysław Kalinowski (sprawozdawca), Marian Buliński.\nS ą d N a j w y ż s z y – S ą d D y s c y p l i n a rny z udziałem sędziego –\nZastępcy Rzecznika Dyscyplinarnego Sądu Okręgowego oraz protokolanta po\nrozpoznaniu w dniu 15 marca 2010 r. sprawy sędziego Sądu Rejonowego w związku z\nodwołaniem Ministra Sprawiedliwości od wyroku Sądu Apelacyjnego – Sądu\nDyscyplinarnego z dnia 20 listopada 2009 r., sygn. ASD (...)\n1) z m i e n i ł zaskarżony w y r o k w ten sposób, że w miejsce orzeczonej wobec\nsędziego Sądu Rejonowego kary dyscyplinarnej nagany – na podstawie art. 109 §\n1 pkt 4 u.s.p. wymierzył mu karę dyscyplinarną przeniesienia na inne miejsce\nsłużbowe w okręgu Sądu Apelacyjnego w A.,\n2) kosztami postępowania odwoławczego obciążył Skarb Państwa.\nU z a s a d n i e n i e\nSąd Apelacyjny – Sąd Dyscyplinarny wyrokiem z dnia 20 listopada 2009 r.,\nsygn. akt ASD (...), uznał sędziego Sądu Rejonowego za winnego tego, że w okresie\nod dnia 9 października 2008 r. do dnia 11 lutego 2009 r. jako sędzia Wydziału\nKarnego Sądu Rejonowego w W., dopuścił się przewinienia dyscyplinarnego\nstanowiącego oczywistą i rażącą obrazę przepisów prawa polegającą na tym, że będąc\nzawieszony w czynnościach służbowych uchwałą Sądu Apelacyjnego – Sądu\nDyscyplinarnego w A. z dnia 8 października 2008 r., sygn. akt ASDo (...), pomimo\ntego, że był obecny przy jej ogłoszeniu, uchwały tej nie respektował przez to, że\npodejmował sędziowskie czynności służbowe, w tym również prowadził rozprawy\nsądowe i wydawał wyroki w sprawach karnych, a ponadto w okresie tym pobierał\nwynagrodzenie w pełnej wysokości mając świadomość, że wynagrodzenie zostało mu\npowyższą uchwałą obniżone o 25 %, tj. popełnienia przewinienia dyscyplinarnego z\nart. 107 § 1 ustawy z dnia 27 lipca 2001 r. – Prawo o ustroju sądów powszechnych\n(Dz. U. Nr 98, poz. 1070 ze zm.) i za to na podstawie powołanego przepisu oraz art.\n109 § 1 pkt 2 ustawy – Prawo o ustroju sądów powszechnych wymierzył mu karę\ndyscyplinarną nagany.\nPowyższy wyrok zaskarżył Minister Sprawiedliwości, który w odwołaniu\nwniesionym na niekorzyść obwinionego zarzucił kwestionowanemu rozstrzygnięciu:\n2\n- obrazę art. 7 k.p.k. w zw. z art. 128 u.s.p., polegającą na przekroczeniu\ngranic swobodnej oceny dowodów, wyrażającym się w bezzasadnym daniu\nwiary obwinionemu w zakresie motywacji jaka przyświecała mu przy\npopełnieniu przypisanego przewinienia i wynikającym stąd błędzie w\nustaleniach faktycznych przyjętych za podstawę zapadłego wyroku, mającym\nwpływ na jego treść a polegającym na bezzasadnym przyjęciu, że motywacją\nobwinionego było to, że „dążył do usunięcia zaległości i nie chciał by\nprzydzielone mu sprawy karne pozostawały bez biegu”, pomimo tego, że\ntakiemu ustaleniu sprzeciwiały się zasady prawidłowego rozumowania i\ndoświadczenia życiowego;\n- rażącą niewspółmierność orzeczenia o karze, polegającą na wymierzeniu\nobwinionemu za przypisane mu przewinienie dyscyplinarne kary\ndyscyplinarnej nagany w wyniku nieuwzględnienia w sposób właściwy\nstopnia zawinienia oraz wagi wykroczenia popełnionego przez obwinionego.\nW oparciu o tak sformułowany zarzut autor odwołania wniósł o zmianę\nzaskarżonego wyroku i wymierzenie obwinionemu sędziemu kary dyscyplinarnej\nprzewidzianej w art. 109 § 1 pkt 4 u.s.p., tj. przeniesienia na inne miejsce służbowe.\nSąd Najwyższy – Sąd Dyscyplinarny zważył, co następuje:\nOdwołanie wniesione przez Ministra Sprawiedliwości na niekorzyść\nobwinionego sędziego Sądu Rejonowego zasługiwało na uwzględnienie. Skarżący\ntrafnie zarzucił Sądowi pierwszej instancji błędne zinterpretowanie motywów jakimi\nkierował się obwiniony, decydując się na dalsze wykonywanie czynności\nsędziowskich już po wydaniu uchwały sądu dyscyplinarnego uchylającej mu\nimmunitet i zawieszającej go w wykonywaniu czynności służbowych. Wywody\nzawarte w uzasadnieniu rozstrzygnięcia sądu meriti dotknięte są w tym względzie\nzasadniczą sprzecznością. Z jednej strony stwierdza się bowiem że „nie sposób\nuwierzyć”, aby obwiniony nie zdawał sobie sprawy ze skutków uchwały zezwalającej\nna pociągnięcie go do odpowiedzialności karnej oraz zawieszającej go w obowiązkach\nsłużbowych, a z drugiej przyjmuje za podstawę stanowiska sądu jego twierdzenie, że\nobwiniony, orzekając w tych warunkach, dążył do usunięcia zaległości. Prezentując\ntakie stanowisko Sąd Apelacyjny jednocześnie – nie daje wiary motywom\nprzedstawionym przez obwinionego, a zarazem – opiera na nich swoje orzeczenie.\nWywód tego rodzaju narusza reguły logicznego rozumowania zważywszy, że jedyną\nrzeczywistą konsekwencją tak wyrażonej „troski” o bieg spraw w Sądzie Rejonowym\nw W., jest obecnie konieczność wzruszenia znacznej liczby wyroków i ponownego\nprowadzenia procesów, w których rozstrzygnięcia są dotknięte uchybieniem będącym\npodstawą do obligatoryjnego uchylenia orzeczenia. W tej sytuacji, strona\n3\nmotywacyjna działania obwinionego, którą Sąd pierwszej instancji uczynił istotnym\nelementem swojej decyzji w zakresie orzeczonej kary dyscyplinarnej, została ustalona\nw sposób oderwany od rzeczywistości. Wprawdzie nawiązuje ona do wyjaśnień\nsamego zainteresowanego jako głównego źródła dowodowego w tym zakresie, ale nie\noznacza to wcale konieczności bezkrytycznego akceptowania przedstawionej przez\nniego wersji. Nawet przecież wtedy, gdy dowód z wyjaśnień obwinionego jest\njedynym materiałem odnoszącym się do określonej kwestii dowodowej, nic nie\nzwalnia sądu od obowiązku poddania go krytycznej analizie prowadzonej przez\npryzmat dyrektyw wynikających z art. 7 k.p.k. Także brak możliwości odtworzenia\nrzeczywistych motywów postępowania obwinionego nie oznacza też, że można je\nprzyjąć w wersji całkowicie nieracjonalnej. Ta, do której odwołał się Sąd Apelacyjny\nw A. przy wymiarze kary, wprost musiałaby prowadzić do wniosku o nieznajomości\nprzepisów i konsekwencji prawnych, jakie rodzi orzekanie w warunkach\nobowiązywania uchwały o zawieszeniu w czynnościach służbowych. Dlatego przecież\nzostała przez Sąd Apelacyjny odrzucona na wstępie. Racjonalna skądinąd ocena, że\n„trudno w to uwierzyć”, a zatem przyjęcie, że obwiniony sędzia miał jednak\nświadomość prawnego znaczenia uchwały zezwalającej na pociągnięcie go do\nodpowiedzialności karnej, a mimo to w dalszym ciągu prowadził rozprawy i orzekał –\noznacza w rzeczywistości uznanie, że takie zachowanie stanowiło wyraz\nlekceważącego stosunku do orzeczenia sądu dyscyplinarnego w tej materii i\ncałkowitego ignorowania konsekwencji związanych z takim postępowaniem. Postawa\ntego rodzaju świadczy o czymś wręcz przeciwnym niż to starał się przedstawić\nobwiniony i żadną miarą nie można jej traktować w kategoriach troski o sprawność\ndziałania macierzystego sądu. Skutki zachowania podjętego przez obwinionego\nsędziego są bardzo poważne z uwagi zarówno na okres orzekania bez uprawnień, jak i\nliczbę spraw dotkniętych bezwzględną przyczyną odwoławczą. Wymagają one\npodjęcia licznych i pracochłonnych czynności związanych z wstrzymaniem wykonania\norzeczeń, które uzyskały walor prawomocności, uruchomienia procedury wznowienia\npostępowania z urzędu, zaangażowania sądów wyższej instancji, skierowania spraw\ndo ponownego rozpoznania i przeprowadzenia na nowo całego postępowania\nsądowego. Oczywistym następstwem jest też przewlekłość postępowania, która ma\nswoje wymierne skutki społeczne i materialne dla jego uczestników. W sytuacji, gdy\nprzyczyną tych wszystkich działań jest bezprawne zachowanie sędziego, rażąco\nnaruszającego obowiązujący porządek prawny i to w związku z już podjętymi wobec\nniego krokami dyscyplinarnymi – również powaga wymiaru sprawiedliwości doznaje\nistotnego uszczerbku. W odbiorze społecznym powstaje bowiem przekonanie, że\nfunkcje sędziowskie sprawują osoby lekceważące zarówno obowiązujący porządek\nustawowy, jak i następstwa swoich działań naruszających prawa i interesy stron oraz\nuczestników procesu karnego. Te wszystkie okoliczności nie znalazły należytego\n4\nodzwierciedlenia w wymiarze kary dyscyplinarnej orzeczonej wobec obwinionego\nsędziego. Z tych też względów należało podzielić ocenę zaprezentowaną w odwołaniu\nMinistra Sprawiedliwości o rażącej niewspółmierności reakcji dyscyplinarnej\nwyrażającej się w orzeczeniu wobec niego jedynie kary nagany. Skarżący słusznie\npodkreślił zarówno rozmiar skutków działania obwinionego, jak i zakres oraz wagę ich\nkonsekwencji. Skutecznie podważono też motywy zachowania prezentowane przez\nobwinionego i nawet jeżeli odrzuci się tę część wywodów zamieszczonych w\nodwołaniu, która w odniesieniu do sfery motywacyjnej ma charakter domniemań i\nspekulacji, to na pewno nie da się w tym obszarze znaleźć okoliczności o wymowie\npozytywnej dla obwinionego. Zgodzić się także należy z argumentem, że skala,\nokoliczności oraz ciężar gatunkowy czynu przypisanego obwinionemu oraz szkoda\njaką wyrządził sądowi, w którym orzekał, a także wymiarowi sprawiedliwości w\nwymiarze szerszym – godząc w jego powagę i dobre imię pracowników jego korpusu\n– przemawiały za wymierzeniem obwinionemu sędziemu surowszej kary\ndyscyplinarnej niż orzeczona wobec niego kara nagany. Tę ostatnią – w realiach tej\nsprawy – trzeba uznać za karę rażąco łagodną, która nie spełniała ustawowych\ndyrektyw współmierności. Podzielając tę ocenę co do zasady oraz mając na uwadze\ntreść wniosku złożonego przez autora środka odwoławczego, należało wymierzyć\nobwinionemu sędziemu Sądu Rejonowego karę dyscyplinarną przeniesienia na inne\nmiejsce służbowe. Dopiero tak ukształtowana reakcja dyscyplinarna na zachowanie\nobwinionego będzie dla niego rzeczywiście odczuwalna. Na uwzględnienie\nzasługiwały także racje bardziej ogólne w postaci usunięcia obwinionego sędziego z\nokręgu sądu, w którym dopuścił się rażącego naruszenia prawa, a który to sąd musi\nponowić znaczną liczbę postępowań. Nie ma zatem żadnych racji, aby stan\nzawieszenia w wykonywaniu obowiązków służbowych zastosowany wobec\nobwinionego, prowadził do zwiększonego obciążenia pozostałych sędziów\norzekających w Sądzie Rejonowym w W., wynikającego z konieczności powtórnego\nrozpoznawania spraw osądzonych przez niego w okresie objętym przypisanym mu\nczynem.\nOrzekając o wymierzeniu kary dyscyplinarnej przeniesienia na inne miejsce\nsłużbowe, Sąd Najwyższy – Sąd Dyscyplinarny określił ramy terytorialne, w których\nzostanie ona zrealizowana wskazując, że powinno to nastąpić w okręgu Sądu\nApelacyjnego w A. Ograniczenie tego rodzaju jest stosowane w orzecznictwie Sąd\nNajwyższego – Sądu Dyscyplinarnego (por. wyroki Sądu Najwyższego: z dnia 23\nczerwca 2005 r., SNO 31/05; z dnia 27 lipca 2006 r. SNO 34/06; z dnia 29 czerwca\n2007 r., SNO 37/07) z uwagi na konieczność zachowania konstytucyjnego rozdziału\nwładzy wykonawczej od władzy sądowniczej i zapewnienia przestrzegania zasady, że\nrozstrzyganie o rodzajach i granicach stosowanej represji należy do tej ostatniej.\nPodzielić trzeba pogląd wyrażony w tych orzeczeniach, że pozostawienie wyłącznemu\n5\nuznaniu Ministra Sprawiedliwości możliwości całkowicie dowolnego określenia\nnowego miejsca służbowego przenoszonego sędziego prowadziłoby do sytuacji, gdy to\norgan administracji rządowej mógłby w istotny sposób wpływać na rzeczywistą\ndolegliwość kary dyscyplinarnej orzeczonej przez sąd. Prowadziłoby to do naruszenia\nodrębności władzy sądowniczej i kompetencji sądów w sprawowaniu wymiaru\nsprawiedliwości.\nMając na uwadze podniesione okoliczności, Sąd Najwyższy – Sąd\nDyscyplinarny orzekł, jak na wstępie.\n",
+    "legalBases": [],
+    "referencedRegulations": [
+      {
+        "journalTitle": "Ustawa z dnia 27 lipca 2001 r. - Prawo o ustroju sądów powszechnych",
+        "journalNo": 98,
+        "journalYear": 2001,
+        "journalEntry": 1070,
+        "text": "Ustawa z dnia 27 lipca 2001 r. Prawo o ustroju sądów powszechnych (Dz. U. z 2001 r. Nr 98 poz. 1070 - art. 107 § 1, art. 109 § 1 pkt 2, art. 109 § 1 pkt 4, art. 128)"
+      },
+      {
+        "journalTitle": "Ustawa z dnia 6 czerwca 1997 r. - Kodeks postępowania karnego",
+        "journalNo": 89,
+        "journalYear": 1997,
+        "journalEntry": 555,
+        "text": "Ustawa z dnia 6 czerwca 1997 r. - Kodeks postępowania karnego (Dz. U. z 1997 r. Nr 89 poz. 555 - art. 7)"
+      }
+    ],
+    "keywords": [],
+    "referencedCourtCases": [
+      {
+        "caseNumber": "SNO 31/05",
+        "judgmentIds": [
+          83528
+        ],
+        "generated": true
+      },
+      {
+        "caseNumber": "SNO 34/06",
+        "judgmentIds": [
+          84487
+        ],
+        "generated": true
+      },
+      {
+        "caseNumber": "SNO 37/07",
+        "judgmentIds": [
+          86227
+        ],
+        "generated": true
+      }
+    ],
+    "receiptDate": "",
+    "meansOfAppeal": null,
+    "judgmentResult": null,
+    "lowerCourtJudgments": [],
+    "personnelType": "THREE_PERSON",
+    "judgmentForm": {
+      "name": "wyrok SN SD"
+    },
+    "division": {
+      "href": "https://www.saos.org.pl/api/scDivisions/1",
+      "id": 1,
+      "name": "Wydział VI",
+      "chamber": {
+        "href": "https://www.saos.org.pl/api/scChambers/1",
+        "id": 1,
+        "name": "Izba Karna"
+      }
+    },
+    "chambers": [
+      {
+        "href": "https://www.saos.org.pl/api/scChambers/1",
+        "id": 1,
+        "name": "Izba Karna"
+      }
+    ]
+  }
+}

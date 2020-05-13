@@ -1,0 +1,98 @@
+{
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://www.saos.org.pl/api/judgments/1"
+    }
+  ],
+  "data": {
+    "id": 1,
+    "courtType": "COMMON",
+    "href": "https://www.saos.org.pl/api/judgments/1",
+    "courtCases": [
+      {
+        "caseNumber": "I ACa 1010/09"
+      }
+    ],
+    "judgmentType": "DECISION",
+    "judgmentDate": "2012-09-14",
+    "judges": [
+      {
+        "name": "Andrzej Struzik",
+        "function": null,
+        "specialRoles": [
+          "PRESIDING_JUDGE"
+        ]
+      },
+      {
+        "name": "Józef Wąsik",
+        "function": null,
+        "specialRoles": []
+      },
+      {
+        "name": "Teresa Rak",
+        "function": null,
+        "specialRoles": []
+      }
+    ],
+    "source": {
+      "code": "COMMON_COURT",
+      "judgmentUrl": "http://orzeczenia.ms.gov.pl/ncourt-api/judgement/details?id=152000000000503_I_ACa_001010_2009_Uz_2012-09-14_001",
+      "judgmentId": "152000000000503_I_ACa_001010_2009_Uz_2012-09-14_001",
+      "publisher": "Małgorzata Strojek",
+      "reviser": "Bogusława Kaczmarczyk",
+      "publicationDate": "2012-11-27"
+    },
+    "courtReporters": [
+      "st. prot. sądowy Marta Matys"
+    ],
+    "decision": null,
+    "summary": null,
+    "textContent": "<p>Sygn. akt I ACa 1010/09</p>\n    \n    <div>\n      <h2>POSTANOWIENIE</h2>\n      <p>Dnia 14 września 2012 r.</p>\n      \n      <p>Sąd Apelacyjny w Krakowie – Wydział I Cywilny w składzie:</p>\n      <table>\n        <colgroup>\n          <col width=\"219\"/>\n          <col width=\"398\"/>\n        </colgroup>\n        <tr>\n          <td>\n            <p>Przewodniczący:</p>\n          </td>\n          <td>\n            <p>SSA Andrzej Struzik</p>\n          </td>\n        </tr>\n        <tr>\n          <td>\n            <p>Sędziowie:</p>\n          </td>\n          <td>\n            <p>\n<strong>\n<!-- -->\n                <span class=\"underline\">\n<!-- -->SSA Józef Wąsik </span>\n              </strong>\n</p>\n            <p>SSA Teresa Rak</p>\n            \n          </td>\n        </tr>\n        <tr>\n          <td>\n            <p>Protokolant:</p>\n          </td>\n          <td>\n            <p>st. prot. sądowy Marta Matys</p>\n          </td>\n        </tr>\n      </table>\n      \n      <p>po rozpoznaniu na rozprawie w dniu 14 września 2012 r. w <span class=\"anon-block\">K.</span>\n</p>\n      <p>sprawy z powództwa <span class=\"anon-block\">H. C.</span>\n</p>\n      <p>przeciwko   <span class=\"anon-block\"> (...) Bank S.A.</span> w <span class=\"anon-block\">W.</span>\n</p>\n      <p>o pozbawienie tytułu wykonawczego wykonalności</p>\n      <p>w przedmiocie wniosku powódki <span class=\"anon-block\">H. C.</span> o przywrócenie terminu do złożenia wniosku o doręczenie wyroku Sądu Apelacyjnego w Krakowie z dnia 21 grudnia 2009 r. wraz z uzasadnieniem</p>\n      \n      <p>\n<strong>\n<!-- -->p o s t a n a w i a:</strong>\n</p>\n      <p>\n<strong>\n<!-- -->odrzucić wniosek o przywrócenie terminu oraz wniosek o doręczenie wyroku Sądu Apelacyjnego w Krakowie z dnia 21 grudnia 2009 r. wraz z uzasadnieniem.</strong>\n</p>\n      \n      <p>Sygn. akt I A Ca 1010/09</p>\n    </div>\n    <div>\n      <h2>UZASADNIENIE</h2>\n      <p>Wyrokiem z dnia 21 grudnia 2009 roku, sygn. akt I ACa 1010/09 Sąd Apelacyjny w Krakowie oddalił apelację powódki. W piśmie, które wpłynęło do tutejszego Sądu w dniu 1 lutego 2011 roku powódka wniosła o doręczenie jej wyroku z uzasadnieniem. Następnie wezwana przez Sąd do wyjaśnienia treści tego pisma podała, że wnosi o sporządzenie i doręczenie jej uzasadnienia wyroku Sądu Apelacyjnego w Krakowie. Zaznaczyła, że nie otrzymała zawiadomienia na piśmie odnośnie terminu kolejnego posiedzenia Sądu. Dlatego udała się do Sądu i tam uzyskała informację, że wyrok w sprawie został już wydany. Dodała że wniosek o doręczenie uzasadnienia składa w terminie 7 dni od momentu dowiedzenia się o wydaniu wyroku. Równocześnie powódka złożyła wniosek o przywrócenie terminu do złożenia wniosku o sporządzenie uzasadnienia wyroku Sądu Apelacyjnego i doręczenie jej wyroku z uzasadnieniem, gdyż ewentualne uchybienie terminowi nastąpiło bez jej winy.</p>\n      <p>W trakcie rozprawy przed Sądem Apelacyjnym w Krakowie pełnomocnik powódki powtórzył, że wnosi ona o przywrócenie terminu do złożenia wniosku o doręczenie wyroku Sądu Apelacyjnego z uzasadnieniem. Równocześnie powódka zakwestionowała prawidłowość doręczenia jej ówczesnemu pełnomocnikowi <span class=\"anon-block\">M. S. (1)</span> zawiadomienia o rozprawie wyznaczonej na dzień 21 grudnia 2009 roku, gdyż zawiadomienie to, wysłane na podany przez <span class=\"anon-block\">M. S. (1)</span> adres tożsamy z adresem <span class=\"anon-block\"> kancelarii (...)</span>. <span class=\"anon-block\">J. M.</span>, nie zostało odebrane przez adresatkę, a przez pracownika kancelarii, i nie pozostawiono awiza. <span class=\"anon-block\">M. S. (1)</span> była na praktyce w tej kancelarii, jednak w chwili doręczania zawiadomienia nie była już z tą kancelarią związana.</p>\n      <p>\n<strong>\n<!-- -->Sąd Apelacyjny zważył, co następuje:</strong>\n</p>\n      <p>W pierwszej kolejności należy zauważyć, że zgodnie z <a href=\"http://isap.sejm.gov.pl/DetailsServlet?id=WDU19640430296\" title=\"Ustawa z dnia 17 listopada 1964 r. - Kodeks postępowania cywilnego - Dz. U. z 1964 r. Nr 43, poz. 296 (art. 387;art. 387 § 3)\">art. 387 § 3 k.p.c.</a> wniosek o doręczenie wyroku wraz z uzasadnieniem strona winna złożyć w terminie tygodniowym od wydania przez Sąd Apelacyjny wyroku. W niniejszej sprawie powódka nie złożyła w wymaganym, tygodniowym terminie wniosku o odręcznie jej wyroku Sądu Apelacyjnego w Krakowie z dnia 21 grudnia 2009 roku wraz z uzasadnieniem. Przeszło rok po jego ogłoszeniu złożyła jednak pismo, w którym domagała się doręczenia wyroku Sądu Apelacyjnego wraz z uzasadnieniem.</p>\n      <p>Argumentując wniosek o przywrócenie terminu do złożenia wniosku o dręczenie jej wyroku Sądu Apelacyjnego z uzasadnieniem powódka przywołała okoliczność, iż zawiadomienie o rozprawie wyznaczonej na dzień 21 grudnia 2009 roku skierowano do jej pełnomocnika <span class=\"anon-block\">M. S. (1)</span> nie zostało przez nią odebrane, jak również nie zostało wystawione stosowane awizo.</p>\n      <p>Ustosunkowując się do stanowiska powódki odnośnie przyczyn nie dochowania przez nią terminu do złożenia wniosku o doręczenie jej wyroku Sądu II instancji wraz z uzasadnieniem należy przywołać treść <a href=\"http://isap.sejm.gov.pl/DetailsServlet?id=WDU19640430296\" title=\"Ustawa z dnia 17 listopada 1964 r. - Kodeks postępowania cywilnego - Dz. U. z 1964 r. Nr 43, poz. 296 (art. 169;art. 169 § 4)\">art. 169 § 4 k.p.c.</a>, który stanowi, że po upływie roku od uchybionego terminu, jego przywrócenie jest dopuszczalne tylko w wypadkach wyjątkowych. Pojęcie „wypadków wyjątkowych” nie zostało określone w ustawie. Prawodawca pozostawił ocenę w tym zakresie sędziemu. Do sądu, rozpoznającego wniosek o przywrócenie terminu, należy zatem ustalenie, czy zachodzi wypadek, który można uznać za wyjątkowy. Niezawinione uchybienie terminu, nawet oczywiste, nie uzasadnia jego przywrócenia, jeżeli minął rok od upływu uchybionego terminu, a rozpoznawany wypadek nie ma charakteru wyjątkowego (por. postawienie SN z dnia 12.05.2006 r., V CZ 28/06, LEX nr 200915).</p>\n      <p>W realiach niniejszej sprawy powódka na posiedzeniu w dniu 1 grudnia 2009 roku ustanowiła <span class=\"anon-block\">M. S. (1)</span> swoim pełnomocnikiem składając stosowne oświadczenie do protokołu, jak również przedkładając odpowiednią umowę stałego stosunku zlecenia. Ustanowiony w ten sposób pełnomocnik wskazał adres dla doręczeń w <span class=\"anon-block\">K.</span>, przy <span class=\"anon-block\">ul. (...)</span>. Na podany przez <span class=\"anon-block\">M. S. (1)</span> adres zostało wystosowane zawiadomienie o terminie posiedzenia Sądu Apelacyjnego wyznaczonego na dzień 21 grudnia 2009 roku. Zawiadomienie to zostało odebrane przez osobę pracującą w <span class=\"anon-block\"> Kancelarii (...)</span> działającą pod wskazanym przez pełnomocnika powódki adresem. Ani <span class=\"anon-block\">M. S. (1)</span>, ani powódka nie stawiły się na posiedzeniu Sądu Apelacyjnego w dniu 21 grudniu 2009 roku, kiedy to Sąd rozpoznał sprawę i ogłosił wyrok, którego dotyczy spóźniony wniosek powódki o doręczenie orzeczenia wraz z uzasadnieniem.</p>\n      <p>Zaprezentowany sposób powiadomienia powódki o kolejnym terminie posiedzenia Sądu Apelacyjnego wyznaczonego na dzień 21 grudnia 2009 roku nie podważa jego skuteczności. Po pierwsze <span class=\"anon-block\">M. S. (1)</span> została prawidłowo ustanowiona pełnomocnikiem powódki. Po drugie zawiadomienie o kolejnym posiedzeniu Sądu zostało skierowane na adres wskazany przez <span class=\"anon-block\">M. S. (1)</span>, w trakcie posiedzenia Sądu w dniu 1 grudnia 2009 roku, jako adres dla doręczeń. Po trzecie wreszcie fakt, iż pełnomocnik powódki nie odebrała zawiadomienia osobiście nie wpływa na skuteczność doręczenia. Praktykując w <span class=\"anon-block\"> Kancelarii (...)</span> przy wykonywaniu swoich obowiązków posługiwała się adresem jego Kancelarii, zatem upoważniła go, ewentualnie jego pracowników do odbioru korespondencji. <span class=\"anon-block\">M. S. (2)</span> nie wskazała innego adresu, na który należałoby kierować przeznaczoną dla niej korespondencję, a powódka nie wypowiedziała udzielonego jej pełnomocnictwa. Zarówno <span class=\"anon-block\">M. S. (1)</span> jak i powódka przez długi okres czasu nie interesowały się biegiem sprawy. Powódka mając świadomość, że ustanowiła pełnomocnika w sprawie powinna w pierwszym rzędzie u niego zasięgać informacji co do biegu sprawy. Powódka nie podniosła, aby miała z tym jakiekolwiek trudności. Nie twierdzi np. aby w kancelarii odmówiono jej podania adresu zamieszkania, czy pobytu <span class=\"anon-block\">M. S. (1)</span>. Ostatecznie powódka mogła zasięgnąć informacji w sekretariacie Sądu Apelacyjnego. Wydaje się, że rok czasu jest wystarczającym okresem, aby zainteresować się istotną dla siebie sprawą.</p>\n      <p>Powódka nie powołała się na żadne wyjątkowe okoliczności uniemożliwiające lub choćby utrudniające jej kontakt z pełnomocnikiem lub sekretariatem sądu. Przyjąć zatem należało, że powodem uchybienia terminu było typowe zaniedbanie powódki i jej pełnomocnika wynikłe z nienależytej staranności.</p>\n      <p>W świetle powyższego należy uznać, iż przytoczone przez powódkę okoliczności mające wskazywać na zasadność złożonego przez nią wniosku o przywrócenie terminu do złożenia wniosku o doręczenie wyroku Sądu Apelacyjnego wraz z uzasadnieniem nie mogą być potraktowane jako wyjątkowe w rozumieniu <a href=\"http://isap.sejm.gov.pl/DetailsServlet?id=WDU19640430296\" title=\"Ustawa z dnia 17 listopada 1964 r. - Kodeks postępowania cywilnego - Dz. U. z 1964 r. Nr 43, poz. 296 (art. 169;art. 169 § 4)\">art. 169 § 4 k.p.c.</a> Nie wskazują bowiem na obiektywne okoliczności lub zawinienie osób trzecich np. nieprawidłowość działania Sądu lub Urzędu Pocztowego, które uniemożliwiałyby dowiedzenie się przez powódkę o następnym terminie posiedzenia Sądu Apelacyjnego.</p>\n      <p>W konsekwencji Sąd Apelacyjny w Krakowie działając na zasadzie <a href=\"http://isap.sejm.gov.pl/DetailsServlet?id=WDU19640430296\" title=\"Ustawa z dnia 17 listopada 1964 r. - Kodeks postępowania cywilnego - Dz. U. z 1964 r. Nr 43, poz. 296 (art. 171)\">art. 171 k.p.c.</a> odrzucił złożony przez powódkę wniosek o przywrócenie terminu.</p>\n      <p>Natomiast wniosek o doręczenie wyroku Sądu Apelacyjnego w Krakowie z dnia 21 grudnia 2009 roku wraz uzasadnieniem, jako złożony po terminie, podlega odrzuceniu na zasadzie <a href=\"http://isap.sejm.gov.pl/DetailsServlet?id=WDU19640430296\" title=\"Ustawa z dnia 17 listopada 1964 r. - Kodeks postępowania cywilnego - Dz. U. z 1964 r. Nr 43, poz. 296 (art. 387;art. 387 § 3)\">art. 387 § 3 k.p.c.</a> w zw. <a href=\"http://isap.sejm.gov.pl/DetailsServlet?id=WDU19640430296\" title=\"Ustawa z dnia 17 listopada 1964 r. - Kodeks postępowania cywilnego - Dz. U. z 1964 r. Nr 43, poz. 296 (art. 328;art. 328 § 1)\">art. 328 § 1 k.p.c.</a> w zw. z <a href=\"http://isap.sejm.gov.pl/DetailsServlet?id=WDU19640430296\" title=\"Ustawa z dnia 17 listopada 1964 r. - Kodeks postępowania cywilnego - Dz. U. z 1964 r. Nr 43, poz. 296 (art. 391)\">art. 391 k.p.c.</a>\n</p>\n    </div>",
+    "legalBases": [],
+    "referencedRegulations": [
+      {
+        "journalTitle": "Ustawa z dnia 17 listopada 1964 r. - Kodeks postępowania cywilnego",
+        "journalNo": 43,
+        "journalYear": 1964,
+        "journalEntry": 296,
+        "text": "Ustawa z dnia 17 listopada 1964 r. - Kodeks postępowania cywilnego (Dz. U. z 1964 r. Nr 43, poz. 296 - art. 169; art. 169 § 4; art. 171; art. 328; art. 328 § 1; art. 387; art. 387 § 3; art. 391)"
+      }
+    ],
+    "keywords": [
+      "przywrócenie terminu procesowego"
+    ],
+    "referencedCourtCases": [
+      {
+        "caseNumber": "V CZ 28/06",
+        "judgmentIds": [
+          164267
+        ],
+        "generated": true
+      },
+      {
+        "caseNumber": "I A Ca 1010/09",
+        "judgmentIds": [],
+        "generated": true
+      }
+    ],
+    "receiptDate": "",
+    "meansOfAppeal": null,
+    "judgmentResult": null,
+    "lowerCourtJudgments": [],
+    "division": {
+      "id": 816,
+      "name": "I Wydział Cywilny",
+      "href": "https://www.saos.org.pl/api/ccDivisions/816",
+      "code": "0000503",
+      "type": "Cywilny",
+      "court": {
+        "href": "https://www.saos.org.pl/api/commonCourts/123",
+        "id": 123,
+        "name": "Sąd Apelacyjny w Krakowie",
+        "code": "15200000",
+        "type": "APPEAL"
+      }
+    }
+  }
+}

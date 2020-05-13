@@ -43,7 +43,7 @@ public class IsapClient {
             ClientHttpRequest request = factory.createRequest(uri, HttpMethod.GET);
             responseStatus = request.execute().getStatusCode();
         } catch (IOException e) {
-            LOGGER.error("Exception in button checking\n" + e + "\n" + Arrays.toString(e.getStackTrace()));
+            LOGGER.error("Exception in button checking", e);
         }
         return responseStatus == HttpStatus.OK;
     }

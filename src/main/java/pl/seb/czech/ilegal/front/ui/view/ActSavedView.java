@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import pl.seb.czech.ilegal.front.client.act.IsapClient;
 import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.stub.act.ActDBService;
-import pl.seb.czech.ilegal.front.ui.components.ActDetailBox;
-import pl.seb.czech.ilegal.front.ui.components.ActGrid;
+import pl.seb.czech.ilegal.front.ui.components.act.ActDetailBox;
+import pl.seb.czech.ilegal.front.ui.components.act.ActGrid;
 import pl.seb.czech.ilegal.front.ui.layout.MainLayout;
 
 @PageTitle("I-Legal | Zapisane akty")
@@ -37,7 +37,6 @@ public class ActSavedView extends VerticalLayout {
         this.actGrid = new ActGrid(actService.getAll());
         
         this.actGrid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
-        this.actGrid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
         
         this.actDetailBox = new ActDetailBox(isapClient); 
 

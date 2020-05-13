@@ -35,13 +35,7 @@ public class Act implements DummyEntity<String> {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime changeDate;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDate entryIntoForce;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDate repealDate;
-
+    
 
     @Override
     public boolean equals(Object o) {
@@ -56,13 +50,11 @@ public class Act implements DummyEntity<String> {
                 Objects.equals(title, act.title) &&
                 Objects.equals(status, act.status) &&
                 Objects.equals(promulgation, act.promulgation) &&
-                Objects.equals(changeDate, act.changeDate) &&
-                Objects.equals(entryIntoForce, act.entryIntoForce) &&
-                Objects.equals(repealDate, act.repealDate);
+                Objects.equals(changeDate, act.changeDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, publisher, year, volume, position, title, status, promulgation, changeDate, entryIntoForce, repealDate);
+        return Objects.hash(id, publisher, year, volume, position, title, status, promulgation, changeDate);
     }
 }

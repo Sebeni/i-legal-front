@@ -1,0 +1,47 @@
+
+    {
+      "id": 206684,
+      "href": "https://www.saos.org.pl/api/judgments/206684",
+      "courtType": "CONSTITUTIONAL_TRIBUNAL",
+      "courtCases": [
+        {
+          "caseNumber": "K 35/15"
+        }
+      ],
+      "judgmentType": "SENTENCE",
+      "judges": [
+        {
+          "name": "Andrzej Wróbel",
+          "function": null,
+          "specialRoles": [
+            "PRESIDING_JUDGE"
+          ]
+        },
+        {
+          "name": "Małgorzata Pyziak-Szafnicka",
+          "function": null,
+          "specialRoles": []
+        },
+        {
+          "name": "Mirosław Granat",
+          "function": null,
+          "specialRoles": []
+        },
+        {
+          "name": "Piotr Tuleja",
+          "function": null,
+          "specialRoles": [
+            "REPORTING_JUDGE"
+          ]
+        },
+        {
+          "name": "Sławomira Wronkowska-Jaśkiewicz",
+          "function": null,
+          "specialRoles": []
+        }
+      ],
+      "textContent": "186/11/A/2015 WYROK z dnia 9 grudnia 2015 r. Sygn. akt K 35/15* * Sentencja została ogłoszona dnia 18 grudnia 2015 r. w Dz. U. poz. 2147. W imieniu Rzeczypospolitej Polskiej Trybunał Konstytucyjny w składzie: Andrzej Wróbel – przewodniczący Mirosław Granat Małgorzata Pyziak-Szafnicka Piotr Tuleja – sprawozdawca Sławomira Wronkowska-Jaśkiewicz, protokolant: Grażyna Szałygo, po rozpoznaniu, z udziałem wnioskodawców oraz Sejmu i Prokuratora Generalnego, na rozprawie w dniu 9 grudnia 2015 r., połączonych wniosków: 1) grupy posłów o zbadanie zgodności: a) art. 1 pkt 6 ustawy z dnia 19 listopada 2015 r. o zmianie ustawy o Trybunale Konstytucyjnym (Dz. U. poz. 1928), zaś w razie jej wejścia w życie przed dniem orzekania w niniejszej sprawie przez Trybunał – art. 137a ustawy z dnia 25 czerwca 2015",
+      "keywords": [],
+      "judgmentDate": "2015-12-09"
+    }
+ 

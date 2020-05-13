@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.ui.components;
+package pl.seb.czech.ilegal.front.ui.components.act;
 
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;

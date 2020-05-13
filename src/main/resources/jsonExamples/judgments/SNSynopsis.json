@@ -1,0 +1,52 @@
+
+    {
+      "id": 76256,
+      "href": "https://www.saos.org.pl/api/judgments/76256",
+      "courtType": "SUPREME",
+      "courtCases": [
+        {
+          "caseNumber": "SNO 10/10"
+        }
+      ],
+      "judgmentType": "SENTENCE",
+      "judges": [
+        {
+          "name": "Marian Buliński",
+          "function": null,
+          "specialRoles": []
+        },
+        {
+          "name": "Piotr Hofmański",
+          "function": null,
+          "specialRoles": [
+            "PRESIDING_JUDGE"
+          ]
+        },
+        {
+          "name": "Przemysław Kalinowski",
+          "function": null,
+          "specialRoles": [
+            "REASONS_FOR_JUDGMENT_AUTHOR",
+            "REPORTING_JUDGE"
+          ]
+        }
+      ],
+      "textContent": "WYROK Z DNIA 15 MARCA 2010 R. SNO 10/10 Przewodniczący: sędzia SN Piotr Hofmański. Sędziowie SN: Przemysław Kalinowski (sprawozdawca), Marian Buliński. S ą d N a j w y ż s z y – S ą d D y s c y p l i n a rny z udziałem sędziego – Zastępcy Rzecznika Dyscyplinarnego Sądu Okręgowego oraz protokolanta po rozpoznaniu w dniu 15 marca 2010 r. sprawy sędziego Sądu Rejonowego w związku z odwołaniem Ministra Sprawiedliwości od wyroku Sądu Apelacyjnego – Sądu Dyscyplinarnego z dnia 20 listopada 2009 r., sygn. ASD (...) 1) z m i e n i ł zaskarżony w y r o k w ten sposób, że w miejsce orzeczonej wobec sędziego Sądu Rejonowego kary dyscyplinarnej nagany – na podstawie art. 109 § 1 pkt 4 u.s.p. wymierzył mu karę dyscyplinarną przeniesienia na inne miejsce służbowe w okręgu Sądu Apelacyjnego w A., 2) kosz",
+      "keywords": [],
+      "personnelType": "THREE_PERSON",
+      "judgmentForm": "wyrok SN SD",
+      "division": {
+        "href": "https://www.saos.org.pl/api/scDivisions/1",
+        "id": 1,
+        "name": "Wydział VI",
+        "chambers": [
+          {
+            "href": "https://www.saos.org.pl/api/scChambers/1",
+            "id": 1,
+            "name": "Izba Karna"
+          }
+        ]
+      },
+      "judgmentDate": "2010-03-15"
+    }
+ 

@@ -17,9 +17,9 @@ import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchResult;
 import pl.seb.czech.ilegal.front.stub.act.ActDBService;
-import pl.seb.czech.ilegal.front.ui.components.ActDetailBox;
-import pl.seb.czech.ilegal.front.ui.components.ActGrid;
-import pl.seb.czech.ilegal.front.ui.components.ActSearchForm;
+import pl.seb.czech.ilegal.front.ui.components.act.ActDetailBox;
+import pl.seb.czech.ilegal.front.ui.components.act.ActGrid;
+import pl.seb.czech.ilegal.front.ui.components.act.ActSearchForm;
 import pl.seb.czech.ilegal.front.ui.components.PaginationBar;
 import pl.seb.czech.ilegal.front.ui.layout.MainLayout;
 
@@ -49,8 +49,9 @@ public class ActSearchView extends VerticalLayout implements SearchView {
 
         actGrid = new ActGrid(new ArrayList<Act>());
         actGrid.removeColumn(actGrid.getLastChangeColumn());
-        actGrid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
+        
         actGrid.addThemeVariants(GridVariant.LUMO_COLUMN_BORDERS);
+        
         actGrid.asSingleSelect().addValueChangeListener(event -> showDetails(event.getValue()));
         actGrid.setHeightByRows(true);
         

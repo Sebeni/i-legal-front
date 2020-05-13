@@ -1,0 +1,72 @@
+{
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://www.saos.org.pl/api/judgments/354710"
+    }
+  ],
+  "data": {
+    "id": 354710,
+    "courtType": "NATIONAL_APPEAL_CHAMBER",
+    "href": "https://www.saos.org.pl/api/judgments/354710",
+    "courtCases": [
+      {
+        "caseNumber": "KIO 730/18"
+      },
+      {
+        "caseNumber": "KIO 739/18"
+      }
+    ],
+    "judgmentType": "DECISION",
+    "judgmentDate": "2018-08-20",
+    "judges": [
+      {
+        "name": "Katarzyna Poprawa",
+        "function": null,
+        "specialRoles": []
+      },
+      {
+        "name": "Katarzyna Prowadzisz",
+        "function": null,
+        "specialRoles": [
+          "PRESIDING_JUDGE"
+        ]
+      },
+      {
+        "name": "Robert Skrzeszewski",
+        "function": null,
+        "specialRoles": []
+      }
+    ],
+    "source": {
+      "code": "NATIONAL_APPEAL_CHAMBER",
+      "judgmentUrl": "ftp://ftp.uzp.gov.pl/KIO/Wyroki/2018_0730_0739.pdf",
+      "judgmentId": "745b1630e5c9645d9554611d46283189",
+      "publisher": null,
+      "reviser": null,
+      "publicationDate": ""
+    },
+    "courtReporters": [
+      "Piotr Cegłowski"
+    ],
+    "decision": null,
+    "summary": null,
+    "textContent": "Sygn. akt:  KIO   730/18 \n  KIO   739/18 \n \nPOSTANOWIENIE \nz dnia 20 sierpnia 2018 roku \n \n \nKrajowa Izba Odwoławcza   -   w składzie: \n \nPrzewodniczący:     Katarzyna Prowadzisz \nCzłonkowie:   Katarzyna Poprawa \n        Robert Skrzeszewski \n \n Protokolant:             Piotr Cegłowski   \n \nwobec cofnięcia w dniu 20 sierpnia 2018 roku po otwarciu rozprawy odwołań wniesionych do \nPrezesa Krajowej Izby Odwoławczej: \n \nA. w dniu 16 kwietnia 2018 roku przez wykonawcę W. B. prowadzącego działalność \ngospodarczą pod nazwą „BYŚ” W. B. z siedzibą w Warszawie (sygn. akt KIO 730/18), \n \nB. w dniu 16 kwietnia 2018 roku przez wykonawcę SUEZ Polska spółka z ograniczoną \nodpowiedzialnością z siedzibą w Warszawie (sygn. akt KIO 739/18), \n \nw postępowaniu prowadzonym przez Zamawiającego Gmina Miasto Stołeczne Warszawa  \nz siedzibą w Warszawie \n \nprzy udziale: \nA. wykonawcy Miejskie Przedsiębiorstwo Oczyszczania w m.st. Warszawie  spółka  \nz ograniczoną odpowiedzialnością z siedzibą w Warszawie zgłaszającego swoje \nprzystąpienie do postępowania odwoławczego o sygn. akt KIO 730/18 i KIO 739/18 \npo stronie Zamawiającego; \nB. wykonawcy M. W. prowadzącego działalność gospodarczą pod nazwą Clean World \nFirma Handlowo - Usługowa M. W. z siedzibą w Leśniakowiźnie zgłaszającego swoje \nprzystąpienie do postępowania odwoławczego o sygn. akt KIO 730/18 po stronie \nOdwołującego; \n\nC. wykonawcy Ekopartner Recykling spółka z ograniczoną odpowiedzialnością  \nz siedzibą w Lublinie zgłaszającego swoje przystąpienie do postępowania \nodwoławczego o sygn. akt  KIO 730/18 i KIO 739/18 po stronie Odwołującego; \nD. wykonawcy EKO-TOM Turguła spółka jawna z siedzibą w Bolechowie zgłaszającego \nswoje przystąpienie do postępowania odwoławczego o sygn. akt: KIO 730/18 i KIO \n739/18 po stronie Odwołującego; \nE. wykonawcy Jarper  spółka z ograniczoną odpowiedzialnością z siedzibą w Kolonii \nWarszawskiej zgłaszającego swoje przystąpienie do postępowania odwoławczego  \no sygn. akt: KIO 730/18 po stronie Odwołującego; \nF. wykonawcy KRAS RECYCLING B.V. z siedziba w Volendam, Holandia zgłaszającego \nswoje przystąpienie do postępowania odwoławczego o sygn. akt: KIO 730/18             \ni KIO 739/18 po stronie Odwołującego; \nG. wykonawcy MIKI Recykling spółka z ograniczoną odpowiedzialnością z siedzibą  \nw Krakowie zgłaszającego swoje przystąpienie do postępowania odwoławczego o \nsygn. akt: KIO 730/18 po stronie Odwołującego; \nH. wykonawcy MPO spółka z ograniczoną odpowiedzialnością z siedzibą w Białymstoku \nzgłaszającego swoje przystąpienie do postępowania odwoławczego o sygn. akt:   \nKIO 730/18 po stronie Odwołującego; \nI. wykonawcy J. Z. prowadzącej działalność gospodarczą pod nazwą Przedsiębiorstwo \nProdukcyjno Handlowo Usługowe Lekaro J. Z.,  \nz siedzibą w Gliniance, zgłaszającego swoje przystąpienie do postępowania \nodwoławczego o sygn. akt:  KIO 730/18 i KIO 739/18 po stronie Odwołującego; \nJ. wykonawcy Przedsiębiorstwo Handlowo Usługowe Transprzęt spółka z ograniczoną \nodpowiedzialnością spółka komandytowa z siedzibą w Sanoku, zgłaszającego swoje \nprzystąpienie do postępowania odwoławczego o sygn. akt: KIO 730/18 po stronie \nOdwołującego; \nK. wykonawcy W. B. prowadzącego działalność gospodarczą pod nazwą \"BYŚ\" W. B. z \nsiedzibą w Warszawie, zgłaszającego swoje przystąpienie do postępowania \nodwoławczego o sygn. akt:   KIO 739/18 po stronie Odwołującego; \nL. wykonawcy Przedsiębiorstwo Komunalno-Transportowe Ordo Poznań spółka  \nz ograniczoną odpowiedzialnością z siedzibą w Czerwonaku, zgłaszającego swoje \nprzystąpienie do postępowania odwoławczego o sygn. akt: KIO 739/18 po stronie \nOdwołującego; \nM. wykonawcy A. B. prowadzącego działalność gospodarczą pod nazwą Zakład \nOczyszczania Terenu Bakun A. B. z siedzibą w Krzymowie, zgłaszającego swoje \nprzystąpienie do postępowania odwoławczego o sygn. akt: KIO 730/18 i KIO 739/18 \npo stronie Odwołującego; \n\nN. wykonawcy Przedsiębiorstwo Usługowo-Asenizacyjne Astwa spółka z ograniczoną \nodpowiedzialnością z siedzibą w Białymstoku, zgłaszającego swoje przystąpienie do \npostępowania odwoławczego o sygn. akt: KIO 730/18 po stronie Odwołującego, \nO. wykonawcy Przedsiębiorstwo Oczyszczania Miasta Eko spółka z ograniczoną \nodpowiedzialnością z siedzibą w Kaliszu, zgłaszającego swoje przystąpienie  \ndo postępowania odwoławczego o sygn. akt: KIO 730/18 po stronie Odwołującego; \nP. wykonawcy M. M. prowadzącej działalność gospodarczą pod nazwą Usługi \nKomunalne „Błysk” M. M. z siedzibą w Łomży, zgłaszającego swoje przystąpienie do \npostępowania odwoławczego o sygn. akt: KIO 730/18  \npo stronie Odwołującego; \nQ. wykonawcy Suez Polska spółka z ograniczoną odpowiedzialnością z siedzibą  \nw Warszawie, zgłaszającego swoje przystąpienie do postępowania odwoławczego  \no sygn. akt:   KIO 730/18 po stronie Odwołującego; \nR. wykonawcy M. J. prowadzącego działalność gospodarczą pod nazwą M. J. – \nPrzedsiębiorstwo Wielobranżowe „Miki” z siedzibą w Krakowie, zgłaszającego swoje \nprzystąpienie do postępowania odwoławczego o sygn. akt: KIO 730/18 po stronie \nOdwołującego \n \npostanawia: \n \n1. Umarza postępowanie odwoławcze z odwołania wykonawcy W. B. prowadzącego \ndziałalność gospodarczą pod nazwą „BYŚ” W. B. z siedzibą w Warszawie (sygn. akt \nKIO 730/18) oraz z odwołania wykonawcy SUEZ Polska spółka z ograniczoną \nodpowiedzialnością z siedzibą w Warszawie (sygn. akt KIO 739/18). \n \n2. Kosztami postępowania obciąża wykonawcę W. B. prowadzącego działalność \ngospodarczą pod nazwą „BYŚ” W. B. z siedzibą w Warszawie (sygn. akt KIO 730/18) \noraz z wykonawcę SUEZ Polska spółka z ograniczoną odpowiedzialnością z siedzibą \nw Warszawie (sygn. akt KIO 739/18) i: \n2.1 zalicza w poczet kosztów postępowania odwoławczego kwotę 30 000 zł 00 gr \n(słownie: trzydzieści tysięcy złotych zero groszy), uiszczoną przez wykonawcę W. \nB. prowadzącego działalność gospodarczą pod nazwą „BYŚ” W. B. z siedzibą w \nWarszawie (sygn. akt KIO 730/18) oraz z wykonawcę SUEZ Polska spółka z \nograniczoną odpowiedzialnością z siedzibą w Warszawie (sygn. akt KIO 739/18)  \ntytułem wpisu od odwołania, \n\n2.2 zasądza od wykonawcy W. B. prowadzącego działalność gospodarczą pod \nnazwą „BYŚ” W. B. z siedzibą w Warszawie (sygn. akt KIO 730/18) oraz z \nwykonawcy SUEZ Polska spółka z ograniczoną odpowiedzialnością z siedzibą w \nWarszawie (sygn. akt KIO 739/18) łącznie kwotę 7 200 zł 00 gr (słownie: siedem \ntysiące dwieście złotych zero groszy) w tym: \na) kwotę 3 600 gr 00 (słownie: trzy tysiące sześćset złotych zero groszy) od \nwykonawcy W. B. prowadzącego działalność gospodarczą pod nazwą „BYŚ” \nW. B. z siedzibą w Warszawie (sygn. akt KIO 730/18)  na rzecz \nZamawiającego Gmina Miasto Stołeczne Warszawa z siedzibą w Warszawie \nstanowiącą koszty postępowania odwoławczego poniesione tytułem \nwynagrodzenia pełnomocnika, \nb) kwotę 3 600 gr 00 (słownie: trzy tysiące sześćset złotych zero groszy) od \nwykonawcy SUEZ Polska spółka z ograniczoną odpowiedzialnością z siedzibą \nw Warszawie (sygn. akt KIO 739/18) na rzecz Zamawiającego Gmina Miasto \nStołeczne Warszawa z siedzibą w Warszawie stanowiącą koszty \npostępowania odwoławczego poniesione tytułem wynagrodzenia \npełnomocnika. \n \nStosownie do art. 198a i 198b ustawy z dnia 29 stycznia 2004 r. - Prawo zamówień \npublicznych (tj. . Dz. U. z 2017 r., poz. 1579 ze zm.) na niniejsze postanowienie - w terminie \n7 dni od dnia jego doręczenia - przysługuje skarga za pośrednictwem Prezesa Krajowej Izby \nOdwoławczej do Sądu Okręgowego w Warszawie. \n \n \nPrzewodniczący:    …………………………….. \n \nCzłonkowie:            …………………………….. \n \n            ……………………………. \n\nSygn. akt:  KIO   730/18 \n  KIO   739/18 \n \n \nU Z A S A D N I E N I E \n \n \nZamawiający – Miasto Stołeczne Warszawa  - prowadzi postępowanie o udzielenie \nzamówienia publicznego w trybie zamówienia z wolnej ręki na podstawie art. 67 ust. 1 pkt 12 \nustawy z dnia 29 stycznia 2004 roku Prawo zamówień publicznych (tj. Dz. U. z 2017 r. poz. \n1579 ze zmianami) pod nazwą Odbiór odpadów komunalnych z terenu nieruchomości,  \nna których zamieszkują mieszkańcy, położonych w m.st. Warszawie, od 1 stycznia 2019 r. \n \nOgłoszenie o zamiarze zawarcia umowy – ogłoszenie o dobrowolnej przejrzystości ex \nante zostało opublikowane w Dzienniku Urzędowym Unii Europejskiej w dniu 4 kwietnia 2018 \nroku pod numerem 2018/S 065-145419. Informacja o zamiarze zawarcia umowy w trybie \nzamówienia z wolnej ręki została zamieszczona w Biuletynie Informacji Publicznej w dniu  \n5 kwietnia 2018 roku. \n \nZamawiający w dniu 13 lipca 2018 roku unieważnił postępowanie pod nazwą Odbiór \nodpadów komunalnych z terenu nieruchomości, na których zamieszkują mieszkańcy, \npołożonych w m.st. Warszawie, od 1 stycznia 2019 r. \n \nW dniu 20 sierpnia 2018 roku, na rozprawie, pełnomocnik odwołującego W. B. \nprowadzącego działalność gospodarczą pod nazwą „BYŚ” W. B. z siedzibą w Warszawie \n(sygn. akt KIO 730/18) złożył do protokołu oświadczenie o cofnięciu odwołania w \nrozpoznawanej sprawie.  \nW dniu 20 sierpnia 2018 roku, na rozprawie, pełnomocnik odwołującego wykonawcy \nSUEZ Polska spółka z ograniczoną odpowiedzialnością z siedzibą w Warszawie (sygn. akt \nKIO 739/18) złożył do protokołu oświadczenie o cofnięciu odwołania w rozpoznawanej \nsprawie. \n \n \nWobec złożonych oświadczeń przez Odwołujących o cofnięciu wniesionych odwołań \nIzba stwierdziła, że przedmiotowe postępowanie podlega umorzeniu w oparciu o art. 187 ust. \n8 ustawy. Zgodnie z § 5 ust. 1 pkt 3 lit. b rozporządzenia Prezesa Rady Ministrów z dnia 15 \nmarca 2010 r. w sprawie wysokości i sposobu pobierania wpisu od odwołania oraz rodzajów \n\nkosztów w postępowaniu odwoławczym i sposobu ich rozliczania (Dz. U. Nr 41, poz. 238 ze \nzmianami) w przypadku cofnięcia odwołania po otwarciu rozprawy Izba zasądza koszty,  \no których mowa § 3 ust. 2 ww. rozporządzenia, od Odwołujących na rzecz Zamawiającego.  \n \n \nPrzewodniczący:    …………………………….. \n \nCzłonkowie:            …………………………….. \n \n            …………………………….",
+    "legalBases": [],
+    "referencedRegulations": [
+      {
+        "journalTitle": "Rozporządzenie Prezesa Rady Ministrów z dnia 15 marca 2010 r. w sprawie wysokości i sposobu pobierania wpisu od odwołania oraz rodzajów kosztów w postępowaniu odwoławczym i sposobu ich rozliczania",
+        "journalNo": 41,
+        "journalYear": 2010,
+        "journalEntry": 238,
+        "text": "Rozporządzenie Prezesa Rady Ministrów z dnia 15 marca 2010 r. w sprawie wysokości i sposobu pobierania wpisu od odwołania oraz rodzajów kosztów w postępowaniu odwoławczym i sposobu ich rozliczania (Dz. U. z 2010 r. Nr 41 poz. 238 - § 5 ust. 1 pkt 3 lit. b)"
+      }
+    ],
+    "keywords": [],
+    "referencedCourtCases": [],
+    "receiptDate": "",
+    "meansOfAppeal": null,
+    "judgmentResult": null,
+    "lowerCourtJudgments": []
+  }
+}

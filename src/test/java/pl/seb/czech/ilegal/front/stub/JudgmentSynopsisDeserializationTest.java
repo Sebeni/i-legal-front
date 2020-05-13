@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import pl.seb.czech.ilegal.front.domain.judgement.CourtType;
 import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsis;
+import pl.seb.czech.ilegal.front.domain.judgement.JudgmentType;
 
 import java.time.LocalDate;
 
@@ -15,11 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class JudgmentSynopsisDeserializationTest {
-    
+
     @Autowired
     ObjectMapper objectMapper;
     
-    @Disabled
     @Test
     void shouldDeserializeSupremeCourtJudgement() {
         String supremeCourt = "{\n" +
@@ -27,9 +28,12 @@ public class JudgmentSynopsisDeserializationTest {
                 "            \"href\": \"https://www.saos.org.pl/api/judgments/76256\",\n" +
                 "            \"courtType\": \"SUPREME\",\n" +
                 "            \"courtCases\": [\n" +
+                "{\n" +
+                "                    \"caseNumber\": \"KIO 730/18\"\n" +
+                "                },\n" +
                 "                {\n" +
-                "                    \"caseNumber\": \"SNO 10/10\"\n" +
-                "                }\n" +
+                "                    \"caseNumber\": \"KIO 739/18\"\n" +
+                "                }" +
                 "            ],\n" +
                 "            \"judgmentType\": \"SENTENCE\",\n" +
                 "            \"judges\": [\n" +
@@ -81,15 +85,16 @@ public class JudgmentSynopsisDeserializationTest {
             e.printStackTrace();
         }
 
-        Long id = judgementFromJson.getId();
-        LocalDate judgDate = judgementFromJson.getJudgmentDate();
-        String caseNumber = judgementFromJson.getCaseNumbers().get(0);
 
+        JudgmentSynopsis finalJudgementFromJson = judgementFromJson;
         assertAll(
-                () -> assertEquals(76256, id),
-                () -> assertEquals(LocalDate.of(2010, 3, 15), judgDate),
-                () -> assertEquals("SNO 10/10", caseNumber)
+                () -> assertEquals(76256, finalJudgementFromJson.getId()),
+                () -> assertEquals(LocalDate.of(2010, 3, 15), finalJudgementFromJson.getJudgmentDate()),
+                () -> assertEquals("KIO 730/18", finalJudgementFromJson.getCaseNumbers().get(0)),
+                () -> assertEquals("KIO 739/18", finalJudgementFromJson.getCaseNumbers().get(1)),
+                () -> assertEquals(CourtType.SUPREME, finalJudgementFromJson.getCourtType()),
+                () -> assertEquals(JudgmentType.SENTENCE, finalJudgementFromJson.getJudgmentType())
         );
     }
-    
+
 }

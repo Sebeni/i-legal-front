@@ -1,0 +1,38 @@
+
+    {
+      "id": 354710,
+      "href": "https://www.saos.org.pl/api/judgments/354710",
+      "courtType": "NATIONAL_APPEAL_CHAMBER",
+      "courtCases": [
+        {
+          "caseNumber": "KIO 730/18"
+        },
+        {
+          "caseNumber": "KIO 739/18"
+        }
+      ],
+      "judgmentType": "DECISION",
+      "judges": [
+        {
+          "name": "Katarzyna Poprawa",
+          "function": null,
+          "specialRoles": []
+        },
+        {
+          "name": "Katarzyna Prowadzisz",
+          "function": null,
+          "specialRoles": [
+            "PRESIDING_JUDGE"
+          ]
+        },
+        {
+          "name": "Robert Skrzeszewski",
+          "function": null,
+          "specialRoles": []
+        }
+      ],
+      "textContent": "Sygn. akt: KIO 730/18 KIO 739/18 POSTANOWIENIE z dnia 20 sierpnia 2018 roku Krajowa Izba Odwoławcza - w składzie: Przewodniczący: Katarzyna Prowadzisz Członkowie: Katarzyna Poprawa Robert Skrzeszewski Protokolant: Piotr Cegłowski wobec cofnięcia w dniu 20 sierpnia 2018 roku po otwarciu rozprawy odwołań wniesionych do Prezesa Krajowej Izby Odwoławczej: A. w dniu 16 kwietnia 2018 roku przez wykonawcę W. B. prowadzącego działalność gospodarczą pod nazwą „BYŚ” W. B. z siedzibą w Warszawie (sygn. akt KIO 730/18), B. w dniu 16 kwietnia 2018 roku przez wykonawcę SUEZ Polska spółka z ograniczoną odpowiedzialnością z siedzibą w Warszawie (sygn. akt KIO 739/18), w postępowaniu prowadzonym przez Zamawiającego Gmina Miasto Stołeczne Warszawa z siedzibą w Warszawie przy udziale: A. wykonawcy Miejskie P",
+      "keywords": [],
+      "judgmentDate": "2018-08-20"
+    }
+ 

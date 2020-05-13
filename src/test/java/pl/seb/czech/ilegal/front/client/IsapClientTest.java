@@ -7,7 +7,7 @@ import pl.seb.czech.ilegal.front.client.act.IsapClient;
 import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchResult;
-import pl.seb.czech.ilegal.front.ui.components.ActSearchForm;
+import pl.seb.czech.ilegal.front.ui.components.act.ActSearchForm;
 
 import java.util.List;
 

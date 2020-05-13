@@ -21,6 +21,5 @@ public class ReferencedRegulation {
     @JsonProperty(value = "journalEntry")
     private Integer position;
     
-    
     private String text;
 }
