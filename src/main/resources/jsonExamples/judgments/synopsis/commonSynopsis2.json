@@ -1,0 +1,37 @@
+{
+  "id": 408896,
+  "href": "https://www.saos.org.pl/api/judgments/408896",
+  "courtType": "COMMON",
+  "courtCases": [
+    {
+      "caseNumber": "I C 192/19"
+    }
+  ],
+  "judgmentType": "SENTENCE",
+  "judges": [
+    {
+      "name": "Przemysław Majkowski",
+      "function": null,
+      "specialRoles": [
+        "PRESIDING_JUDGE"
+      ]
+    }
+  ],
+  "textContent": "Sygn. akt I C 192/19 WYROK W IMIENIU RZECZYPOSPOLITEJ POLSKIEJ Dnia 23 marca 2020 r. Sąd Okręgowy w Sieradzu I Wydział Cywilny w składzie: Przewodniczący: sędzia Przemysław Majkowski Protokolant : sekr. sąd. Joanna Wołczyńska – Kalus po rozpoznaniu w dniu 9 marca 2020 r. w Sieradzu na rozprawie sprawy z powództwa M. G. przeciwko U. Ł. U. P. i (...) z siedzibą w W. o ochronę dóbr osobistych oddala powództwo. Sygn. akt I C 192/19 UZASADNIENIE Pozwem z dnia 5 lipca 2019 r. powódka M. G. wniosła o nakazanie pozwanej U. Ł. U. P. z siedzibą w W. o nakazanie pozwanej usunięcia skutków naruszenia dóbr osobistych powódki w postaci godności, wizerunku oraz prawa do prywatności w związku z opublikowaniem w okresie od 15 marca 2019r. do 15 maja 2019r. w serwisie internetowym (...) nagrania z wypowiedz",
+  "keywords": [
+    "dobra osobiste"
+  ],
+  "division": {
+    "href": "https://www.saos.org.pl/api/ccDivisions/1112",
+    "id": 1112,
+    "name": "I Wydział Cywilny",
+    "code": "0000503",
+    "court": {
+      "href": "https://www.saos.org.pl/api/commonCourts/173",
+      "id": 173,
+      "code": "15252000",
+      "name": "Sąd Okręgowy w Sieradzu"
+    }
+  },
+  "judgmentDate": "2020-03-23"
+}

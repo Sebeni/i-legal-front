@@ -36,7 +36,7 @@ public class IsapClient {
         return isapURIGenerator.generateDownloadActURI(actToDownload, textType);
     }
     
-    public boolean checkIfActTxtFileExists(URI uri) {
+    public boolean validateTxtExists(URI uri) {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
         HttpStatus responseStatus = null;
         try {

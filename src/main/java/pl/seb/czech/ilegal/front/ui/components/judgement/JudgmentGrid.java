@@ -30,6 +30,7 @@ public class JudgmentGrid extends Grid<JudgmentSynopsis> {
 
         configureColumns();
         configureFilterRow();
+        setClassName("judgment-grid");
     }
 
     private void configureColumns() {

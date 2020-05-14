@@ -8,7 +8,7 @@ import pl.seb.czech.ilegal.front.stub.InitDataProvider;
 
 @Service
 public class JudgmentDetailsDataProvider extends InitDataProvider<JudgmentDetails> {
-    private final static String[] FILE_NAMES = {"commonDetails", "KIODetails", "SNDetails", "TKDetails"};
+    private final static String[] FILE_NAMES = {"commonDetails", "commonDetails2", "KIODetails", "SNDetails", "TKDetails"};
 
     @Autowired
     public JudgmentDetailsDataProvider(ObjectMapper objectMapper) {

@@ -5,6 +5,8 @@ import com.vaadin.flow.component.accordion.AccordionPanel;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.details.DetailsVariant;
 import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import pl.seb.czech.ilegal.front.client.act.ActTextType;
@@ -22,8 +24,6 @@ public class ActDetailBox extends VerticalLayout {
     private H3 actTitle;
     private AccordionPanel statusPanel;
     private AccordionPanel promulgationPanel;
-    private AccordionPanel entryIntoForcePanel;
-    private AccordionPanel repealPanel;
 
     private Paragraph lastChange;
     private HorizontalLayout showTextBar;
@@ -47,8 +47,10 @@ public class ActDetailBox extends VerticalLayout {
 
         configureShowTextBar();
         configureAccordion();
+        
+        Button searchJudgmentButton = new Button("Szukaj orzeczeń", new Icon(VaadinIcon.GAVEL));
 
-        add(actTitle, lastChange, showTextBar, new H3("Szczegóły:"), detailsAccordion);
+        add(actTitle, lastChange, showTextBar, new H3("Szczegóły:"), detailsAccordion, searchJudgmentButton);
     }
 
     private void configureShowTextBar() {
@@ -92,7 +94,7 @@ public class ActDetailBox extends VerticalLayout {
         originalTextShowAnchor.setTarget("_blank");
 
         URI unifiedTextUri = isapClient.generateDownloadActURI(currentAct, ActTextType.UNIFIED);
-        if (isapClient.checkIfActTxtFileExists(unifiedTextUri)) {
+        if (isapClient.validateTxtExists(unifiedTextUri)) {
             unifiedTextShowAnchor.setHref(unifiedTextUri.toString());
             unifiedTextShowAnchor.setTarget("_blank");
             unifiedTextButton.setEnabled(true);

@@ -8,7 +8,7 @@ import pl.seb.czech.ilegal.front.stub.InitDataProvider;
 
 @Service
 public class JudgmentSynopsisDataProvider extends InitDataProvider<JudgmentSynopsis> {
-    private static final String[] FILE_NAMES = { "commonSynopsis", 
+    private static final String[] FILE_NAMES = { "commonSynopsis", "commonSynopsis2",
              "KIOSynopsis", 
              "SNSynopsis", 
              "TKSynopsis"};

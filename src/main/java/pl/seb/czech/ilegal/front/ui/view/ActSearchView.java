@@ -75,6 +75,9 @@ public class ActSearchView extends VerticalLayout implements SearchView {
         Button searchButton = new Button("Szukaj", new Icon(VaadinIcon.SEARCH));
         searchButton.addClickListener(event -> {
             performSearchAndSetGrid(1);
+            if(actDetailBox.isVisible()){
+                actDetailBox.setVisible(false);
+            }
             resultCount.setText("Liczba znalezionych wyników: " + searchResult.getNumOfResults());
         });
 
