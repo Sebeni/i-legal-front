@@ -10,6 +10,7 @@ import com.vaadin.flow.component.textfield.TextFieldVariant;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import pl.seb.czech.ilegal.front.domain.act.Act;
+import pl.seb.czech.ilegal.front.ui.components.FilterTextField;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class ActGrid extends Grid<Act> {
     private Column<Act> titleColumn;
     private Column<Act> statusColumn;
     private Column<Act> lastChangeColumn;
-    private static final String FILTER_PLACEHOLDER = "Filtr";
+    
 
     public ActGrid(List<Act> gridContent) {
         super(Act.class);
@@ -50,26 +51,22 @@ public class ActGrid extends Grid<Act> {
     private void configureGridFilterRow() {
         HeaderRow filterRow = appendHeaderRow();
 
-        TextField yearFieldFilter = createFilterTxtField();
-        yearFieldFilter.addThemeVariants(TextFieldVariant.LUMO_SMALL);
+        TextField yearFieldFilter = new FilterTextField();
         yearFieldFilter.addValueChangeListener(event -> gridContent
                 .addFilter(act -> String.valueOf(act.getYear()).contains(yearFieldFilter.getValue())));
         filterRow.getCell(yearColumn).setComponent(yearFieldFilter);
         
-        TextField posFieldFilter = createFilterTxtField();
-        posFieldFilter.addThemeVariants(TextFieldVariant.LUMO_SMALL);
+        TextField posFieldFilter = new FilterTextField();
         posFieldFilter.addValueChangeListener(event -> gridContent
                 .addFilter(act -> String.valueOf(act.getPosition()).contains(posFieldFilter.getValue())));
         filterRow.getCell(positionColumn).setComponent(posFieldFilter);
         
-        TextField titleFieldFilter = createFilterTxtField();
-        titleFieldFilter.addThemeVariants(TextFieldVariant.LUMO_SMALL);
+        TextField titleFieldFilter = new FilterTextField();
         titleFieldFilter.addValueChangeListener(event -> gridContent
                 .addFilter(act -> act.getTitle().toLowerCase().contains(titleFieldFilter.getValue().toLowerCase())));
         filterRow.getCell(titleColumn).setComponent(titleFieldFilter);
         
-        TextField statusFieldFilter = createFilterTxtField();
-        statusFieldFilter.addThemeVariants(TextFieldVariant.LUMO_SMALL);
+        TextField statusFieldFilter = new FilterTextField();
         statusFieldFilter.addValueChangeListener(event -> gridContent
                 .addFilter(act -> act.getStatus().toLowerCase().contains(statusFieldFilter.getValue().toLowerCase())));
         filterRow.getCell(statusColumn).setComponent(statusFieldFilter);
@@ -84,14 +81,7 @@ public class ActGrid extends Grid<Act> {
         clearButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
         filterRow.getCell(lastChangeColumn).setComponent(clearButton);
     }
-
-    private TextField createFilterTxtField() {
-        TextField filterField = new TextField();
-        filterField.setValueChangeMode(ValueChangeMode.EAGER);
-        filterField.setPlaceholder(FILTER_PLACEHOLDER);
-        filterField.setSizeFull();
-        return filterField;
-    }
+    
 
     public ListDataProvider<Act> getGridContent() {
         return gridContent;

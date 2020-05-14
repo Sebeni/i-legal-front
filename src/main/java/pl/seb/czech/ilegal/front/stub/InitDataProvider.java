@@ -15,14 +15,14 @@ public abstract class InitDataProvider<E> {
     private static final String PATH_TO_EXAMPLES = "jsonExamples/";
 
 
-    public InitDataProvider(ObjectMapper objectMapper, Class<E> elementType, String rootFolder, String... fileNames) {
+    public InitDataProvider(ObjectMapper objectMapper, Class<E> elementType, String folderNameWithJsons, String... fileNames) {
         for (String jsonFileName : fileNames) {
-            URL fileURL = this.getClass().getClassLoader().getResource( PATH_TO_EXAMPLES + rootFolder + "/" + jsonFileName + ".json");
+            URL fileURL = this.getClass().getClassLoader().getResource( PATH_TO_EXAMPLES + folderNameWithJsons + "/" + jsonFileName + ".json");
             if(fileURL != null){
                 try {
                     convertedElements.add(objectMapper.readValue(fileURL, elementType));
                 } catch (IOException e) {
-                    LOGGER.error("Exception in Data provider " + elementType.toString(), e);
+                    LOGGER.error("Exception in Data provider with type" + elementType.toString(), e);
                 }
             }
         }

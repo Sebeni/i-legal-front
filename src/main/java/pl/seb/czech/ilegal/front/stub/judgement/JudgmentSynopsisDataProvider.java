@@ -8,7 +8,7 @@ import pl.seb.czech.ilegal.front.stub.InitDataProvider;
 
 @Service
 public class JudgmentSynopsisDataProvider extends InitDataProvider<JudgmentSynopsis> {
-    private static String[] fileNames = { "commonSynopsis", 
+    private static final String[] FILE_NAMES = { "commonSynopsis", 
              "KIOSynopsis", 
              "SNSynopsis", 
              "TKSynopsis"};
@@ -16,6 +16,6 @@ public class JudgmentSynopsisDataProvider extends InitDataProvider<JudgmentSynop
     
     @Autowired
     public JudgmentSynopsisDataProvider(ObjectMapper objectMapper) {
-        super(objectMapper, JudgmentSynopsis.class, "judgments", fileNames);
+        super(objectMapper, JudgmentSynopsis.class, "judgments/synopsis", FILE_NAMES);
     }
 }

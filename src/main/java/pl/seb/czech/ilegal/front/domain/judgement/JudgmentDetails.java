@@ -14,6 +14,7 @@ import pl.seb.czech.ilegal.front.domain.judgement.deserializer.JudgmentDetailsDe
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JudgmentDetailsDeserializer.class)
 public class JudgmentDetails {
+    private Long id;
     private String textContent;
     private ReferencedRegulation[] referencedRegulations;
     private String[] legalBases;

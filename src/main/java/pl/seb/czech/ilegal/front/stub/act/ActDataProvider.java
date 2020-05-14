@@ -8,10 +8,10 @@ import pl.seb.czech.ilegal.front.stub.InitDataProvider;
 
 @Service
 public class ActDataProvider extends InitDataProvider<Act> {
-    private static String[] fileNames = {"epidemy", "kc", "kk", "kpc", "kpk"};
+    private final static String[] FILE_NAMES = {"epidemy", "kc", "kk", "kpc", "kpk"};
     
     @Autowired
     public ActDataProvider(ObjectMapper objectMapper) {
-        super(objectMapper, Act.class, "acts", fileNames);
+        super(objectMapper, Act.class, "acts", FILE_NAMES);
     }
 }

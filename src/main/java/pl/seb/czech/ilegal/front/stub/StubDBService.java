@@ -29,4 +29,11 @@ public abstract class StubDBService<E extends DummyEntity<K>, K> {
         return repository.stream().anyMatch(e -> e.getId().equals(id));
     }
     
+    public E findById(K id) { 
+        return repository.stream()
+                .filter(e -> e.getId().equals(id))
+                .findAny()
+                .orElse(null);
+    }
+    
 }

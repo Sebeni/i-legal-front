@@ -19,6 +19,8 @@ public class JudgmentDetailsDeserializer extends JsonDeserializer<JudgmentDetail
         JsonNode node = codec.readTree(p);
         JsonNode root = node.get("data");
         
+        Long id = root.get("id").asLong();
+        
         String textContent = root.get("textContent").asText();
         
         JsonNode refRegulationNode = root.get("referencedRegulations");
@@ -30,6 +32,6 @@ public class JudgmentDetailsDeserializer extends JsonDeserializer<JudgmentDetail
         JsonNode keywordsNode = root.get("keywords");
         String[] keyWords = codec.treeToValue(keywordsNode, String[].class);
         
-        return new JudgmentDetails(textContent, referencedRegulations, legalBases, keyWords);
+        return new JudgmentDetails(id, textContent, referencedRegulations, legalBases, keyWords);
     }
 }

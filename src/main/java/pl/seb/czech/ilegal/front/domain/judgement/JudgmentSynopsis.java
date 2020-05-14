@@ -9,6 +9,7 @@ import pl.seb.czech.ilegal.front.domain.DummyEntity;
 import pl.seb.czech.ilegal.front.domain.judgement.deserializer.CaseNumberDeserializer;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,7 +43,12 @@ public class JudgmentSynopsis implements DummyEntity<Long> {
 
     public String getCustomName() {
         if(customName == null) {
-            return caseNumbers.get(0);
+            StringBuilder sb = new StringBuilder(caseNumbers.get(0));
+            if(keywords != null && keywords.length > 0) {
+                sb.append("\n");
+                sb.append(Arrays.toString(keywords));
+            }
+            return sb.toString();
         } else {
             return customName;
         }
