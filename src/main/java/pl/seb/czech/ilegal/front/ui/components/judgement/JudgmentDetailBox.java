@@ -34,6 +34,7 @@ public class JudgmentDetailBox extends VerticalLayout {
 
         showJudgmentText.addClickListener(event -> {
             if (judgmentDetails != null) {
+                textDialog.setJudgmentDetailsText(judgmentDetails);
                 textDialog.open();
             }
         });
@@ -58,7 +59,6 @@ public class JudgmentDetailBox extends VerticalLayout {
     public void setJudgmentDetailsAndUpdateBox(JudgmentDetails currentJudgmentDetails) {
         judgmentDetails = currentJudgmentDetails;
         this.setVisible(true);
-        textDialog.setJudgmentDetailsText(judgmentDetails);
 
         configureRefRegPanel();
         configureStringPanels(legalBasesPanel, judgmentDetails.getLegalBases());
