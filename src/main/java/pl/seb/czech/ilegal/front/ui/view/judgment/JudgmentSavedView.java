@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.ui.view;
+package pl.seb.czech.ilegal.front.ui.view.judgment;
 
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.GridVariant;

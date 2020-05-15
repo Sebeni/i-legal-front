@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.ui.view;
+package pl.seb.czech.ilegal.front.ui.view.judgment;
 
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.PageTitle;
@@ -6,6 +6,7 @@ import com.vaadin.flow.router.Route;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
 import pl.seb.czech.ilegal.front.domain.SearchResult;
 import pl.seb.czech.ilegal.front.ui.layout.MainLayout;
+import pl.seb.czech.ilegal.front.ui.view.SearchView;
 
 
 @PageTitle("I-Legal | Szukaj orzeczeń")

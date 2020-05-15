@@ -31,7 +31,10 @@ public class ActSearchResult implements SearchResult {
     public List<Act> getFoundActsList() {
         return foundActs != null ? Arrays.asList(foundActs) : new ArrayList<>();
     }
-    
-    
-    
+
+
+    @Override
+    public Integer getNumOfResults() {
+        return numOfResults;
+    }
 }

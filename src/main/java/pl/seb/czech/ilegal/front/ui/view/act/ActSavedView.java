@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.ui.view;
+package pl.seb.czech.ilegal.front.ui.view.act;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -55,7 +55,7 @@ public class ActSavedView extends VerticalLayout {
 
     private HorizontalLayout getButtonTopBar() {
         Button refreshButton = new Button("Odśwież", new Icon(VaadinIcon.REFRESH));
-        refreshButton.addClickListener(event -> refreshActs());
+        refreshButton.addClickListener(event -> updateActsFromDB());
 
         hideDetailsButton = new Button("Ukryj szczegóły", new Icon(VaadinIcon.ANGLE_DOUBLE_RIGHT));
         hideDetailsButton.addClickListener(event -> {
@@ -71,7 +71,7 @@ public class ActSavedView extends VerticalLayout {
         deleteButton.addClickListener(event -> {
             actDetailBox.setVisible(false);
             actService.deleteById(selectedAct.getId());
-            refreshActs();
+            updateActsFromDB();
             deleteButton.setEnabled(false);
         });
         
@@ -79,7 +79,7 @@ public class ActSavedView extends VerticalLayout {
     }
 
 
-    private void refreshActs() {
+    private void updateActsFromDB() {
         actGrid.setGridContent(actService.getAll());
     }
 

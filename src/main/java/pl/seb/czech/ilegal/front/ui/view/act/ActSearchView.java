@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.ui.view;
+package pl.seb.czech.ilegal.front.ui.view.act;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.GridVariant;
@@ -22,6 +22,7 @@ import pl.seb.czech.ilegal.front.ui.components.act.ActGrid;
 import pl.seb.czech.ilegal.front.ui.components.act.ActSearchForm;
 import pl.seb.czech.ilegal.front.ui.components.PaginationBar;
 import pl.seb.czech.ilegal.front.ui.layout.MainLayout;
+import pl.seb.czech.ilegal.front.ui.view.SearchView;
 
 import java.util.ArrayList;
 

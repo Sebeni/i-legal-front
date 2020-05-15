@@ -17,7 +17,6 @@ public class JudgmentSearchResult implements SearchResult {
     
     @JsonProperty(value = "items")
     private JudgmentSynopsis[] results;
-
     
     @JsonProperty(value = "info")
     @JsonDeserialize(using = TotalResultsDeserializer.class)

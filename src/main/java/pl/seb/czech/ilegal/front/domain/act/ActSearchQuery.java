@@ -11,7 +11,7 @@ import pl.seb.czech.ilegal.front.ui.components.act.ActSearchForm;
 @Getter
 @Setter
 @ToString
-public class ActSearchQuery implements SearchQuery {
+public class ActSearchQuery extends SearchQuery {
     private String onlyActInForce;
     private String actName;
     private String keyWord;
@@ -19,11 +19,10 @@ public class ActSearchQuery implements SearchQuery {
     private String publisher;
     private String year;
     private String position;
-    private MultiValueMap<String, String> queryParams;
     
-    private Integer resultLimitPerPage = 20;
     private Integer offset = 0; 
 
+    @Override
     public MultiValueMap<String, String> getQueryParams() {
         queryParams = new LinkedMultiValueMap<>();
         if (onlyActInForce != null) {
@@ -52,13 +51,7 @@ public class ActSearchQuery implements SearchQuery {
         addToQueryParamsNotNull("offset", String.valueOf(offset));
         return queryParams;
     }
-
-    private void addToQueryParamsNotNull(String queryAPIParamName, String fieldValue) {
-        if (fieldValue != null && !fieldValue.isEmpty() && !fieldValue.equals("null")) {
-            queryParams.add(queryAPIParamName, fieldValue);
-        }
-    }
-
+    
     public void setPageNumber(int pageNumber) {
         if(pageNumber > 0) {
             offset = ((pageNumber - 1) * resultLimitPerPage);
@@ -68,9 +61,5 @@ public class ActSearchQuery implements SearchQuery {
     public int getCurrentPageNumber() {
         return (offset / resultLimitPerPage) + 1;
     }
-
-    @Override
-    public Integer getResultLimitPerPage() {
-        return resultLimitPerPage;
-    }
+    
 }

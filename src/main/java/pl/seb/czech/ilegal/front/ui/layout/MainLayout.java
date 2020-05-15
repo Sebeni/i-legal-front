@@ -15,6 +15,10 @@ import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.Lumo;
 import pl.seb.czech.ilegal.front.ui.view.*;
+import pl.seb.czech.ilegal.front.ui.view.act.ActSavedView;
+import pl.seb.czech.ilegal.front.ui.view.act.ActSearchView;
+import pl.seb.czech.ilegal.front.ui.view.judgment.JudgmentSavedView;
+import pl.seb.czech.ilegal.front.ui.view.judgment.JudgmentSearchView;
 
 @CssImport("./styles/styles.css")
 public class MainLayout extends AppLayout {
