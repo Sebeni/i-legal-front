@@ -13,7 +13,7 @@ import pl.seb.czech.ilegal.front.domain.judgement.deserializer.TotalResultsDeser
 @NoArgsConstructor
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class JudgmentSearchResult implements SearchResult {
+public class JudgmentSynopsisSearchResult implements SearchResult {
     
     @JsonProperty(value = "items")
     private JudgmentSynopsis[] results;

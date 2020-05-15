@@ -148,7 +148,7 @@ public class ActSearchView extends VerticalLayout implements SearchView {
             actDetailBox.setVisible(false);
             saveActButton.setEnabled(false);
         } else {
-            actDetailBox.setCurrentActAndUpdateBox(clickedAct);
+            actDetailBox.setDetailsAndUpdateBox(clickedAct);
             actDetailBox.setVisible(true);
             saveActButton.setEnabled(true);
         }

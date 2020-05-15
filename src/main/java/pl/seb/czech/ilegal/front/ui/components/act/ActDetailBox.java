@@ -12,11 +12,13 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import pl.seb.czech.ilegal.front.client.act.ActTextType;
 import pl.seb.czech.ilegal.front.client.act.IsapClient;
 import pl.seb.czech.ilegal.front.domain.act.Act;
+import pl.seb.czech.ilegal.front.domain.judgement.JudgmentDetails;
+import pl.seb.czech.ilegal.front.ui.components.DetailBox;
 
 import java.net.URI;
 import java.time.LocalDate;
 
-public class ActDetailBox extends VerticalLayout {
+public class ActDetailBox extends DetailBox<Act> {
     private Act currentAct = new Act();
     private IsapClient isapClient;
 
@@ -80,7 +82,8 @@ public class ActDetailBox extends VerticalLayout {
         
     }
 
-    public void setCurrentActAndUpdateBox(Act currentAct) {
+    @Override
+    public void setDetailsAndUpdateBox(Act currentAct) {
         this.currentAct = currentAct;
         actTitle.setText(currentAct.getTitle());
         lastChange.setText("Ostatnia zmiana: " + currentAct.getChangeDate().toString());

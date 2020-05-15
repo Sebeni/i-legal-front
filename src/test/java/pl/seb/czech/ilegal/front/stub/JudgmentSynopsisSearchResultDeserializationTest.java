@@ -6,12 +6,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSearchResult;
+import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsisSearchResult;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class JudgmentSearchResultDeserializationTest {
+public class JudgmentSynopsisSearchResultDeserializationTest {
 
     @Autowired
     ObjectMapper objectMapper;
@@ -182,10 +182,10 @@ public class JudgmentSearchResultDeserializationTest {
                 "    }\n" +
                 "}";
 
-        JudgmentSearchResult searchResult = new JudgmentSearchResult();
+        JudgmentSynopsisSearchResult searchResult = new JudgmentSynopsisSearchResult();
 
         try {
-            searchResult = objectMapper.readValue(jsonResult, JudgmentSearchResult.class);
+            searchResult = objectMapper.readValue(jsonResult, JudgmentSynopsisSearchResult.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

@@ -10,22 +10,25 @@ import com.vaadin.flow.component.details.DetailsVariant;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.BoxSizing;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import pl.seb.czech.ilegal.front.client.judgment.SaosClient;
 import pl.seb.czech.ilegal.front.domain.judgement.JudgmentDetails;
+import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsis;
 import pl.seb.czech.ilegal.front.domain.judgement.ReferencedRegulation;
+import pl.seb.czech.ilegal.front.ui.components.DetailBox;
 
-public class JudgmentDetailBox extends VerticalLayout {
+public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
     private JudgmentDetails judgmentDetails = new JudgmentDetails();
     private Accordion accordionDetails;
     private JudgmentTextDialog textDialog;
     private AccordionPanel refRegPanel;
     private AccordionPanel legalBasesPanel;
     private AccordionPanel keywordsPanel;
+    private SaosClient saosClient;
 
 
-    public JudgmentDetailBox() {
+    public JudgmentDetailBox(SaosClient saosClient) {
+        this.saosClient = saosClient;
         setClassName("judgment-details");
         accordionDetails = new Accordion();
 
@@ -55,9 +58,11 @@ public class JudgmentDetailBox extends VerticalLayout {
         
         add(showJudgmentText, accordionDetails);
     }
+    
 
-    public void setJudgmentDetailsAndUpdateBox(JudgmentDetails currentJudgmentDetails) {
-        judgmentDetails = currentJudgmentDetails;
+    @Override
+    public void setDetailsAndUpdateBox(JudgmentSynopsis currentElement) {
+        judgmentDetails = currentElement.getJudgmentDetails();
         this.setVisible(true);
 
         configureRefRegPanel();
