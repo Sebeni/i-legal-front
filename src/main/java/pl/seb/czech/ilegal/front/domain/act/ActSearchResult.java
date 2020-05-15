@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ActSearchResult implements SearchResult {
+public class ActSearchResult implements SearchResult<Act> {
     
     @JsonProperty("items")
     private Act[] foundActs;
@@ -28,7 +28,9 @@ public class ActSearchResult implements SearchResult {
     @JsonProperty("totalCount")
     private Integer numOfResults;
     
-    public List<Act> getFoundActsList() {
+    
+    @Override
+    public List<Act> getResultsList() {
         return foundActs != null ? Arrays.asList(foundActs) : new ArrayList<>();
     }
 

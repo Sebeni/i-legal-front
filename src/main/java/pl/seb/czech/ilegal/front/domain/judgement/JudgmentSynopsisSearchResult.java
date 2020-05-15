@@ -7,13 +7,18 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.seb.czech.ilegal.front.domain.SearchResult;
+import pl.seb.czech.ilegal.front.domain.judgement.deserializer.PageNumberDeserializer;
 import pl.seb.czech.ilegal.front.domain.judgement.deserializer.TotalResultsDeserializer;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class JudgmentSynopsisSearchResult implements SearchResult {
+public class JudgmentSynopsisSearchResult implements SearchResult<JudgmentSynopsis> {
     
     @JsonProperty(value = "items")
     private JudgmentSynopsis[] results;
@@ -21,9 +26,18 @@ public class JudgmentSynopsisSearchResult implements SearchResult {
     @JsonProperty(value = "info")
     @JsonDeserialize(using = TotalResultsDeserializer.class)
     private Integer numOfResults;
+    
+    @JsonProperty(value = "queryTemplate")
+    @JsonDeserialize(using = PageNumberDeserializer.class)
+    private Integer pageNumber;
 
     @Override
     public Integer getNumOfResults() {
         return numOfResults;
+    }
+
+    @Override
+    public List<JudgmentSynopsis> getResultsList() {
+        return results != null ? Arrays.asList(results) : new ArrayList<>();
     }
 }

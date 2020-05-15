@@ -7,16 +7,17 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import pl.seb.czech.ilegal.front.domain.DummyEntity;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
 import pl.seb.czech.ilegal.front.domain.SearchResult;
 import pl.seb.czech.ilegal.front.ui.view.SearchView;
 
-public class PaginationBar extends HorizontalLayout {
-    private SearchResult userSearchResult;
+public class PaginationBar<E extends DummyEntity<K>, K> extends HorizontalLayout {
+    private SearchResult<E> userSearchResult;
     private SearchQuery userQuery;
     private Span pageInfo;
 
-    public PaginationBar(SearchView searchView) {
+    public PaginationBar(SearchView<E, K> searchView) {
         userQuery = searchView.getSearchQuery();
         userSearchResult = searchView.getSearchResult();
 
@@ -89,7 +90,7 @@ public class PaginationBar extends HorizontalLayout {
         }
     }
 
-    public void updateQueryAndResult(SearchQuery userQuery, SearchResult userSearchResult){
+    public void updateQueryAndResult(SearchQuery userQuery, SearchResult<E> userSearchResult){
         this.userSearchResult = userSearchResult;
         this.userQuery = userQuery;
         updatePageInfo();

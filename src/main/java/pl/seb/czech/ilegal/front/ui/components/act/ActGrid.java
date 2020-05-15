@@ -54,8 +54,6 @@ public class ActGrid extends CustomGrid<Act> {
         createClearButton(lastChangeColumn);
     }
 
-    public Column<Act> getLastChangeColumn() {
-        return lastChangeColumn;
-    }
+  
 }
 

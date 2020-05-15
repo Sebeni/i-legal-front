@@ -3,6 +3,7 @@ package pl.seb.czech.ilegal.front.client.act;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
+import pl.seb.czech.ilegal.front.domain.SearchQuery;
 import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 
@@ -37,7 +38,7 @@ public class IsapURIGenerator {
         return UriComponentsBuilder.fromUriString(downloadEndpointURL).buildAndExpand(params).toUri();
     }
 
-    public URI generateSearchActQueryUri(ActSearchQuery query) {
+    public URI generateSearchActQueryUri(SearchQuery query) {
         String searchEndpointURL = "/search";
         return UriComponentsBuilder.fromHttpUrl(ISAP_API_URL + searchEndpointURL).queryParams(query.getQueryParams()).build().toUri();
     }

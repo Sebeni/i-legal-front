@@ -6,7 +6,7 @@ public abstract class SearchQuery {
     protected MultiValueMap<String, String> queryParams;
     protected Integer resultLimitPerPage = 20;
     
-    protected abstract MultiValueMap<String, String> getQueryParams();
+    public abstract MultiValueMap<String, String> getQueryParams();
 
     public abstract void setPageNumber(int pageNumber);
 

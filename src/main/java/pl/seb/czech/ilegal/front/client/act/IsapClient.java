@@ -10,6 +10,8 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import pl.seb.czech.ilegal.front.client.Client;
+import pl.seb.czech.ilegal.front.domain.SearchQuery;
+import pl.seb.czech.ilegal.front.domain.SearchResult;
 import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchResult;
@@ -21,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class IsapClient implements Client {
+public class IsapClient implements Client<Act> {
     private final IsapURIGenerator isapURIGenerator;
     private RestTemplate restTemplate;
     private final static Logger LOGGER = LoggerFactory.getLogger(IsapClient.class);
@@ -59,11 +61,10 @@ public class IsapClient implements Client {
     }
     
     
-    public ActSearchResult performActSearchQuery(ActSearchQuery query) {
-        URI requestUri = isapURIGenerator.generateSearchActQueryUri(query);
+    
+    @Override
+    public SearchResult<Act> performSearchQuery(SearchQuery searchQuery) {
+        URI requestUri = isapURIGenerator.generateSearchActQueryUri(searchQuery);
         return restTemplate.getForObject(requestUri, ActSearchResult.class);
     }
-    
-    
-    
 }

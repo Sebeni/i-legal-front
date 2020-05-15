@@ -63,11 +63,12 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
     @Override
     public void setDetailsAndUpdateBox(JudgmentSynopsis currentElement) {
         judgmentDetails = currentElement.getJudgmentDetails();
-        this.setVisible(true);
-
-        configureRefRegPanel();
-        configureStringPanels(legalBasesPanel, judgmentDetails.getLegalBases());
-        configureStringPanels(keywordsPanel, judgmentDetails.getKeywords());
+        if(judgmentDetails != null){
+            this.setVisible(true);
+            configureRefRegPanel();
+            configureStringPanels(legalBasesPanel, judgmentDetails.getLegalBases());
+            configureStringPanels(keywordsPanel, judgmentDetails.getKeywords());
+        }
     }
 
     private void configureRefRegPanel() {

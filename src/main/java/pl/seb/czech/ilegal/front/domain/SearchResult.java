@@ -1,5 +1,11 @@
 package pl.seb.czech.ilegal.front.domain;
 
-public interface SearchResult {
+
+import java.util.List;
+
+public interface SearchResult<E> {
     Integer getNumOfResults();
+    
+    List<E> getResultsList();
+    
 }

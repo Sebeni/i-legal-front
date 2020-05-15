@@ -1,17 +1,19 @@
 package pl.seb.czech.ilegal.front.ui.components.act;
 
+import com.vaadin.flow.component.HasValue;
 import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import pl.seb.czech.ilegal.front.client.act.IsapClient;
+import pl.seb.czech.ilegal.front.domain.SearchQuery;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
+import pl.seb.czech.ilegal.front.ui.components.SearchForm;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActSearchForm extends FormLayout {
+public class ActSearchForm extends SearchForm {
     public final static String IN_FORCE_ACTS_ITEM = "Obowiązujące";
     public final static String ALL_ACTS_ITEM = "Wszystkie";
     public final static String ALL_PUBLISHERS = "Wszystkie";
@@ -30,7 +32,10 @@ public class ActSearchForm extends FormLayout {
     private TextField year;
     private TextField position;
     
-    private ActSearchQuery currentQuery = new ActSearchQuery();
+    
+    @SuppressWarnings("rawtypes")
+    private List<HasValue> formFields = new ArrayList<>();
+
     private Binder<ActSearchQuery> binder;
     
     public ActSearchForm(IsapClient isapClient) {
@@ -39,24 +44,33 @@ public class ActSearchForm extends FormLayout {
         separateKeywordsAndNames();
 
         onlyActInForce = new ComboBox<>("Status aktu prawnego", IN_FORCE_ACTS_ITEM, ALL_ACTS_ITEM);
+        ActSearchQuery currentQuery = new ActSearchQuery();
         currentQuery.setOnlyActInForce(ALL_ACTS_ITEM);
+        formFields.add(onlyActInForce);
 
         actName = new TextField("Tytuł aktu", "całość lub część");
+        formFields.add(actName);
 
         keyWord = new ComboBox<>("Słowo kluczowe", actKeywords);
         keyWord.setClearButtonVisible(true);
         keyWord.setPlaceholder("Zacznij wpisywać lub wybierz z listy");
-
+        formFields.add(keyWord);
+        
+        
         properName = new ComboBox<>("Nazwa własna", actProperNames);
         properName.setClearButtonVisible(true);
         properName.setPlaceholder("Zacznij wpisywać lub wybierz z listy");
-
+        formFields.add(properName);
+        
         publisher = new ComboBox<>("Wydawnictwo", ALL_PUBLISHERS, DZ_U, M_P);
         currentQuery.setPublisher(ALL_PUBLISHERS);
+        formFields.add(publisher);
 
         year = new TextField("Rok");
-
+        formFields.add(year);
+        
         position = new TextField("Pozycja");
+        formFields.add(position);
         
         HorizontalLayout publisherFormInputs = new HorizontalLayout(publisher, year, position);
         
@@ -79,27 +93,13 @@ public class ActSearchForm extends FormLayout {
         });
     }
 
-    public Binder<ActSearchQuery> getBinder() {
-        return binder;
-    }
-    
-    public TextField getActName() {
-        return actName;
+    @Override
+    public SearchQuery getSearchQueryFromForm() {
+        return binder.getBean();
     }
 
-    public ComboBox<String> getKeyWord() {
-        return keyWord;
-    }
-
-    public ComboBox<String> getProperName() {
-        return properName;
-    }
-
-    public TextField getYear() {
-        return year;
-    }
-
-    public TextField getPosition() {
-        return position;
+    @SuppressWarnings("rawtypes")
+    public List<HasValue> getFormFieldsForClear() {
+        return formFields;
     }
 }

@@ -17,7 +17,7 @@ public class JudgmentSynopsisSearchResultDeserializationTest {
     ObjectMapper objectMapper;
     
     @Test
-    void shouldReturnOneResult() {
+    void shouldReturnMappedResult() {
         
         String jsonResult = "{\n" +
                 "    \"links\": [\n" +
@@ -190,7 +190,13 @@ public class JudgmentSynopsisSearchResultDeserializationTest {
             e.printStackTrace();
         }
 
-        assertEquals(1, searchResult.getNumOfResults());
+        JudgmentSynopsisSearchResult finalSearchResult = searchResult;
+        assertAll(
+                () -> assertEquals(1, finalSearchResult.getNumOfResults()),
+                () -> assertEquals(0, finalSearchResult.getPageNumber()),
+                () -> assertEquals(1, finalSearchResult.getResultsList().size())
+        );
+        
 
     }
 }

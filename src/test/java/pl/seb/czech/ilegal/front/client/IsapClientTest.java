@@ -37,7 +37,7 @@ class IsapClientTest {
         query.setYear("1991");
         query.setPosition("31");
 
-        ActSearchResult result = isapClient.performActSearchQuery(query);
+        ActSearchResult result = (ActSearchResult) isapClient.performSearchQuery(query);
         Act upiolAct = result.getFoundActs()[0];
 
 
@@ -56,7 +56,7 @@ class IsapClientTest {
         ActSearchQuery query = new ActSearchQuery();
         query.setYear("1");
 
-        ActSearchResult result = isapClient.performActSearchQuery(query);
+        ActSearchResult result = (ActSearchResult) isapClient.performSearchQuery(query);
         assertAll(
                 () -> assertEquals("0", result.getCount().toString()),
                 () -> assertEquals("0", result.getNumOfResults().toString()),
