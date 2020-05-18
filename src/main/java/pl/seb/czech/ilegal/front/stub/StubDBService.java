@@ -1,7 +1,5 @@
 package pl.seb.czech.ilegal.front.stub;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.seb.czech.ilegal.front.domain.DummyEntity;
 
 import java.util.*;
@@ -14,7 +12,7 @@ public abstract class StubDBService<E extends DummyEntity<K>, K> {
     }
     
     public List<E> getAll() {
-        return new ArrayList<E>(repository);
+        return new ArrayList<>(repository);
     }
 
     public void addElement(E elementToAdd) {

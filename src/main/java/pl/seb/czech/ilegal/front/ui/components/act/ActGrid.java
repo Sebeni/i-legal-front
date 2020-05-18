@@ -1,8 +1,5 @@
 package pl.seb.czech.ilegal.front.ui.components.act;
 
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.textfield.TextField;
 import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.ui.components.CustomGrid;

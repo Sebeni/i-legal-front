@@ -45,16 +45,7 @@ public class MainLayout extends AppLayout {
         RouterLink savedJudgmentLink = new RouterLink("Zapisane orzeczenia", JudgmentSavedView.class);
         RouterLink searchJudgmentLink = new RouterLink("Szukaj orzeczeń", JudgmentSearchView.class);
         
-        
-        ToggleButton themeSwitch = new ToggleButton("Ciemny motyw", click -> {
-            ThemeList themeList = UI.getCurrent().getElement().getThemeList();
-            if (themeList.contains(Lumo.DARK)) {
-                themeList.remove(Lumo.DARK);
-            } else {
-                themeList.add(Lumo.DARK);
-            }
-        });
-        
+        ToggleButton themeSwitch = new ToggleButton("Ciemny motyw", click -> switchThemes());
         
         VerticalLayout drawerContent = new VerticalLayout(
                 new HorizontalLayout(new Icon(VaadinIcon.HOME), homeViewLink), 
@@ -66,6 +57,14 @@ public class MainLayout extends AppLayout {
         );
         
         addToDrawer(drawerContent);
-        
+    }
+
+    private void switchThemes() {
+        ThemeList themeList = UI.getCurrent().getElement().getThemeList();
+        if (themeList.contains(Lumo.DARK)) {
+            themeList.remove(Lumo.DARK);
+        } else {
+            themeList.add(Lumo.DARK);
+        }
     }
 }

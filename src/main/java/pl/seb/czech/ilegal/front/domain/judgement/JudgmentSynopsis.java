@@ -40,7 +40,6 @@ public class JudgmentSynopsis implements DummyEntity<Long> {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate judgmentDate;
 
-
     public String getCustomName() {
         if(customName == null) {
             StringBuilder sb = new StringBuilder(caseNumbers.get(0));

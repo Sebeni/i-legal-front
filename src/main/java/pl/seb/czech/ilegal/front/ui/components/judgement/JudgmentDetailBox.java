@@ -25,6 +25,7 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
     private AccordionPanel legalBasesPanel;
     private AccordionPanel keywordsPanel;
     private SaosClient saosClient;
+    private Button showJudgmentText;
 
 
     public JudgmentDetailBox(SaosClient saosClient) {
@@ -32,7 +33,7 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
         setClassName("judgment-details");
         accordionDetails = new Accordion();
 
-        Button showJudgmentText = new Button("Pokaż uzasadnienie", new Icon(VaadinIcon.SCALE));
+        showJudgmentText = new Button("Pokaż uzasadnienie", new Icon(VaadinIcon.SCALE));
         textDialog = new JudgmentTextDialog();
 
         showJudgmentText.addClickListener(event -> {
@@ -41,8 +42,7 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
                 textDialog.open();
             }
         });
-
-
+        
         refRegPanel = new AccordionPanel();
         refRegPanel.setSummaryText("Powołane ustawy");
 
@@ -70,6 +70,12 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
         configureRefRegPanel();
         configureStringPanels(legalBasesPanel, judgmentDetails.getLegalBases());
         configureStringPanels(keywordsPanel, judgmentDetails.getKeywords());
+        
+        if(judgmentDetails.getTextContent() != null && judgmentDetails.getTextContent().length() > 0) {
+            showJudgmentText.setEnabled(true);
+        } else {
+            showJudgmentText.setEnabled(false);
+        }
     }
 
     private void configureRefRegPanel() {

@@ -21,13 +21,11 @@ public class JudgmentTextDialog extends Dialog {
         closeButton.addClickListener(event -> this.close());
 
         add(judgmentText, new Div(), closeButton);
-        
     }
 
     public void setJudgmentDetailsText(JudgmentDetails judgmentDetails) {
         judgmentText.removeAll();
         judgmentText.getElement().setProperty("innerHTML", formatToPseudoHtml(judgmentDetails.getTextContent()));
-        
     }
 
     private String formatToPseudoHtml(String textContent) {

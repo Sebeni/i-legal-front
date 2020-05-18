@@ -8,8 +8,6 @@ import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.domain.act.ActPublisher;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchResult;
-import pl.seb.czech.ilegal.front.domain.judgement.CourtType;
-import pl.seb.czech.ilegal.front.ui.components.act.ActSearchForm;
 
 import java.util.List;
 

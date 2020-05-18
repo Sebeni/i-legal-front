@@ -20,14 +20,7 @@ public class ActSearchView extends SearchView<Act, String> {
 
     @Autowired
     public ActSearchView(IsapClient isapClient, ActDBService actService) {
-        super(actService, isapClient, new ActDetailBox(isapClient), new ActSearchForm(isapClient), new ActGrid(new ArrayList<Act>()));
+        super(actService, isapClient, new ActDetailBox(isapClient), new ActSearchForm(isapClient), new ActGrid(new ArrayList<>()));
         grid.removeColumn(grid.getColumnByKey("changeDate"));
-        
-    
     }
-    
-    
-   
-    
-    
 }

@@ -9,7 +9,6 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import pl.seb.czech.ilegal.front.domain.DummyEntity;
-import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.stub.StubDBService;
 import pl.seb.czech.ilegal.front.ui.components.CustomGrid;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;

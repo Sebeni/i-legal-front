@@ -1,5 +1,6 @@
 package pl.seb.czech.ilegal.front.ui.components;
 
+import com.vaadin.flow.component.HasValue;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
@@ -29,7 +30,6 @@ public abstract class CustomGrid<T> extends Grid<T> {
 
         setDataProvider(this.gridContent);
         addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
-        
     }
 
     protected boolean compareFieldWithFilter(Object field, TextField filter){
@@ -45,9 +45,7 @@ public abstract class CustomGrid<T> extends Grid<T> {
 
     protected void createClearButton(Column<T> columnWithButton){
         Button clearButton = new Button("Usuń filtry");
-        clearButton.addClickListener(event -> {
-            filterTextFields.forEach(textField -> textField.clear());
-        });
+        clearButton.addClickListener(event -> filterTextFields.forEach(HasValue::clear));
         clearButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
         filterRow.getCell(columnWithButton).setComponent(clearButton);
     }

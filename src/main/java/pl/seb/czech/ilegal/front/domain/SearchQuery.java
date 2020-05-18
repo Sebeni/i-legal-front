@@ -21,5 +21,4 @@ public abstract class SearchQuery {
             queryParams.add(queryAPIParamName, fieldValue);
         }
     }
-    
 }

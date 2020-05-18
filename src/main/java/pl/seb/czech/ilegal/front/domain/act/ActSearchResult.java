@@ -28,7 +28,6 @@ public class ActSearchResult implements SearchResult<Act> {
     @JsonProperty("totalCount")
     private Integer numOfResults;
     
-    
     @Override
     public List<Act> getResultsList() {
         return foundActs != null ? Arrays.asList(foundActs) : new ArrayList<>();

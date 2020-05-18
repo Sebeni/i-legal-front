@@ -33,7 +33,6 @@ public class IsapClient implements Client<Act> {
         this.restTemplate = restTemplate;
     }
 
-
     public URI generateDownloadActURI(Act actToDownload, ActTextType textType){
         return isapURIGenerator.generateDownloadActURI(actToDownload, textType);
     }
@@ -58,7 +57,6 @@ public class IsapClient implements Client<Act> {
         String[] result = restTemplate.getForObject(isapURIGenerator.getApiUrl() + endpointURL, String[].class);
         return result != null ? Arrays.asList(result) : new ArrayList<>();
     }
-    
     
     @Override
     public SearchResult<Act> performSearchQuery(SearchQuery searchQuery) {

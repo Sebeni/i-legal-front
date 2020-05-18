@@ -9,6 +9,7 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import pl.seb.czech.ilegal.front.client.Client;
@@ -48,19 +49,17 @@ public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLa
 
         this.searchForm = searchForm;
 
-
         this.grid = grid;
         this.grid.addThemeVariants(GridVariant.LUMO_COLUMN_BORDERS);
         this.grid.setHeightByRows(true);
 
         this.grid.asSingleSelect().addValueChangeListener(event -> showDetails(event.getValue()));
-
-
+        
         Div middleContent = new Div(this.grid, this.detailBox);
         middleContent.setSizeFull();
         middleContent.setClassName("middle-content");
 
-        paginationBar = new PaginationBar<E, K>(this);
+        paginationBar = new PaginationBar<>(this);
         add(this.searchForm, getButtonBar(), paginationBar, middleContent);
         setSizeFull();
     }
@@ -78,9 +77,7 @@ public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLa
         });
 
         Button clearButton = new Button("Wyczyść pola", new Icon(VaadinIcon.ERASER));
-        clearButton.addClickListener(event -> {
-            searchForm.getFormFieldsForClear().forEach(HasValue::clear);
-        });
+        clearButton.addClickListener(event -> searchForm.getFormFieldsForClear().forEach(HasValue::clear));
 
         hideFormButton = new Button("Ukryj formularz", new Icon(VaadinIcon.ANGLE_DOUBLE_UP));
         hideFormButton.addClickListener(event -> {
@@ -92,8 +89,10 @@ public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLa
         });
 
         Notification actAlreadyExistsNotification = new Notification("Element jest już zapisany!", 3000, Notification.Position.MIDDLE);
+        actAlreadyExistsNotification.addThemeVariants(NotificationVariant.LUMO_ERROR);
         Notification actSuccessfullySaved = new Notification("Element został prawidłowo zapisany!", 3000, Notification.Position.MIDDLE);
-
+        actSuccessfullySaved.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+        
         saveButton = new Button("Zapisz zaznaczony element", new Icon(VaadinIcon.FILE_ADD));
         saveButton.setEnabled(false);
         saveButton.addClickListener(event -> {
@@ -121,7 +120,6 @@ public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLa
         hideFormButton.setText("Pokaż formularz");
         hideFormButton.setIcon(new Icon(VaadinIcon.ANGLE_DOUBLE_DOWN));
     }
-
     
     protected void showDetails(E selectedElement) {
         this.currentElement = selectedElement;
@@ -135,9 +133,7 @@ public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLa
         }
         grid.getGridContent().refreshAll();
     }
-
-
-
+    
     public void performSearchAndSetGrid(int pageNumber) {
         searchQuery = searchForm.getSearchQueryFromForm();
         searchQuery.setPageNumber(pageNumber);
@@ -154,5 +150,4 @@ public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLa
     public SearchQuery getSearchQuery(){
         return searchQuery;
     }
-    
 }

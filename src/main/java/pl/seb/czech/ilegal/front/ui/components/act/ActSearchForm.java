@@ -52,7 +52,6 @@ public class ActSearchForm extends SearchForm {
         keyWord.setSizeFull();
         formFields.add(keyWord);
         
-        
         properName = new ComboBox<>("Nazwa własna", actProperNames);
         properName.setClearButtonVisible(true);
         properName.setPlaceholder("Wybierz z listy");
@@ -62,7 +61,6 @@ public class ActSearchForm extends SearchForm {
         HorizontalLayout keywordAndProperNameBox = new HorizontalLayout(keyWord, properName);
         keywordAndProperNameBox.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.END);
         keywordAndProperNameBox.setSizeFull();
-        
         
         publisher = new ComboBox<>("Wydawnictwo", ActPublisher.values());
         currentQuery.setPublisher(ActPublisher.ALL);
@@ -83,7 +81,6 @@ public class ActSearchForm extends SearchForm {
         binder = new Binder<>(ActSearchQuery.class);
         binder.bindInstanceFields(this);
         binder.setBean(currentQuery);
-        
     }
     
     private void separateKeywordsAndNames() {

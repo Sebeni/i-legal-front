@@ -26,7 +26,6 @@ public class SaosClient implements Client<JudgmentSynopsis> {
     @Override
     public SearchResult<JudgmentSynopsis> performSearchQuery(SearchQuery searchQuery) {
         URI searchUri = saosURIGenerator.generateSearchQueryUri(searchQuery);
-        System.out.println(searchUri);
         return restTemplate.getForObject(searchUri, JudgmentSynopsisSearchResult.class);
     }
     

@@ -5,8 +5,6 @@ public enum ActPublisher {
     WMP("Monitor Polski"),
     ALL("Wszystkie");
     
-
-
     private final String translation;
 
     ActPublisher(String s) {

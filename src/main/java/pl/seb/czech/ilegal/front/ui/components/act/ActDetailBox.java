@@ -8,11 +8,9 @@ import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import pl.seb.czech.ilegal.front.client.act.ActTextType;
 import pl.seb.czech.ilegal.front.client.act.IsapClient;
 import pl.seb.czech.ilegal.front.domain.act.Act;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentDetails;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;
 
 import java.net.URI;
@@ -112,7 +110,6 @@ public class ActDetailBox extends DetailBox<Act> {
         
         LocalDate promulgationDate = currentAct.getPromulgation();
         enableOptionalPanels(promulgationPanel, promulgationDate);
-        
     }
 
     private void enableOptionalPanels(AccordionPanel optionalPanel, LocalDate correspondingDate) {

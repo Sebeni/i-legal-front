@@ -25,19 +25,15 @@ public class JudgmentSearchForm extends SearchForm {
     private TextField searchPhrase;
 
     public JudgmentSearchForm() {
-        JudgmentSynopsisSearchQuery currentQuery = new JudgmentSynopsisSearchQuery();
-        
         List<CourtType> courtTypes = Arrays.stream(CourtType.values())
                 .filter(courtType -> !courtType.equals(CourtType.ADMINISTRATIVE))
                 .collect(Collectors.toList());
 
         courtType = new ComboBox<>("Rodzaj sądu / organu", courtTypes);
-        currentQuery.setCourtType(CourtType.ALL);
         formFields.add(courtType);
 
         signature = new TextField("Sygnatura sprawy");
         formFields.add(signature);
-        
         
         referencedRegulationYearPos = new TextField("Powołana ustawa Dz.U.(rok/poz.)", " np. 1964/93");
         formFields.add(referencedRegulationYearPos);
@@ -54,14 +50,19 @@ public class JudgmentSearchForm extends SearchForm {
         
         add(wholeBox);
         
-        
+        configureBinder();
+    }
+
+    private void configureBinder() {
+        JudgmentSynopsisSearchQuery currentQuery = new JudgmentSynopsisSearchQuery();
+        currentQuery.setCourtType(CourtType.ALL);
         
         binder = new Binder<>(JudgmentSynopsisSearchQuery.class);
         binder.bindInstanceFields(this);
         binder.forField(referencedRegulationYearPos)
                 .withValidator(new RegexpValidator("Wyłącznie format rok[4]/pozycja[1-n] w Dz.U.", "^\\d{4}/\\d+$"))
                 .bind(
-                        JudgmentSynopsisSearchQuery::getReferencedRegulationYearPos, 
+                        JudgmentSynopsisSearchQuery::getReferencedRegulationYearPos,
                         JudgmentSynopsisSearchQuery::setReferencedRegulationYearPos);
         binder.setBean(currentQuery);
     }

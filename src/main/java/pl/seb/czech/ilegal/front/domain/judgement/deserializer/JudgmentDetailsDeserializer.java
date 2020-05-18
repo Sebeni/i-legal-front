@@ -1,7 +1,6 @@
 package pl.seb.czech.ilegal.front.domain.judgement.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -14,7 +13,7 @@ import java.io.IOException;
 public class JudgmentDetailsDeserializer extends JsonDeserializer<JudgmentDetails> {
 
     @Override
-    public JudgmentDetails deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public JudgmentDetails deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         ObjectCodec codec = p.getCodec();
         JsonNode node = codec.readTree(p);
         JsonNode root = node.get("data");
