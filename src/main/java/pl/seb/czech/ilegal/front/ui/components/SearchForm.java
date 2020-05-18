@@ -15,6 +15,6 @@ public abstract class SearchForm extends FormLayout {
     public List<HasValue> getFormFieldsForClear() {
         return formFields;
     }
-    
+
     public abstract SearchQuery getSearchQueryFromForm();
 }

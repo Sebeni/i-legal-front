@@ -1,6 +1,5 @@
 package pl.seb.czech.ilegal.front.ui.view;
 
-
 import com.vaadin.flow.component.HasValue;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.GridVariant;
@@ -99,7 +98,7 @@ public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLa
             if(dbService.findIfExists(currentElement.getId())) {
                 actAlreadyExistsNotification.open();
             } else {
-                dbService.addElement(currentElement);
+                dbService.saveElement(currentElement);
                 actSuccessfullySaved.open();
             }
         });

@@ -45,6 +45,7 @@ public class PaginationBar<E extends DummyEntity<K>, K> extends HorizontalLayout
         pageInfo = new Span();
 
         Button nextPageButton = new Button(new Icon(VaadinIcon.ANGLE_RIGHT));
+        nextPageButton.setIconAfterText(true);
         nextPageButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
         nextPageButton.addClickListener(event -> {
             if (userQuery != null && userSearchResult != null) {
@@ -57,6 +58,7 @@ public class PaginationBar<E extends DummyEntity<K>, K> extends HorizontalLayout
         });
 
         Button lastPageButton = new Button("Ostatnia", new Icon(VaadinIcon.ANGLE_DOUBLE_RIGHT));
+        lastPageButton.setIconAfterText(true);
         lastPageButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
         lastPageButton.addClickListener(event -> {
             if (userQuery != null && userSearchResult != null) {

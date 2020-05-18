@@ -56,7 +56,7 @@ public class JudgmentSearchForm extends SearchForm {
     private void configureBinder() {
         JudgmentSynopsisSearchQuery currentQuery = new JudgmentSynopsisSearchQuery();
         currentQuery.setCourtType(CourtType.ALL);
-        
+
         binder = new Binder<>(JudgmentSynopsisSearchQuery.class);
         binder.bindInstanceFields(this);
         binder.forField(referencedRegulationYearPos)
@@ -66,7 +66,7 @@ public class JudgmentSearchForm extends SearchForm {
                         JudgmentSynopsisSearchQuery::setReferencedRegulationYearPos);
         binder.setBean(currentQuery);
     }
-
+    
     @Override
     public SearchQuery getSearchQueryFromForm() {
         return binder.getBean();

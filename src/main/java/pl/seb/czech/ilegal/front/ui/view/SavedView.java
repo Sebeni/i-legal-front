@@ -14,15 +14,17 @@ import pl.seb.czech.ilegal.front.ui.components.CustomGrid;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;
 
 public abstract class SavedView<E extends DummyEntity<K>, K> extends VerticalLayout {
-    private StubDBService<E, K> dbService;
-    private CustomGrid<E> grid;
+    protected StubDBService<E, K> dbService;
+    protected CustomGrid<E> grid;
     private DetailBox<E> detailBox;
-    private E selectedElement;
-    
-    private Button deleteButton;
+    protected E selectedElement;
+
     private Button hideDetailsButton;
     private Button refreshButton;
-
+    private Button deleteButton;
+    protected Button changeNameButton;
+    private HorizontalLayout buttonTopBar;
+    
     public SavedView(StubDBService<E, K> dbService, CustomGrid<E> grid, DetailBox<E> detailBox) {
         this.dbService = dbService;
         this.grid = grid;
@@ -30,18 +32,20 @@ public abstract class SavedView<E extends DummyEntity<K>, K> extends VerticalLay
         this.detailBox.setVisible(false);
         
         setSizeFull();
-
+        
         Div middleContent = new Div(this.grid, this.detailBox);
         middleContent.setSizeFull();
         middleContent.setClassName("middle-content");
 
-        add(getButtonTopBar(), middleContent);
-        
+        configureTopBar();
+        add(buttonTopBar, middleContent);
+
         this.grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
         this.grid.asSingleSelect().addValueChangeListener(event -> showDetailsAndEnableButtons(event.getValue()));
     }
+    
 
-    private HorizontalLayout getButtonTopBar() {
+    private void configureTopBar() {
         refreshButton = new Button("Odśwież", new Icon(VaadinIcon.REFRESH));
         refreshButton.addClickListener(event -> updateActsFromDB());
 
@@ -57,32 +61,43 @@ public abstract class SavedView<E extends DummyEntity<K>, K> extends VerticalLay
         deleteButton.addThemeVariants(ButtonVariant.LUMO_ERROR);
         deleteButton.setEnabled(false);
         deleteButton.addClickListener(event -> {
-            detailBox.setVisible(false);
+            disableButtonsAndBox();
             dbService.deleteById(selectedElement.getId());
             updateActsFromDB();
-            deleteButton.setEnabled(false);
-            hideDetailsButton.setEnabled(false);
         });
 
-        return new HorizontalLayout(refreshButton, hideDetailsButton, deleteButton);
+        changeNameButton = new Button("Edytuj nazwę", new Icon(VaadinIcon.EDIT));
+        changeNameButton.setVisible(false);
+        
+        buttonTopBar = new HorizontalLayout(refreshButton, hideDetailsButton, deleteButton, changeNameButton);
     }
 
     private void showDetailsAndEnableButtons(E element) {
         selectedElement = element;
         if (element == null) {
-            detailBox.setVisible(false);
-            deleteButton.setEnabled(false);
-            hideDetailsButton.setEnabled(false);
+            disableButtonsAndBox();
         } else {
             detailBox.setDetailsAndUpdateBox(element);
-            detailBox.setVisible(true);
-            deleteButton.setEnabled(true);
-            hideDetailsButton.setEnabled(true);
+            enableButtonsAndBox();
         }
         grid.getGridContent().refreshAll();
     }
 
-    private void updateActsFromDB() {
+    private void disableButtonsAndBox() {
+        detailBox.setVisible(false);
+        deleteButton.setEnabled(false);
+        hideDetailsButton.setEnabled(false);
+        changeNameButton.setEnabled(false);
+    }
+
+    private void enableButtonsAndBox() {
+        detailBox.setVisible(true);
+        deleteButton.setEnabled(true);
+        hideDetailsButton.setEnabled(true);
+        changeNameButton.setEnabled(true);
+    }
+    
+    protected void updateActsFromDB() {
         grid.setGridContent(dbService.getAll());
     }
 }

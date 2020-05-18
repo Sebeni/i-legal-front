@@ -15,7 +15,7 @@ public abstract class StubDBService<E extends DummyEntity<K>, K> {
         return new ArrayList<>(repository);
     }
 
-    public void addElement(E elementToAdd) {
+    public void saveElement(E elementToAdd) {
         repository.add(elementToAdd);
     }
 
