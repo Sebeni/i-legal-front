@@ -20,7 +20,7 @@ public abstract class SearchForm extends FormLayout {
     }
 
     public SearchForm() {
-        setSizeFull();
+
     }
     
     public abstract SearchQuery getSearchQueryFromForm();

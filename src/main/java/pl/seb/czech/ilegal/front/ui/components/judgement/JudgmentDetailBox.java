@@ -63,12 +63,13 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
     @Override
     public void setDetailsAndUpdateBox(JudgmentSynopsis currentElement) {
         judgmentDetails = currentElement.getJudgmentDetails();
-        if(judgmentDetails != null){
-            this.setVisible(true);
-            configureRefRegPanel();
-            configureStringPanels(legalBasesPanel, judgmentDetails.getLegalBases());
-            configureStringPanels(keywordsPanel, judgmentDetails.getKeywords());
+        if(judgmentDetails == null){
+            judgmentDetails = saosClient.getJudgmentDetails(currentElement);
         }
+        this.setVisible(true);
+        configureRefRegPanel();
+        configureStringPanels(legalBasesPanel, judgmentDetails.getLegalBases());
+        configureStringPanels(keywordsPanel, judgmentDetails.getKeywords());
     }
 
     private void configureRefRegPanel() {
@@ -102,9 +103,7 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
             VerticalLayout content = new VerticalLayout();
             for (String element : stringArray) {
                 Text text = new Text(element);
-                Button findJudgmentButton = getFindJudgmentButton();
-                VerticalLayout baseAndButton = new VerticalLayout(text, findJudgmentButton);
-                content.add(baseAndButton);
+                content.add(text);
             }
             panelToSet.setContent(content);
         } else {

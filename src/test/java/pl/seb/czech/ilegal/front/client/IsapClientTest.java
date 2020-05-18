@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pl.seb.czech.ilegal.front.client.act.IsapClient;
 import pl.seb.czech.ilegal.front.domain.act.Act;
+import pl.seb.czech.ilegal.front.domain.act.ActPublisher;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchResult;
+import pl.seb.czech.ilegal.front.domain.judgement.CourtType;
 import pl.seb.czech.ilegal.front.ui.components.act.ActSearchForm;
 
 import java.util.List;
@@ -33,9 +35,9 @@ class IsapClientTest {
     @Test
     void shouldReturnOnlyOneAct() {
         ActSearchQuery query = new ActSearchQuery();
-        query.setPublisher(ActSearchForm.DZ_U);
-        query.setYear("1991");
-        query.setPosition("31");
+        query.setPublisher(ActPublisher.WDU);
+        query.setYear(1991);
+        query.setPosition(31);
 
         ActSearchResult result = (ActSearchResult) isapClient.performSearchQuery(query);
         Act upiolAct = result.getFoundActs()[0];
@@ -54,7 +56,7 @@ class IsapClientTest {
     @Test
     void shouldReturnZeroResult() {
         ActSearchQuery query = new ActSearchQuery();
-        query.setYear("1");
+        query.setYear(1);
 
         ActSearchResult result = (ActSearchResult) isapClient.performSearchQuery(query);
         assertAll(
@@ -64,4 +66,6 @@ class IsapClientTest {
         );
 
     }
+
+   
 }

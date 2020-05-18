@@ -1,12 +1,14 @@
 package pl.seb.czech.ilegal.front.ui.components.act;
 
-import com.vaadin.flow.component.HasValue;
 import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import pl.seb.czech.ilegal.front.client.act.IsapClient;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
+import pl.seb.czech.ilegal.front.domain.act.ActPublisher;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 import pl.seb.czech.ilegal.front.ui.components.SearchForm;
 
@@ -16,9 +18,6 @@ import java.util.List;
 public class ActSearchForm extends SearchForm {
     public final static String IN_FORCE_ACTS_ITEM = "Obowiązujące";
     public final static String ALL_ACTS_ITEM = "Wszystkie";
-    public final static String ALL_PUBLISHERS = "Wszystkie";
-    public final static String DZ_U = "Dziennik ustaw";
-    public final static String M_P = "Monitor Polski";
     
     private IsapClient isapClient;
     private List<String> actKeywords = new ArrayList<>();
@@ -28,14 +27,10 @@ public class ActSearchForm extends SearchForm {
     private TextField actName;
     private ComboBox<String> keyWord;
     private ComboBox<String> properName;
-    private ComboBox<String> publisher;
-    private TextField year;
-    private TextField position;
+    private ComboBox<ActPublisher> publisher;
+    private IntegerField year;
+    private IntegerField position;
     
-    
-    @SuppressWarnings("rawtypes")
-    private List<HasValue> formFields = new ArrayList<>();
-
     private Binder<ActSearchQuery> binder;
     
     public ActSearchForm(IsapClient isapClient) {
@@ -53,28 +48,37 @@ public class ActSearchForm extends SearchForm {
 
         keyWord = new ComboBox<>("Słowo kluczowe", actKeywords);
         keyWord.setClearButtonVisible(true);
-        keyWord.setPlaceholder("Zacznij wpisywać lub wybierz z listy");
+        keyWord.setPlaceholder("Wybierz z listy");
+        keyWord.setSizeFull();
         formFields.add(keyWord);
         
         
         properName = new ComboBox<>("Nazwa własna", actProperNames);
         properName.setClearButtonVisible(true);
-        properName.setPlaceholder("Zacznij wpisywać lub wybierz z listy");
+        properName.setPlaceholder("Wybierz z listy");
+        properName.setSizeFull();
         formFields.add(properName);
         
-        publisher = new ComboBox<>("Wydawnictwo", ALL_PUBLISHERS, DZ_U, M_P);
-        currentQuery.setPublisher(ALL_PUBLISHERS);
+        HorizontalLayout keywordAndProperNameBox = new HorizontalLayout(keyWord, properName);
+        keywordAndProperNameBox.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.END);
+        keywordAndProperNameBox.setSizeFull();
+        
+        
+        publisher = new ComboBox<>("Wydawnictwo", ActPublisher.values());
+        currentQuery.setPublisher(ActPublisher.ALL);
         formFields.add(publisher);
 
-        year = new TextField("Rok");
+        year = new IntegerField("Rok");
         formFields.add(year);
         
-        position = new TextField("Pozycja");
+        position = new IntegerField("Pozycja");
         formFields.add(position);
         
         HorizontalLayout publisherFormInputs = new HorizontalLayout(publisher, year, position);
+        publisherFormInputs.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.END);
+        publisherFormInputs.setSizeFull();
         
-        add(onlyActInForce, actName, keyWord, properName, publisherFormInputs);
+        add(onlyActInForce, actName, keywordAndProperNameBox, publisherFormInputs);
 
         binder = new Binder<>(ActSearchQuery.class);
         binder.bindInstanceFields(this);
@@ -97,9 +101,5 @@ public class ActSearchForm extends SearchForm {
     public SearchQuery getSearchQueryFromForm() {
         return binder.getBean();
     }
-
-    @SuppressWarnings("rawtypes")
-    public List<HasValue> getFormFieldsForClear() {
-        return formFields;
-    }
+    
 }

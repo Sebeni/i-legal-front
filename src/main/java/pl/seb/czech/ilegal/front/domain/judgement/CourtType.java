@@ -1,6 +1,7 @@
 package pl.seb.czech.ilegal.front.domain.judgement;
 
 public enum CourtType {
+    ALL("Wszystkie"),
     COMMON("Sąd powszechny"),
     SUPREME("Sąd Najwyższy"),
     ADMINISTRATIVE("Sąd administracyjny"),

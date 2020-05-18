@@ -44,7 +44,7 @@ class IsapURIGeneratorTest {
         query.setKeyWord("absolwenci");
         query.setProperName("Australia");
         
-        String uriResult = isapURIGenerator.generateSearchActQueryUri(query).toString();
+        String uriResult = isapURIGenerator.generateSearchQueryUri(query).toString();
         
         String expected = "http://isap.sejm.gov.pl/api/isap/search?keyword=absolwenci&keywordName=Australia" + 
                 String.format("&limit=%d&offset=%d", query.getResultLimitPerPage(), query.getOffset());

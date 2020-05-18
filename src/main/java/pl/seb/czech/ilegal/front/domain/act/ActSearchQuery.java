@@ -16,11 +16,11 @@ public class ActSearchQuery extends SearchQuery {
     private String actName;
     private String keyWord;
     private String properName;
-    private String publisher;
-    private String year;
-    private String position;
-    
-    private Integer offset = 0; 
+    private ActPublisher publisher;
+    private Integer year;
+    private Integer position;
+
+    private Integer offset = 0;
 
     @Override
     public MultiValueMap<String, String> getQueryParams() {
@@ -36,30 +36,26 @@ public class ActSearchQuery extends SearchQuery {
         addToQueryParamsNotNull("keywordName", properName);
 
         if (publisher != null) {
-            if (!publisher.equals(ActSearchForm.ALL_PUBLISHERS)) {
-                if (publisher.equals(ActSearchForm.DZ_U)) {
-                    queryParams.add("publisher", "WDU");
-                } else if (publisher.equals(ActSearchForm.M_P)) {
-                    queryParams.add("publisher", "WMP");
-                }
+            if (!publisher.equals(ActPublisher.ALL)) {
+                queryParams.add("publisher", publisher.name());
             }
         }
 
-        addToQueryParamsNotNull("year", year);
-        addToQueryParamsNotNull("position", position);
+        addToQueryParamsNotNull("year", String.valueOf(year));
+        addToQueryParamsNotNull("position", String.valueOf(position));
         addToQueryParamsNotNull("limit", String.valueOf(resultLimitPerPage));
         addToQueryParamsNotNull("offset", String.valueOf(offset));
         return queryParams;
     }
-    
+
     public void setPageNumber(int pageNumber) {
-        if(pageNumber > 0) {
+        if (pageNumber > 0) {
             offset = ((pageNumber - 1) * resultLimitPerPage);
-        } 
+        }
     }
-    
+
     public int getCurrentPageNumber() {
         return (offset / resultLimitPerPage) + 1;
     }
-    
+
 }

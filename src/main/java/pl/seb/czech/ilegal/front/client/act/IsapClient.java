@@ -13,7 +13,6 @@ import pl.seb.czech.ilegal.front.client.Client;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
 import pl.seb.czech.ilegal.front.domain.SearchResult;
 import pl.seb.czech.ilegal.front.domain.act.Act;
-import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchResult;
 
 import java.io.IOException;
@@ -53,18 +52,17 @@ public class IsapClient implements Client<Act> {
     
 //    TODO ideally get this only periodically (no need for fetching each time the form is created) 
 //     because there are 2k+ keywords; 
-//     Create entity to store it?
+//     Create entity or cache to store it?
     public List<String> getAllKeywordsAndNames() {
         String endpointURL = "/keywords";
-        String[] result = restTemplate.getForObject(IsapURIGenerator.ISAP_API_URL + endpointURL, String[].class);
+        String[] result = restTemplate.getForObject(isapURIGenerator.getApiUrl() + endpointURL, String[].class);
         return result != null ? Arrays.asList(result) : new ArrayList<>();
     }
     
     
-    
     @Override
     public SearchResult<Act> performSearchQuery(SearchQuery searchQuery) {
-        URI requestUri = isapURIGenerator.generateSearchActQueryUri(searchQuery);
+        URI requestUri = isapURIGenerator.generateSearchQueryUri(searchQuery);
         return restTemplate.getForObject(requestUri, ActSearchResult.class);
     }
 }

@@ -3,29 +3,28 @@ package pl.seb.czech.ilegal.front.client.act;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
+import pl.seb.czech.ilegal.front.client.URIGenerator;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
 import pl.seb.czech.ilegal.front.domain.act.Act;
-import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class IsapURIGenerator {
+public class IsapURIGenerator extends URIGenerator {
     private ActFilenameGenerator generator;
+    private final String searchEndpointUrl = "/search";
     
-    final static String ISAP_API_URL = "http://isap.sejm.gov.pl/api/isap";
-
     @Autowired
     public IsapURIGenerator(ActFilenameGenerator generator) {
+        super("http://isap.sejm.gov.pl/api/isap");
         this.generator = generator;
     }
-
-
+    
     public URI generateDownloadActURI(Act actToDownload, ActTextType textType) {
-        String downloadEndpointURL = ISAP_API_URL + "/deeds/{publisher}/{year}/{position}/text/{type}/{fileName}";
-        Map<String, String> params = new HashMap<String, String>();
+        String downloadEndpointURL = apiUrl + "/deeds/{publisher}/{year}/{position}/text/{type}/{fileName}";
+        Map<String, String> params = new HashMap<>();
         params.put("publisher", actToDownload.getPublisher());
         params.put("year", actToDownload.getYear().toString());
         params.put("position", actToDownload.getPosition().toString());
@@ -38,8 +37,8 @@ public class IsapURIGenerator {
         return UriComponentsBuilder.fromUriString(downloadEndpointURL).buildAndExpand(params).toUri();
     }
 
-    public URI generateSearchActQueryUri(SearchQuery query) {
-        String searchEndpointURL = "/search";
-        return UriComponentsBuilder.fromHttpUrl(ISAP_API_URL + searchEndpointURL).queryParams(query.getQueryParams()).build().toUri();
+ 
+    public URI generateSearchQueryUri(SearchQuery query) {
+        return super.generateSearchQueryUri(query, searchEndpointUrl);
     }
 }

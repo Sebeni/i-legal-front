@@ -35,11 +35,9 @@ public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLa
     protected SearchResult<E> searchResult;
     protected SearchQuery searchQuery;
 
-
     private Button saveButton;
     private Button hideFormButton;
     protected PaginationBar<E, K> paginationBar;
-    
 
     public SearchView(StubDBService<E, K> dbService, Client<E> client, DetailBox<E> detailBox, SearchForm searchForm, CustomGrid<E> grid) {
         this.dbService = dbService;
@@ -93,7 +91,7 @@ public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLa
             }
         });
 
-        Notification actAlreadyExistsNotification = new Notification("Element istnieje już w Twoich aktach!", 3000, Notification.Position.MIDDLE);
+        Notification actAlreadyExistsNotification = new Notification("Element jest już zapisany!", 3000, Notification.Position.MIDDLE);
         Notification actSuccessfullySaved = new Notification("Element został prawidłowo zapisany!", 3000, Notification.Position.MIDDLE);
 
         saveButton = new Button("Zapisz zaznaczony element", new Icon(VaadinIcon.FILE_ADD));
@@ -151,10 +149,10 @@ public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLa
     
     public SearchResult<E> getSearchResult(){
         return searchResult;
-    };
+    }
     
     public SearchQuery getSearchQuery(){
         return searchQuery;
-    };
+    }
     
 }
