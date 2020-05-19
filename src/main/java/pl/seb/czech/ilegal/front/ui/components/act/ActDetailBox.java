@@ -14,15 +14,10 @@ import pl.seb.czech.ilegal.front.client.act.ActTextType;
 import pl.seb.czech.ilegal.front.client.act.IsapClient;
 import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;
-import pl.seb.czech.ilegal.front.ui.view.SearchView;
 import pl.seb.czech.ilegal.front.ui.view.judgment.JudgmentSearchView;
 
 import java.net.URI;
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class ActDetailBox extends DetailBox<Act> {
     private Act currentAct = new Act();
@@ -35,7 +30,7 @@ public class ActDetailBox extends DetailBox<Act> {
 
     private Paragraph lastChange;
     private HorizontalLayout showTextBar;
-    private Anchor originalTextShowAnchor;
+    private Anchor publishedTextShowAnchor;
     private Anchor unifiedTextShowAnchor;
     private Button originalTextButton = new Button("Ogłoszony");
     private Button unifiedTextButton = new Button("Ujednolicony");
@@ -67,15 +62,15 @@ public class ActDetailBox extends DetailBox<Act> {
     private void configureShowTextBar() {
         Paragraph download = new Paragraph("Wyświetl tekst:");
 
-        originalTextShowAnchor = new Anchor();
-        originalTextShowAnchor.add(originalTextButton);
-        originalTextShowAnchor.setMaxHeight(originalTextButton.getHeight());
+        publishedTextShowAnchor = new Anchor();
+        publishedTextShowAnchor.add(originalTextButton);
+        publishedTextShowAnchor.setMaxHeight(originalTextButton.getHeight());
 
         unifiedTextShowAnchor = new Anchor();
         unifiedTextShowAnchor.add(unifiedTextButton);
         unifiedTextShowAnchor.setMaxHeight(unifiedTextButton.getHeight());
 
-        showTextBar = new HorizontalLayout(download, originalTextShowAnchor, unifiedTextShowAnchor);
+        showTextBar = new HorizontalLayout(download, publishedTextShowAnchor, unifiedTextShowAnchor);
         showTextBar.setMaxHeight(unifiedTextButton.getHeight());
     }
 
@@ -110,17 +105,28 @@ public class ActDetailBox extends DetailBox<Act> {
     }
 
     private void updateShowTextButtons() {
-        originalTextShowAnchor.setHref(isapClient.generateDownloadActURI(currentAct, ActTextType.PUBLISHED).toString());
-        originalTextShowAnchor.setTarget("_blank");
+        if(currentAct.getPublishedTextUrl() == null){
+            currentAct.setPublishedTextUrl(isapClient.generateDownloadActURI(currentAct, ActTextType.PUBLISHED).toString());
+        }
+        publishedTextShowAnchor.setHref(currentAct.getPublishedTextUrl());
+        publishedTextShowAnchor.setTarget("_blank");
 
-        URI unifiedTextUri = isapClient.generateDownloadActURI(currentAct, ActTextType.UNIFIED);
-        if (isapClient.validateTxtExists(unifiedTextUri)) {
-            unifiedTextShowAnchor.setHref(unifiedTextUri.toString());
-            unifiedTextShowAnchor.setTarget("_blank");
-            unifiedTextButton.setEnabled(true);
-        } else {
+        if(currentAct.getUnifiedTextUrl() == null) {
+            URI unifiedTextUri = isapClient.generateDownloadActURI(currentAct, ActTextType.UNIFIED);
+            if(isapClient.validateTxtExists(unifiedTextUri)) {
+                currentAct.setUnifiedTextUrl(unifiedTextUri.toString());
+            } else {
+                currentAct.setUnifiedTextUrl("");
+            }
+        }
+
+        if (currentAct.getUnifiedTextUrl().isEmpty()) {
             unifiedTextShowAnchor.removeHref();
             unifiedTextButton.setEnabled(false);
+        } else {
+            unifiedTextShowAnchor.setHref(currentAct.getUnifiedTextUrl());
+            unifiedTextShowAnchor.setTarget("_blank");
+            unifiedTextButton.setEnabled(true);
         }
     }
 

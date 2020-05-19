@@ -36,6 +36,8 @@ public class Act implements DummyEntity<String> {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime changeDate;
     
+    private String publishedTextUrl;
+    private String unifiedTextUrl;
 
     @Override
     public boolean equals(Object o) {
