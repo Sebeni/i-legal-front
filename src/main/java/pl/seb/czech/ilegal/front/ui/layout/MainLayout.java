@@ -1,9 +1,9 @@
 package pl.seb.czech.ilegal.front.ui.layout;
 
-import com.vaadin.componentfactory.ToggleButton;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.Icon;
@@ -45,7 +45,8 @@ public class MainLayout extends AppLayout {
         RouterLink savedJudgmentLink = new RouterLink("Zapisane orzeczenia", JudgmentSavedView.class);
         RouterLink searchJudgmentLink = new RouterLink("Szukaj orzeczeń", JudgmentSearchView.class);
         
-        ToggleButton themeSwitch = new ToggleButton("Ciemny motyw", click -> switchThemes());
+        Checkbox themeSwitch = new Checkbox("Ciemny motyw", click -> switchThemes());
+        themeSwitch.setValue(false);
         
         VerticalLayout drawerContent = new VerticalLayout(
                 new HorizontalLayout(new Icon(VaadinIcon.HOME), homeViewLink), 
