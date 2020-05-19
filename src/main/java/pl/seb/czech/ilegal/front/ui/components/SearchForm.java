@@ -17,4 +17,6 @@ public abstract class SearchForm extends FormLayout {
     }
 
     public abstract SearchQuery getSearchQueryFromForm();
+    
+    public abstract void setBinderBean(Object bean);
 }

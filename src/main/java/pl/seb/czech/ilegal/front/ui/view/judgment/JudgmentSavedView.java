@@ -25,7 +25,7 @@ import pl.seb.czech.ilegal.front.ui.view.SavedView;
 
 
 @PageTitle("I-Legal | Zapisane orzeczenia")
-@Route(value = "judgment-saved", layout = MainLayout.class)
+@Route(value = "judgment/saved", layout = MainLayout.class)
 public class JudgmentSavedView extends SavedView<JudgmentSynopsis, Long> {
     
     private JudgmentDBService dbService;

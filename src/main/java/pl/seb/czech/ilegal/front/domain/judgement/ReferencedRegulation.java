@@ -14,7 +14,10 @@ public class ReferencedRegulation {
     
     @JsonProperty(value = "journalTitle")
     private String title;
-    
+
+    @JsonProperty(value = "journalYear")
+    private Integer year;
+
     @JsonProperty(value = "journalNo")
     private Integer volume;
     

@@ -98,5 +98,12 @@ public class ActSearchForm extends SearchForm {
     public SearchQuery getSearchQueryFromForm() {
         return binder.getBean();
     }
-    
+
+    @Override
+    public void setBinderBean(Object bean) {
+        if(bean.getClass() == ActSearchQuery.class){
+            binder.setBean((ActSearchQuery) bean);
+        }
+        
+    }
 }

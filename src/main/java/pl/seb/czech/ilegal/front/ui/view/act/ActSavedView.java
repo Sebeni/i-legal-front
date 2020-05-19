@@ -12,7 +12,7 @@ import pl.seb.czech.ilegal.front.ui.layout.MainLayout;
 import pl.seb.czech.ilegal.front.ui.view.SavedView;
 
 @PageTitle("I-Legal | Zapisane akty")
-@Route(value = "acts-saved", layout = MainLayout.class)
+@Route(value = "acts/saved", layout = MainLayout.class)
 public class ActSavedView extends SavedView<Act, String> {
     
     @Autowired

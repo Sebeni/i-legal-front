@@ -8,13 +8,21 @@ import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.router.QueryParameters;
+import com.vaadin.flow.router.RouterLink;
 import pl.seb.czech.ilegal.front.client.act.ActTextType;
 import pl.seb.czech.ilegal.front.client.act.IsapClient;
 import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;
+import pl.seb.czech.ilegal.front.ui.view.SearchView;
+import pl.seb.czech.ilegal.front.ui.view.judgment.JudgmentSearchView;
 
 import java.net.URI;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ActDetailBox extends DetailBox<Act> {
     private Act currentAct = new Act();
@@ -31,7 +39,7 @@ public class ActDetailBox extends DetailBox<Act> {
     private Anchor unifiedTextShowAnchor;
     private Button originalTextButton = new Button("Ogłoszony");
     private Button unifiedTextButton = new Button("Ujednolicony");
-
+    private RouterLink searchJudgmentLink;
 
     public ActDetailBox(IsapClient isapClient) {
         this.isapClient = isapClient;
@@ -47,11 +55,14 @@ public class ActDetailBox extends DetailBox<Act> {
 
         configureShowTextBar();
         configureAccordion();
-        
-        Button searchJudgmentButton = new Button("Szukaj orzeczeń", new Icon(VaadinIcon.GAVEL));
 
-        add(actTitle, lastChange, showTextBar, new H3("Szczegóły:"), detailsAccordion, searchJudgmentButton);
+        configureSearchJudgmentLink();
+        
+        
+        
+        add(actTitle, lastChange, showTextBar, new H3("Szczegóły:"), detailsAccordion, searchJudgmentLink);
     }
+
 
     private void configureShowTextBar() {
         Paragraph download = new Paragraph("Wyświetl tekst:");
@@ -80,6 +91,13 @@ public class ActDetailBox extends DetailBox<Act> {
         
     }
 
+    private void configureSearchJudgmentLink() {
+        searchJudgmentLink = new RouterLink();
+        Button searchJudgmentButton = new Button("Szukaj orzeczeń", new Icon(VaadinIcon.GAVEL));
+        searchJudgmentLink = new RouterLink("", JudgmentSearchView.class);
+        searchJudgmentLink.add(searchJudgmentButton);
+    }
+
     @Override
     public void setDetailsAndUpdateBox(Act currentAct) {
         this.currentAct = currentAct;
@@ -88,6 +106,7 @@ public class ActDetailBox extends DetailBox<Act> {
 
         updateShowTextButtons();
         updateStatusPanel();
+        updateSearchJudgmentLink();
     }
 
     private void updateShowTextButtons() {
@@ -112,6 +131,11 @@ public class ActDetailBox extends DetailBox<Act> {
         enableOptionalPanels(promulgationPanel, promulgationDate);
     }
 
+    private void updateSearchJudgmentLink() {
+        QueryParameters qp = getYearPosQueryParams(currentAct.getYear(), currentAct.getPosition());
+        searchJudgmentLink.setQueryParameters(qp);
+    }
+    
     private void enableOptionalPanels(AccordionPanel optionalPanel, LocalDate correspondingDate) {
         if (correspondingDate != null) {
             optionalPanel.setContent(new Span(correspondingDate.toString()));

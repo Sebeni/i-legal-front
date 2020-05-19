@@ -11,11 +11,21 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.QueryParameters;
+import com.vaadin.flow.router.RouterLink;
+
 import pl.seb.czech.ilegal.front.client.judgment.SaosClient;
 import pl.seb.czech.ilegal.front.domain.judgement.JudgmentDetails;
 import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsis;
+import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsisSearchQuery;
 import pl.seb.czech.ilegal.front.domain.judgement.ReferencedRegulation;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;
+
+import pl.seb.czech.ilegal.front.ui.view.SearchView;
+import pl.seb.czech.ilegal.front.ui.view.act.ActSearchView;
+import pl.seb.czech.ilegal.front.ui.view.judgment.JudgmentSearchView;
+
+import java.util.*;
 
 public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
     private JudgmentDetails judgmentDetails = new JudgmentDetails();
@@ -85,23 +95,49 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
             refRegPanel.setEnabled(true);
             for (ReferencedRegulation refReg : referencedRegulations) {
                 Text refRegText = new Text(refReg.getText());
-                Button findJudgment = getFindJudgmentButton();
-                findJudgment.addThemeVariants(ButtonVariant.LUMO_SMALL);
-                Button findActButton = new Button("Przywołanego aktu", new Icon(VaadinIcon.INSTITUTION));
-                findActButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
 
-                VerticalLayout buttonBox = new VerticalLayout(new Span("Szukaj:"), findJudgment, findActButton);
+                QueryParameters qp = getYearPosQueryParams(refReg.getYear(), refReg.getPosition());
+                VerticalLayout buttonBox = new VerticalLayout(new Span("Szukaj:"), getFindJudgmentLinkButton(qp), getSearchActLinkButton(qp));
+                
                 VerticalLayout content = new VerticalLayout(refRegText, buttonBox);
                 content.setSizeFull();
+                
                 Details titleDetail = new Details(refReg.getTitle(), content);
-                refRegPanel.addContent(titleDetail);
                 titleDetail.addThemeVariants(DetailsVariant.FILLED);
+
+                refRegPanel.addContent(titleDetail);
             }
         } else {
             refRegPanel.setEnabled(false);
         }
     }
+    
+    private RouterLink getFindJudgmentLinkButton(QueryParameters qp) {
+        Button findJudgment = getFindJudgmentButton();
+        findJudgment.addThemeVariants(ButtonVariant.LUMO_SMALL);
+        
+        RouterLink searchJudgmentLink = new RouterLink("", JudgmentSearchView.class);
+        searchJudgmentLink.setQueryParameters(qp);
+        
+        searchJudgmentLink.add(findJudgment);
+        
+        return searchJudgmentLink;
+    }
+    
 
+    private RouterLink getSearchActLinkButton(QueryParameters qp) {
+        Button findActButton = new Button("Przywołanego aktu", new Icon(VaadinIcon.INSTITUTION));
+        findActButton.addThemeVariants(ButtonVariant.LUMO_SMALL);
+        
+        RouterLink searchActLink = new RouterLink("", ActSearchView.class);
+        searchActLink.setQueryParameters(qp);
+        
+        searchActLink.add(findActButton);
+        
+        return searchActLink;
+    }
+    
+    
     private void configureStringPanels(AccordionPanel panelToSet, String[] stringArray) {
         panelToSet.setContent(null);
         if (validateArray(stringArray)) {

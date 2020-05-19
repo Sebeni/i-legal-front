@@ -22,6 +22,8 @@ import pl.seb.czech.ilegal.front.ui.components.CustomGrid;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;
 
 public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLayout {
+    public static final String YEAR_PARAM = "year";
+    public static final String POS_PARAM = "position";
     
     private StubDBService<E, K> dbService;
     private Client<E> client;
@@ -148,5 +150,9 @@ public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLa
     
     public SearchQuery getSearchQuery(){
         return searchQuery;
+    }
+    
+    public void setBinderBean(Object bean) {
+        searchForm.setBinderBean(bean);
     }
 }
