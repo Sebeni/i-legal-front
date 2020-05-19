@@ -13,7 +13,7 @@ import pl.seb.czech.ilegal.front.ui.components.act.ActSearchForm;
 @ToString
 public class ActSearchQuery extends SearchQuery {
     private String onlyActInForce;
-    private String actName;
+    private String title;
     private String keyWord;
     private String properName;
     private ActPublisher publisher;
@@ -31,7 +31,7 @@ public class ActSearchQuery extends SearchQuery {
             }
         }
 
-        addToQueryParamsNotNull("title", actName);
+        addToQueryParamsNotNull("title", title);
         addToQueryParamsNotNull("keyword", keyWord);
         addToQueryParamsNotNull("keywordName", properName);
 
@@ -41,10 +41,10 @@ public class ActSearchQuery extends SearchQuery {
             }
         }
 
-        addToQueryParamsNotNull("year", String.valueOf(year));
-        addToQueryParamsNotNull("position", String.valueOf(position));
-        addToQueryParamsNotNull("limit", String.valueOf(resultLimitPerPage));
-        addToQueryParamsNotNull("offset", String.valueOf(offset));
+        addToQueryParamsNotNull("year", year);
+        addToQueryParamsNotNull("position", position);
+        addToQueryParamsNotNull("limit", resultLimitPerPage);
+        addToQueryParamsNotNull("offset", offset);
         return queryParams;
     }
 

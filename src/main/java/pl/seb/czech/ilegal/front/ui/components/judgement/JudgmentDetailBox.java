@@ -158,6 +158,6 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
     }
 
     private Button getFindJudgmentButton() {
-        return new Button("Podobne orzeczenia", new Icon(VaadinIcon.GAVEL));
+        return new Button("Orzeczeń z tym aktem", new Icon(VaadinIcon.GAVEL));
     }
 }

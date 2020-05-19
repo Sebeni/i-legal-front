@@ -7,12 +7,12 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import pl.seb.czech.ilegal.front.domain.DummyEntity;
+import pl.seb.czech.ilegal.front.domain.BaseEntity;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
 import pl.seb.czech.ilegal.front.domain.SearchResult;
 import pl.seb.czech.ilegal.front.ui.view.SearchView;
 
-public class PaginationBar<E extends DummyEntity<K>, K> extends HorizontalLayout {
+public class PaginationBar<E extends BaseEntity<K>, K> extends HorizontalLayout {
     private SearchResult<E> userSearchResult;
     private SearchQuery userQuery;
     private Span pageInfo;

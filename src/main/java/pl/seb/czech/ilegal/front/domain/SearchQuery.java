@@ -21,4 +21,8 @@ public abstract class SearchQuery {
             queryParams.add(queryAPIParamName, fieldValue);
         }
     }
+    
+    protected void addToQueryParamsNotNull(String queryAPIParamName, Integer fieldValue) {
+        addToQueryParamsNotNull(queryAPIParamName, String.valueOf(fieldValue));
+    }
 }

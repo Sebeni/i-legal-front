@@ -44,14 +44,11 @@ public class IsapClient implements Client<Act> {
             ClientHttpRequest request = factory.createRequest(uri, HttpMethod.GET);
             responseStatus = request.execute().getStatusCode();
         } catch (IOException e) {
-            LOGGER.error("Exception in button checking", e);
+            LOGGER.error("Exception in check if text exists", e);
         }
         return responseStatus == HttpStatus.OK;
     }
     
-//    TODO ideally get this only periodically (no need for fetching each time the form is created) 
-//     because there are 2k+ keywords; 
-//     Create entity or cache to store it?
     public List<String> getAllKeywordsAndNames() {
         String endpointURL = "/keywords";
         String[] result = restTemplate.getForObject(isapURIGenerator.getApiUrl() + endpointURL, String[].class);
@@ -59,7 +56,7 @@ public class IsapClient implements Client<Act> {
     }
     
     @Override
-    public SearchResult<Act> performSearchQuery(SearchQuery searchQuery) {
+    public ActSearchResult performSearchQuery(SearchQuery searchQuery) {
         URI requestUri = isapURIGenerator.generateSearchQueryUri(searchQuery);
         return restTemplate.getForObject(requestUri, ActSearchResult.class);
     }

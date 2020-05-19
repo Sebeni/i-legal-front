@@ -1,5 +1,5 @@
 package pl.seb.czech.ilegal.front.domain;
 
-public interface DummyEntity<K> {
+public interface BaseEntity<K> {
     K getId();
 }

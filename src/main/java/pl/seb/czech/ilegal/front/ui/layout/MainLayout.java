@@ -54,7 +54,7 @@ public class MainLayout extends AppLayout {
                 new HorizontalLayout(new Icon(VaadinIcon.INSTITUTION), searchActsLink),
                 new HorizontalLayout(new Icon(VaadinIcon.BRIEFCASE), savedJudgmentLink),
                 new HorizontalLayout(new Icon(VaadinIcon.GAVEL), searchJudgmentLink),
-                new HorizontalLayout(new Icon(VaadinIcon.MOON), themeSwitch)
+                new HorizontalLayout(themeSwitch, new Icon(VaadinIcon.MOON))
         );
         
         addToDrawer(drawerContent);

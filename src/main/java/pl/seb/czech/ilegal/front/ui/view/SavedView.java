@@ -8,12 +8,12 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import pl.seb.czech.ilegal.front.domain.DummyEntity;
+import pl.seb.czech.ilegal.front.domain.BaseEntity;
 import pl.seb.czech.ilegal.front.stub.StubDBService;
 import pl.seb.czech.ilegal.front.ui.components.CustomGrid;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;
 
-public abstract class SavedView<E extends DummyEntity<K>, K> extends VerticalLayout {
+public abstract class SavedView<E extends BaseEntity<K>, K> extends VerticalLayout {
     protected StubDBService<E, K> dbService;
     protected CustomGrid<E> grid;
     private DetailBox<E> detailBox;
@@ -23,7 +23,8 @@ public abstract class SavedView<E extends DummyEntity<K>, K> extends VerticalLay
     private Button refreshButton;
     private Button deleteButton;
     protected Button changeNameButton;
-    private HorizontalLayout buttonTopBar;
+    protected Button checkForUpdatesButton;
+    protected HorizontalLayout buttonTopBar;
     
     public SavedView(StubDBService<E, K> dbService, CustomGrid<E> grid, DetailBox<E> detailBox) {
         this.dbService = dbService;
@@ -68,8 +69,11 @@ public abstract class SavedView<E extends DummyEntity<K>, K> extends VerticalLay
 
         changeNameButton = new Button("Edytuj nazwę", new Icon(VaadinIcon.EDIT));
         changeNameButton.setVisible(false);
+
+        checkForUpdatesButton = new Button("Aktualizuj wszystkie akty", new Icon(VaadinIcon.TIME_FORWARD));
+        checkForUpdatesButton.setVisible(false);
         
-        buttonTopBar = new HorizontalLayout(refreshButton, hideDetailsButton, deleteButton, changeNameButton);
+        buttonTopBar = new HorizontalLayout(refreshButton, hideDetailsButton, deleteButton, changeNameButton, checkForUpdatesButton);
     }
 
     private void showDetailsAndEnableButtons(E element) {

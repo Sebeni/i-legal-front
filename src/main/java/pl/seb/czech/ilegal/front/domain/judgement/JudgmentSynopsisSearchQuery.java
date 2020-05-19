@@ -56,11 +56,11 @@ public class JudgmentSynopsisSearchQuery extends SearchQuery {
         }
         
         addToQueryParamsNotNull("all", searchPhrase);
-        
-        queryParams.add("pageSize", String.valueOf(resultLimitPerPage));
-        queryParams.add("pageNumber", String.valueOf(pageNumber));
-        queryParams.add("sortingField", sortingField);
-        queryParams.add("sortingDirection", sortingDirection);
+        addToQueryParamsNotNull("pageSize", resultLimitPerPage);
+        addToQueryParamsNotNull("pageNumber", pageNumber);
+        addToQueryParamsNotNull("sortingField", sortingField);
+        addToQueryParamsNotNull("sortingDirection", sortingDirection);
+       
         return queryParams;
     }
 }

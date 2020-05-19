@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
-import pl.seb.czech.ilegal.front.domain.DummyEntity;
+import pl.seb.czech.ilegal.front.domain.BaseEntity;
 import pl.seb.czech.ilegal.front.domain.judgement.deserializer.CaseNumberDeserializer;
 
 import java.time.LocalDate;
@@ -17,7 +17,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class JudgmentSynopsis implements DummyEntity<Long> {
+public class JudgmentSynopsis implements BaseEntity<Long> {
     private Long id;
     private CourtType courtType;
 

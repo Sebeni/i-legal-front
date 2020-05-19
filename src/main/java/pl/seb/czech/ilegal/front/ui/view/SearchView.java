@@ -12,7 +12,7 @@ import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import pl.seb.czech.ilegal.front.client.Client;
-import pl.seb.czech.ilegal.front.domain.DummyEntity;
+import pl.seb.czech.ilegal.front.domain.BaseEntity;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
 import pl.seb.czech.ilegal.front.domain.SearchResult;
 import pl.seb.czech.ilegal.front.stub.StubDBService;
@@ -21,7 +21,7 @@ import pl.seb.czech.ilegal.front.ui.components.SearchForm;
 import pl.seb.czech.ilegal.front.ui.components.CustomGrid;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;
 
-public abstract class SearchView<E extends DummyEntity<K>, K> extends VerticalLayout {
+public abstract class SearchView<E extends BaseEntity<K>, K> extends VerticalLayout {
     public static final String YEAR_PARAM = "year";
     public static final String POS_PARAM = "position";
     

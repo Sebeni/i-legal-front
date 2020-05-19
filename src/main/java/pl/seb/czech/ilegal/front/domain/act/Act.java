@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.seb.czech.ilegal.front.domain.DummyEntity;
+import pl.seb.czech.ilegal.front.domain.BaseEntity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,7 +19,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Act implements DummyEntity<String> {
+public class Act implements BaseEntity<String> {
     @JsonProperty(value = "address")
     private String id;
     private String publisher;
