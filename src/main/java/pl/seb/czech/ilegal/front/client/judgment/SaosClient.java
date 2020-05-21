@@ -5,10 +5,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import pl.seb.czech.ilegal.front.client.Client;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
-import pl.seb.czech.ilegal.front.domain.SearchResult;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentDetails;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsis;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsisSearchResult;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentDetails;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsisSearchResult;
 
 import java.net.URI;
 
@@ -30,7 +29,7 @@ public class SaosClient implements Client<JudgmentSynopsis> {
     }
     
     public JudgmentDetails getJudgmentDetails(JudgmentSynopsis judgmentSynopsis){ 
-        String searchURL = saosURIGenerator.getApiUrl() + "/judgments/" + judgmentSynopsis.getId();
+        String searchURL = saosURIGenerator.getApiUrl() + "/judgments/" + judgmentSynopsis.getApiId();
         return restTemplate.getForObject(searchURL, JudgmentDetails.class);
     }
 }

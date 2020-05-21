@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import pl.seb.czech.ilegal.front.client.act.ActTextType;
 import pl.seb.czech.ilegal.front.client.act.IsapURIGenerator;
 import pl.seb.czech.ilegal.front.domain.act.Act;
+import pl.seb.czech.ilegal.front.domain.act.ActPublisher;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,8 +21,8 @@ class IsapURIGeneratorTest {
     @BeforeAll
     static void initAct(){
         actToDownload = new Act();
-        actToDownload.setId("WDU19910090031");
-        actToDownload.setPublisher("WDU");
+        actToDownload.setIsapId("WDU19910090031");
+        actToDownload.setPublisher(ActPublisher.WDU);
         actToDownload.setYear(1991);
         actToDownload.setPosition(31);
     }

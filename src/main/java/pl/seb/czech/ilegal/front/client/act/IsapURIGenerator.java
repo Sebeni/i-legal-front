@@ -25,7 +25,7 @@ public class IsapURIGenerator extends URIGenerator {
     public URI generateDownloadActURI(Act actToDownload, ActTextType textType) {
         String downloadEndpointURL = apiUrl + "/deeds/{publisher}/{year}/{position}/text/{type}/{fileName}";
         Map<String, String> params = new HashMap<>();
-        params.put("publisher", actToDownload.getPublisher());
+        params.put("publisher", actToDownload.getPublisher().name());
         params.put("year", actToDownload.getYear().toString());
         params.put("position", actToDownload.getPosition().toString());
         params.put("type", textType == ActTextType.UNIFIED ? "U" : "O");

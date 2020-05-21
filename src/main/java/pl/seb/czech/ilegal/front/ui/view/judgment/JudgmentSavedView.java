@@ -1,25 +1,15 @@
 package pl.seb.czech.ilegal.front.ui.view.judgment;
 
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dialog.Dialog;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.textfield.TextArea;
-import com.vaadin.flow.component.textfield.TextAreaVariant;
-import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.validator.StringLengthValidator;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.seb.czech.ilegal.front.client.judgment.SaosClient;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsis;
-import pl.seb.czech.ilegal.front.stub.judgement.JudgmentDBService;
-import pl.seb.czech.ilegal.front.ui.components.judgement.JudgmentDetailBox;
-import pl.seb.czech.ilegal.front.ui.components.judgement.JudgmentEditDialog;
-import pl.seb.czech.ilegal.front.ui.components.judgement.JudgmentGrid;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
+import pl.seb.czech.ilegal.front.stub.judgment.JudgmentDBService;
+import pl.seb.czech.ilegal.front.ui.components.judgment.JudgmentDetailBox;
+import pl.seb.czech.ilegal.front.ui.components.judgment.JudgmentEditDialog;
+import pl.seb.czech.ilegal.front.ui.components.judgment.JudgmentGrid;
 import pl.seb.czech.ilegal.front.ui.layout.MainLayout;
 import pl.seb.czech.ilegal.front.ui.view.SavedView;
 
@@ -42,7 +32,8 @@ public class JudgmentSavedView extends SavedView<JudgmentSynopsis, Long> {
         changeNameButton.setEnabled(false);
         
         changeNameButton.addClickListener(event -> {
-            new JudgmentEditDialog(dbService, selectedElement, grid);
+            Dialog dialog = new JudgmentEditDialog(dbService, selectedElement, grid);
+            dialog.open();
         });
         
         

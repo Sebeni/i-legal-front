@@ -12,6 +12,9 @@ import pl.seb.czech.ilegal.front.ui.components.act.ActSearchForm;
 @Setter
 @ToString
 public class ActSearchQuery extends SearchQuery {
+    public static final String IN_FORCE_ACTS = "Obowiązujące";
+    public static final String ALL_ACTS = "Wszystkie";
+    
     private String onlyActInForce;
     private String title;
     private String keyWord;
@@ -26,7 +29,7 @@ public class ActSearchQuery extends SearchQuery {
     public MultiValueMap<String, String> getQueryParams() {
         queryParams = new LinkedMultiValueMap<>();
         if (onlyActInForce != null) {
-            if (onlyActInForce.equals(ActSearchForm.IN_FORCE_ACTS_ITEM)) {
+            if (onlyActInForce.equals(IN_FORCE_ACTS)) {
                 queryParams.add("inForce", "1");
             }
         }

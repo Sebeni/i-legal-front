@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.domain.judgement;
+package pl.seb.czech.ilegal.front.domain.judgment;
 
 import lombok.*;
 import org.springframework.util.LinkedMultiValueMap;

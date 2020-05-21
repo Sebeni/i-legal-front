@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pl.seb.czech.ilegal.front.domain.act.Act;
+import pl.seb.czech.ilegal.front.domain.act.ActPublisher;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -45,14 +46,16 @@ class ActJsonDeserializationTest {
             e.printStackTrace();
         }
         
-        String idFromJson = actFromJson.getId();
+        String idFromJson = actFromJson.getApiId();
         LocalDate promulgationDate = actFromJson.getPromulgation();
         LocalDateTime lastChange = actFromJson.getChangeDate();
-        
+
+        Act finalActFromJson = actFromJson;
         assertAll(
                 () -> assertEquals("WDU19910090031", idFromJson),
                 () -> assertEquals(LocalDate.of(1991, 1, 30), promulgationDate),
-                () -> assertEquals(LocalDateTime.of(2019, 6, 28, 13, 39, 43), lastChange)
+                () -> assertEquals(LocalDateTime.of(2019, 6, 28, 13, 39, 43), lastChange),
+                () -> assertEquals(ActPublisher.WDU, finalActFromJson.getPublisher())
         );
     }
 }

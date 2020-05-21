@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.domain.judgement.deserializer;
+package pl.seb.czech.ilegal.front.domain.judgment.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

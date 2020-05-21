@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActSearchForm extends SearchForm {
-    public final static String IN_FORCE_ACTS_ITEM = "Obowiązujące";
-    public final static String ALL_ACTS_ITEM = "Wszystkie";
     
     private IsapClient isapClient;
     private List<String> actKeywords = new ArrayList<>();
@@ -38,9 +36,9 @@ public class ActSearchForm extends SearchForm {
        
         separateKeywordsAndNames();
 
-        onlyActInForce = new ComboBox<>("Status aktu prawnego", IN_FORCE_ACTS_ITEM, ALL_ACTS_ITEM);
+        onlyActInForce = new ComboBox<>("Status aktu prawnego", ActSearchQuery.IN_FORCE_ACTS, ActSearchQuery.ALL_ACTS);
         ActSearchQuery currentQuery = new ActSearchQuery();
-        currentQuery.setOnlyActInForce(ALL_ACTS_ITEM);
+        currentQuery.setOnlyActInForce(ActSearchQuery.ALL_ACTS);
         formFields.add(onlyActInForce);
 
         actName = new TextField("Tytuł aktu", "całość lub część");

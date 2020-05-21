@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.ui.components.judgement;
+package pl.seb.czech.ilegal.front.ui.components.judgment;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -6,7 +6,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentDetails;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentDetails;
 
 public class JudgmentTextDialog extends Dialog {
     private Label judgmentText;

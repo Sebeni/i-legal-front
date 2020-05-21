@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.ui.components.judgement;
+package pl.seb.czech.ilegal.front.ui.components.judgment;
 
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.accordion.Accordion;
@@ -15,17 +15,13 @@ import com.vaadin.flow.router.QueryParameters;
 import com.vaadin.flow.router.RouterLink;
 
 import pl.seb.czech.ilegal.front.client.judgment.SaosClient;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentDetails;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsis;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsisSearchQuery;
-import pl.seb.czech.ilegal.front.domain.judgement.ReferencedRegulation;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentDetails;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
+import pl.seb.czech.ilegal.front.domain.judgment.ReferencedRegulation;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;
 
-import pl.seb.czech.ilegal.front.ui.view.SearchView;
 import pl.seb.czech.ilegal.front.ui.view.act.ActSearchView;
 import pl.seb.czech.ilegal.front.ui.view.judgment.JudgmentSearchView;
-
-import java.util.*;
 
 public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
     private JudgmentDetails judgmentDetails = new JudgmentDetails();

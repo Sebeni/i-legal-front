@@ -20,9 +20,9 @@ class ActFilenameGeneratorTest {
     @BeforeAll
     static void initAct() {
         upiol = new Act();
-        upiol.setId("WDU19910090031");
+        upiol.setIsapId("WDU19910090031");
         taxRates = new Act();
-        taxRates.setId("WMP20190000738");
+        taxRates.setIsapId("WMP20190000738");
     }
     
     @Test

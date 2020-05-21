@@ -63,7 +63,7 @@ public abstract class SavedView<E extends BaseEntity<K>, K> extends VerticalLayo
         deleteButton.setEnabled(false);
         deleteButton.addClickListener(event -> {
             disableButtonsAndBox();
-            dbService.deleteById(selectedElement.getId());
+            dbService.deleteById(selectedElement.getApiId());
             updateActsFromDB();
         });
 

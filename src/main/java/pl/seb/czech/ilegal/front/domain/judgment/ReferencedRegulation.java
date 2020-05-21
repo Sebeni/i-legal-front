@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.domain.judgement;
+package pl.seb.czech.ilegal.front.domain.judgment;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

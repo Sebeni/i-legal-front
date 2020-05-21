@@ -16,7 +16,7 @@ public abstract class StubDBService<E extends BaseEntity<K>, K> {
     }
 
     public void saveElement(E elementToAdd) {
-        repository.put(elementToAdd.getId(), elementToAdd);
+        repository.put(elementToAdd.getApiId(), elementToAdd);
     }
 
     public void deleteById(K id) {
@@ -30,5 +30,10 @@ public abstract class StubDBService<E extends BaseEntity<K>, K> {
     public E findById(K id) { 
         return repository.get(id);
     }
+    
+    public void updateElement(E elementToUpdate) {
+        saveElement(elementToUpdate);
+    }
+    
     
 }

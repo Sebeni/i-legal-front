@@ -1,7 +1,7 @@
-package pl.seb.czech.ilegal.front.ui.components.judgement;
+package pl.seb.czech.ilegal.front.ui.components.judgment;
 
 import com.vaadin.flow.component.textfield.TextField;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsis;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
 import pl.seb.czech.ilegal.front.ui.components.CustomGrid;
 import pl.seb.czech.ilegal.front.ui.components.FilterTextField;
 

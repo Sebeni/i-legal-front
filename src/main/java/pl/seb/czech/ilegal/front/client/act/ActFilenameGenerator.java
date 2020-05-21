@@ -9,7 +9,7 @@ public class ActFilenameGenerator {
     private final String extension = ".pdf";
 
     public String generateUnifiedTxtFilename(Act actToGenerate) {
-        String id = actToGenerate.getId();
+        String id = actToGenerate.getApiId();
         char firstLetter = id.charAt(1);
         String year = id.substring(3, 7);
         String position = id.substring(id.length() - 4);

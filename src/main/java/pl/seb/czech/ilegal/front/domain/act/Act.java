@@ -21,8 +21,9 @@ import java.util.Objects;
 @Setter
 public class Act implements BaseEntity<String> {
     @JsonProperty(value = "address")
-    private String id;
-    private String publisher;
+    private String isapId;
+    
+    private ActPublisher publisher;
     private Integer year;
     private Integer volume;
     @JsonProperty(value = "pos")
@@ -44,7 +45,7 @@ public class Act implements BaseEntity<String> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Act act = (Act) o;
-        return id.equals(act.id) &&
+        return isapId.equals(act.isapId) &&
                 Objects.equals(publisher, act.publisher) &&
                 Objects.equals(year, act.year) &&
                 Objects.equals(volume, act.volume) &&
@@ -57,6 +58,11 @@ public class Act implements BaseEntity<String> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, publisher, year, volume, position, title, status, promulgation, changeDate);
+        return Objects.hash(isapId, publisher, year, volume, position, title, status, promulgation, changeDate);
+    }
+
+    @Override
+    public String getApiId() {
+        return isapId;
     }
 }

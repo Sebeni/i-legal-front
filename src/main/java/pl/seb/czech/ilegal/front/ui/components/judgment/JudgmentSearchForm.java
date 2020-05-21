@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.ui.components.judgement;
+package pl.seb.czech.ilegal.front.ui.components.judgment;
 
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -7,9 +7,8 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.RegexpValidator;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
-import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
-import pl.seb.czech.ilegal.front.domain.judgement.CourtType;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsisSearchQuery;
+import pl.seb.czech.ilegal.front.domain.judgment.CourtType;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsisSearchQuery;
 import pl.seb.czech.ilegal.front.ui.components.SearchForm;
 
 import java.util.Arrays;

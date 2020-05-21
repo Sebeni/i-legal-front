@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.domain.judgement;
+package pl.seb.czech.ilegal.front.domain.judgment;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,8 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.seb.czech.ilegal.front.domain.SearchResult;
-import pl.seb.czech.ilegal.front.domain.judgement.deserializer.PageNumberDeserializer;
-import pl.seb.czech.ilegal.front.domain.judgement.deserializer.TotalResultsDeserializer;
+import pl.seb.czech.ilegal.front.domain.judgment.deserializer.PageNumberDeserializer;
+import pl.seb.czech.ilegal.front.domain.judgment.deserializer.TotalResultsDeserializer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

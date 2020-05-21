@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.domain.judgement;
+package pl.seb.czech.ilegal.front.domain.judgment;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import pl.seb.czech.ilegal.front.domain.BaseEntity;
-import pl.seb.czech.ilegal.front.domain.judgement.deserializer.CaseNumberDeserializer;
+import pl.seb.czech.ilegal.front.domain.judgment.deserializer.CaseNumberDeserializer;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -18,7 +18,9 @@ import java.util.Objects;
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class JudgmentSynopsis implements BaseEntity<Long> {
-    private Long id;
+    
+    @JsonProperty(value = "id")
+    private Long saosId;
     private CourtType courtType;
 
     @JsonProperty(value = "courtCases")
@@ -32,7 +34,7 @@ public class JudgmentSynopsis implements BaseEntity<Long> {
     
     @JsonProperty(value = "textContent")
     private String synopsis;
-    private String[] keywords;
+    private List<String> keywords;
     
     @Setter
     private JudgmentDetails judgmentDetails;
@@ -43,9 +45,9 @@ public class JudgmentSynopsis implements BaseEntity<Long> {
     public String getCustomName() {
         if(customName == null) {
             StringBuilder sb = new StringBuilder(caseNumbers.get(0));
-            if(keywords != null && keywords.length > 0) {
+            if(keywords != null && keywords.size() > 0) {
                 sb.append("\n");
-                sb.append(Arrays.toString(keywords));
+                sb.append(keywords);
             }
             return sb.toString();
         } else {
@@ -58,11 +60,16 @@ public class JudgmentSynopsis implements BaseEntity<Long> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         JudgmentSynopsis judgmentSynopsis = (JudgmentSynopsis) o;
-        return id.equals(judgmentSynopsis.id);
+        return saosId.equals(judgmentSynopsis.saosId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(saosId);
+    }
+
+    @Override
+    public Long getApiId() {
+        return saosId;
     }
 }

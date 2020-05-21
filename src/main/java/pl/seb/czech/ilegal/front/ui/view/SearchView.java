@@ -97,7 +97,7 @@ public abstract class SearchView<E extends BaseEntity<K>, K> extends VerticalLay
         saveButton = new Button("Zapisz zaznaczony element", new Icon(VaadinIcon.FILE_ADD));
         saveButton.setEnabled(false);
         saveButton.addClickListener(event -> {
-            if(dbService.findIfExists(currentElement.getId())) {
+            if(dbService.findIfExists(currentElement.getApiId())) {
                 actAlreadyExistsNotification.open();
             } else {
                 dbService.saveElement(currentElement);

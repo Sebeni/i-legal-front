@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.ui.components.judgement;
+package pl.seb.czech.ilegal.front.ui.components.judgment;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -11,19 +11,22 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextAreaVariant;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.validator.StringLengthValidator;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsis;
-import pl.seb.czech.ilegal.front.stub.judgement.JudgmentDBService;
+import lombok.extern.slf4j.Slf4j;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
+import pl.seb.czech.ilegal.front.stub.judgment.JudgmentDBService;
 import pl.seb.czech.ilegal.front.ui.components.CustomGrid;
 
+@Slf4j
 public class JudgmentEditDialog extends Dialog {
 
     private TextArea customNameTextField;
 
     public JudgmentEditDialog(JudgmentDBService dbService, JudgmentSynopsis currentElement, CustomGrid<JudgmentSynopsis> grid) {
         setSizeFull();
-        setCloseOnEsc(false);
-        setCloseOnOutsideClick(false);
+        setCloseOnEsc(true);
+        setCloseOnOutsideClick(true);
 
         customNameTextField = new TextArea("Nowa nazwa");
         customNameTextField.addThemeVariants(TextAreaVariant.LUMO_SMALL);
@@ -43,29 +46,32 @@ public class JudgmentEditDialog extends Dialog {
         add(changeBox);
 
         Binder<JudgmentSynopsis> binder = new Binder<>(JudgmentSynopsis.class);
-        binder.setBean(currentElement);
         binder.forField(customNameTextField)
                 .withValidator(new StringLengthValidator("Nazwa musi zawierać od 1 do 255 znaków", 1, 255))
                 .bind(JudgmentSynopsis::getCustomName, JudgmentSynopsis::setCustomName);
+        binder.readBean(currentElement);
+
+        
+       
 
 
         saveButton.addClickListener(event -> {
             if(binder.isValid()){
-                dbService.saveElement(binder.getBean());
+                try {
+                    binder.writeBean(currentElement);
+                } catch (ValidationException e) {
+                    log.error("Error in edit judgment dialog box while writing to currentElement from textField", e);
+                }
+                dbService.updateElement(currentElement);
                 grid.setGridContent(dbService.getAll());
-                clearAndCloseForm();
+                close();
             }
         });
 
         cancelButton.addClickListener(event -> {
-            clearAndCloseForm();
+            close();
         });
 
-        open();
-    }
-
-    private void clearAndCloseForm() {
-        customNameTextField.clear();
-        close();
+       
     }
 }

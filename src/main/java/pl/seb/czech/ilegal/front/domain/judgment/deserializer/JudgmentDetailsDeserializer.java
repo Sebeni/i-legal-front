@@ -1,12 +1,12 @@
-package pl.seb.czech.ilegal.front.domain.judgement.deserializer;
+package pl.seb.czech.ilegal.front.domain.judgment.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentDetails;
-import pl.seb.czech.ilegal.front.domain.judgement.ReferencedRegulation;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentDetails;
+import pl.seb.czech.ilegal.front.domain.judgment.ReferencedRegulation;
 
 import java.io.IOException;
 

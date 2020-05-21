@@ -1,9 +1,9 @@
-package pl.seb.czech.ilegal.front.stub.judgement;
+package pl.seb.czech.ilegal.front.stub.judgment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentDetails;
-import pl.seb.czech.ilegal.front.domain.judgement.JudgmentSynopsis;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentDetails;
+import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
 import pl.seb.czech.ilegal.front.stub.StubDBService;
 
 import java.util.Set;
