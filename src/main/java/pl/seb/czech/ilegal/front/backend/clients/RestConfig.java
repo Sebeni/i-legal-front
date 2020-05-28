@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.client;
+package pl.seb.czech.ilegal.front.backend.clients;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

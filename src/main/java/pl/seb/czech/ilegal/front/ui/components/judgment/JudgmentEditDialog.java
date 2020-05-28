@@ -15,7 +15,7 @@ import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.validator.StringLengthValidator;
 import lombok.extern.slf4j.Slf4j;
 import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
-import pl.seb.czech.ilegal.front.stub.judgment.JudgmentDBService;
+import pl.seb.czech.ilegal.front.backend.clients.judgment.JudgmentDbClient;
 import pl.seb.czech.ilegal.front.ui.components.CustomGrid;
 
 @Slf4j
@@ -23,7 +23,7 @@ public class JudgmentEditDialog extends Dialog {
 
     private TextArea customNameTextField;
 
-    public JudgmentEditDialog(JudgmentDBService dbService, JudgmentSynopsis currentElement, CustomGrid<JudgmentSynopsis> grid) {
+    public JudgmentEditDialog(JudgmentDbClient dbService, JudgmentSynopsis currentElement, CustomGrid<JudgmentSynopsis> grid) {
         setSizeFull();
         setCloseOnEsc(true);
         setCloseOnOutsideClick(true);
@@ -68,9 +68,7 @@ public class JudgmentEditDialog extends Dialog {
             }
         });
 
-        cancelButton.addClickListener(event -> {
-            close();
-        });
+        cancelButton.addClickListener(event -> close());
 
        
     }

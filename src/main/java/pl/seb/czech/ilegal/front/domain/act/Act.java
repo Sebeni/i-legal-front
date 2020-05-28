@@ -19,14 +19,13 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Act implements BaseEntity<String> {
-    @JsonProperty(value = "address")
+public class Act implements BaseEntity {
+    private Long id;
     private String isapId;
     
     private ActPublisher publisher;
     private Integer year;
     private Integer volume;
-    @JsonProperty(value = "pos")
     private Integer position;
     private String title;
     private String status;
@@ -39,30 +38,5 @@ public class Act implements BaseEntity<String> {
     
     private String publishedTextUrl;
     private String unifiedTextUrl;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Act act = (Act) o;
-        return isapId.equals(act.isapId) &&
-                Objects.equals(publisher, act.publisher) &&
-                Objects.equals(year, act.year) &&
-                Objects.equals(volume, act.volume) &&
-                Objects.equals(position, act.position) &&
-                Objects.equals(title, act.title) &&
-                Objects.equals(status, act.status) &&
-                Objects.equals(promulgation, act.promulgation) &&
-                Objects.equals(changeDate, act.changeDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(isapId, publisher, year, volume, position, title, status, promulgation, changeDate);
-    }
-
-    @Override
-    public String getApiId() {
-        return isapId;
-    }
+    
 }

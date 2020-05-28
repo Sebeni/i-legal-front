@@ -14,17 +14,17 @@ import pl.seb.czech.ilegal.front.domain.act.ActDifference;
 import java.util.List;
 
 public class ActUpdateBox extends Dialog {
-   
+    private List<ActDifference> actDifferences;
     
-
     public ActUpdateBox(List<ActDifference> actsDifference) {
+        this.actDifferences = actsDifference;
         setSizeFull();
         setCloseOnEsc(true);
         setCloseOnOutsideClick(true);
         
         VerticalLayout content = new VerticalLayout();
 
-        if(actsDifference.size() == 0) {
+        if(!somethingChanged()) {
             content.add(new HorizontalLayout(new Text("Wszystkie akty były aktualne!")));
         } else {
             content.add(new HorizontalLayout(new Text("Następujące akty zostały zaktualizowane:")));
@@ -44,6 +44,11 @@ public class ActUpdateBox extends Dialog {
         
         add(content);
         open();
+    }
+    
+    private boolean somethingChanged(){
+        return actDifferences.stream()
+                .anyMatch(ActDifference::isDifferentAfter);
     }
     
 }

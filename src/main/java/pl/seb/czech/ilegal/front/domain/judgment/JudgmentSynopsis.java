@@ -1,55 +1,35 @@
 package pl.seb.czech.ilegal.front.domain.judgment;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import pl.seb.czech.ilegal.front.domain.BaseEntity;
-import pl.seb.czech.ilegal.front.domain.judgment.deserializer.CaseNumberDeserializer;
-
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class JudgmentSynopsis implements BaseEntity<Long> {
-    
-    @JsonProperty(value = "id")
+public class JudgmentSynopsis implements BaseEntity {
+    private Long id;
     private Long saosId;
     private CourtType courtType;
-
-    @JsonProperty(value = "courtCases")
-    @JsonDeserialize(using = CaseNumberDeserializer.class)
-    private List<String> caseNumbers;
-
+    private Set<String> caseNumbers;
     private JudgmentType judgmentType;
-    
     @Setter
     private String customName;
-    
-    @JsonProperty(value = "textContent")
     private String synopsis;
-    private List<String> keywords;
-    
-    @Setter
-    private JudgmentDetails judgmentDetails;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate judgmentDate;
+    @Setter
+    private JudgmentDetails judgmentDetails;
 
     public String getCustomName() {
         if(customName == null) {
-            StringBuilder sb = new StringBuilder(caseNumbers.get(0));
-            if(keywords != null && keywords.size() > 0) {
-                sb.append("\n");
-                sb.append(keywords);
-            }
-            return sb.toString();
+            return caseNumbers.toString();
         } else {
             return customName;
         }
@@ -67,9 +47,5 @@ public class JudgmentSynopsis implements BaseEntity<Long> {
     public int hashCode() {
         return Objects.hash(saosId);
     }
-
-    @Override
-    public Long getApiId() {
-        return saosId;
-    }
+    
 }

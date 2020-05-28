@@ -11,21 +11,21 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import pl.seb.czech.ilegal.front.client.Client;
+import pl.seb.czech.ilegal.front.backend.clients.Client;
 import pl.seb.czech.ilegal.front.domain.BaseEntity;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
 import pl.seb.czech.ilegal.front.domain.SearchResult;
-import pl.seb.czech.ilegal.front.stub.StubDBService;
+import pl.seb.czech.ilegal.front.backend.clients.DbClient;
 import pl.seb.czech.ilegal.front.ui.components.PaginationBar;
 import pl.seb.czech.ilegal.front.ui.components.SearchForm;
 import pl.seb.czech.ilegal.front.ui.components.CustomGrid;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;
 
-public abstract class SearchView<E extends BaseEntity<K>, K> extends VerticalLayout {
+public abstract class SearchView<E extends BaseEntity> extends VerticalLayout {
     public static final String YEAR_PARAM = "year";
     public static final String POS_PARAM = "position";
     
-    private StubDBService<E, K> dbService;
+    private DbClient<E> dbService;
     private Client<E> client;
 
     private DetailBox<E> detailBox;
@@ -39,9 +39,9 @@ public abstract class SearchView<E extends BaseEntity<K>, K> extends VerticalLay
 
     private Button saveButton;
     private Button hideFormButton;
-    protected PaginationBar<E, K> paginationBar;
+    protected PaginationBar<E> paginationBar;
 
-    public SearchView(StubDBService<E, K> dbService, Client<E> client, DetailBox<E> detailBox, SearchForm searchForm, CustomGrid<E> grid) {
+    public SearchView(DbClient<E> dbService, Client<E> client, DetailBox<E> detailBox, SearchForm searchForm, CustomGrid<E> grid) {
         this.dbService = dbService;
         this.client = client;
 
@@ -97,7 +97,7 @@ public abstract class SearchView<E extends BaseEntity<K>, K> extends VerticalLay
         saveButton = new Button("Zapisz zaznaczony element", new Icon(VaadinIcon.FILE_ADD));
         saveButton.setEnabled(false);
         saveButton.addClickListener(event -> {
-            if(dbService.findIfExists(currentElement.getApiId())) {
+            if(dbService.findIfExistsByApiId(currentElement)) {
                 actAlreadyExistsNotification.open();
             } else {
                 dbService.saveElement(currentElement);

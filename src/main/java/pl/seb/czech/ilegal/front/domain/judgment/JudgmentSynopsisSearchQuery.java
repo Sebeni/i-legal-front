@@ -32,35 +32,4 @@ public class JudgmentSynopsisSearchQuery extends SearchQuery {
     public int getCurrentPageNumber() {
         return pageNumber + 1;
     }
-
-    @Override
-    public MultiValueMap<String, String> getQueryParams() {
-        queryParams = new LinkedMultiValueMap<>();
-        if(courtType != null && courtType != CourtType.ALL) {
-            queryParams.add("courtType", courtType.name());
-        }
-        
-        addToQueryParamsNotNull("caseNumber", signature);
-        
-        String articleNumberString = null;
-        if(articleNumber != null && articleNumber > 0){
-            articleNumberString = "\"art. " + articleNumber + "\"";
-        }
-     
-        addToQueryParamsNotNull("referencedRegulation", articleNumberString);
-        
-        if(referencedRegulationYearPos != null){
-            if(referencedRegulationYearPos.matches("^\\d{4}/\\d+$")){
-                addToQueryParamsNotNull("lawJournalEntryCode", referencedRegulationYearPos);
-            }
-        }
-        
-        addToQueryParamsNotNull("all", searchPhrase);
-        addToQueryParamsNotNull("pageSize", resultLimitPerPage);
-        addToQueryParamsNotNull("pageNumber", pageNumber);
-        addToQueryParamsNotNull("sortingField", sortingField);
-        addToQueryParamsNotNull("sortingDirection", sortingDirection);
-       
-        return queryParams;
-    }
 }

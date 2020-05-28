@@ -16,24 +16,17 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ActSearchResult implements SearchResult<Act> {
-    
-    @JsonProperty("items")
-    private Act[] foundActs;
-    
+    private List<Act> foundActs;
     private Integer offset;
     private Integer count;
-    
-    @JsonProperty("totalCount")
     private Integer numOfResults;
     
     @Override
     public List<Act> getResultsList() {
-        return foundActs != null ? Arrays.asList(foundActs) : new ArrayList<>();
+        return foundActs != null ? foundActs : new ArrayList<>();
     }
-
-
+    
     @Override
     public Integer getNumOfResults() {
         return numOfResults;

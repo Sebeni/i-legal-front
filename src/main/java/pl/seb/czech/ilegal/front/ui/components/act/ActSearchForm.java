@@ -6,7 +6,8 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import pl.seb.czech.ilegal.front.client.act.IsapClient;
+import pl.seb.czech.ilegal.front.backend.clients.act.ActDbClient;
+import pl.seb.czech.ilegal.front.backend.clients.act.KeywordCacheSingleton;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
 import pl.seb.czech.ilegal.front.domain.act.ActPublisher;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
@@ -16,13 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActSearchForm extends SearchForm {
-    
-    private IsapClient isapClient;
+    private ActDbClient actDbClient;
+   
     private List<String> actKeywords = new ArrayList<>();
     private List<String> actProperNames = new ArrayList<>();
 
     private ComboBox<String> onlyActInForce;
-    private TextField actName;
+    private TextField title;
     private ComboBox<String> keyWord;
     private ComboBox<String> properName;
     private ComboBox<ActPublisher> publisher;
@@ -31,18 +32,18 @@ public class ActSearchForm extends SearchForm {
     
     private Binder<ActSearchQuery> binder;
     
-    public ActSearchForm(IsapClient isapClient) {
-        this.isapClient = isapClient;
-       
-        separateKeywordsAndNames();
+    public ActSearchForm(ActDbClient actDbClient) {
+        this.actDbClient = actDbClient;
+        
+        populateKeywordsAndNames();
 
         onlyActInForce = new ComboBox<>("Status aktu prawnego", ActSearchQuery.IN_FORCE_ACTS, ActSearchQuery.ALL_ACTS);
         ActSearchQuery currentQuery = new ActSearchQuery();
         currentQuery.setOnlyActInForce(ActSearchQuery.ALL_ACTS);
         formFields.add(onlyActInForce);
 
-        actName = new TextField("Tytuł aktu", "całość lub część");
-        formFields.add(actName);
+        title = new TextField("Tytuł aktu", "całość lub część");
+        formFields.add(title);
 
         keyWord = new ComboBox<>("Słowo kluczowe", actKeywords);
         keyWord.setClearButtonVisible(true);
@@ -74,22 +75,17 @@ public class ActSearchForm extends SearchForm {
         publisherFormInputs.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.END);
         publisherFormInputs.setSizeFull();
         
-        add(onlyActInForce, actName, keywordAndProperNameBox, publisherFormInputs);
+        add(onlyActInForce, title, keywordAndProperNameBox, publisherFormInputs);
 
         binder = new Binder<>(ActSearchQuery.class);
         binder.bindInstanceFields(this);
         binder.setBean(currentQuery);
     }
     
-    private void separateKeywordsAndNames() {
-        List<String> allKeywordsAndName = isapClient.getAllKeywordsAndNames();
-        allKeywordsAndName.forEach(s -> {
-            if(Character.isUpperCase(s.charAt(0))) {
-                actProperNames.add(s);
-            } else {
-                actKeywords.add(s);
-            }
-        });
+    private void populateKeywordsAndNames() {
+        KeywordCacheSingleton cache = KeywordCacheSingleton.getInstance(actDbClient);
+        actKeywords = cache.getActKeywords();
+        actProperNames = cache.getActProperNames();
     }
 
     @Override

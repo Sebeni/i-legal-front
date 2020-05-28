@@ -14,7 +14,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.QueryParameters;
 import com.vaadin.flow.router.RouterLink;
 
-import pl.seb.czech.ilegal.front.client.judgment.SaosClient;
+import pl.seb.czech.ilegal.front.backend.clients.judgment.JudgmentSaosClient;
 import pl.seb.czech.ilegal.front.domain.judgment.JudgmentDetails;
 import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
 import pl.seb.czech.ilegal.front.domain.judgment.ReferencedRegulation;
@@ -23,6 +23,8 @@ import pl.seb.czech.ilegal.front.ui.components.DetailBox;
 import pl.seb.czech.ilegal.front.ui.view.act.ActSearchView;
 import pl.seb.czech.ilegal.front.ui.view.judgment.JudgmentSearchView;
 
+import java.util.Set;
+
 public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
     private JudgmentDetails judgmentDetails = new JudgmentDetails();
     private Accordion accordionDetails;
@@ -30,12 +32,12 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
     private AccordionPanel refRegPanel;
     private AccordionPanel legalBasesPanel;
     private AccordionPanel keywordsPanel;
-    private SaosClient saosClient;
+    private JudgmentSaosClient judgmentSaosClient;
     private Button showJudgmentText;
 
 
-    public JudgmentDetailBox(SaosClient saosClient) {
-        this.saosClient = saosClient;
+    public JudgmentDetailBox(JudgmentSaosClient judgmentSaosClient) {
+        this.judgmentSaosClient = judgmentSaosClient;
         setClassName("judgment-details");
         accordionDetails = new Accordion();
 
@@ -70,7 +72,7 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
     public void setDetailsAndUpdateBox(JudgmentSynopsis currentElement) {
         judgmentDetails = currentElement.getJudgmentDetails();
         if(judgmentDetails == null){
-            judgmentDetails = saosClient.getJudgmentDetails(currentElement);
+            judgmentDetails = judgmentSaosClient.getJudgmentDetails(currentElement.getSaosId());
         }
         this.setVisible(true);
         configureRefRegPanel();
@@ -86,8 +88,8 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
 
     private void configureRefRegPanel() {
         refRegPanel.setContent(null);
-        ReferencedRegulation[] referencedRegulations = judgmentDetails.getReferencedRegulations();
-        if (validateArray(referencedRegulations)) {
+        Set<ReferencedRegulation> referencedRegulations = judgmentDetails.getReferencedRegulations();
+        if (validateSet(referencedRegulations)) {
             refRegPanel.setEnabled(true);
             for (ReferencedRegulation refReg : referencedRegulations) {
                 Text refRegText = new Text(refReg.getText());
@@ -134,12 +136,12 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
     }
     
     
-    private void configureStringPanels(AccordionPanel panelToSet, String[] stringArray) {
+    private void configureStringPanels(AccordionPanel panelToSet, Set<String> stringSet) {
         panelToSet.setContent(null);
-        if (validateArray(stringArray)) {
+        if (validateSet(stringSet)) {
             panelToSet.setEnabled(true);
             VerticalLayout content = new VerticalLayout();
-            for (String element : stringArray) {
+            for (String element : stringSet) {
                 Text text = new Text(element);
                 content.add(text);
             }
@@ -149,8 +151,9 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
         }
     }
 
-    private boolean validateArray(Object[] array) {
-        return array != null && array.length > 0;
+    @SuppressWarnings("rawtypes")
+    private boolean validateSet(Set set) {
+        return set != null && set.size() > 0;
     }
 
     private Button getFindJudgmentButton() {

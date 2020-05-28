@@ -12,12 +12,12 @@ import pl.seb.czech.ilegal.front.domain.SearchQuery;
 import pl.seb.czech.ilegal.front.domain.SearchResult;
 import pl.seb.czech.ilegal.front.ui.view.SearchView;
 
-public class PaginationBar<E extends BaseEntity<K>, K> extends HorizontalLayout {
+public class PaginationBar<E extends BaseEntity> extends HorizontalLayout {
     private SearchResult<E> userSearchResult;
     private SearchQuery userQuery;
     private Span pageInfo;
 
-    public PaginationBar(SearchView<E, K> searchView) {
+    public PaginationBar(SearchView<E> searchView) {
         userQuery = searchView.getSearchQuery();
         userSearchResult = searchView.getSearchResult();
 

@@ -6,17 +6,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.seb.czech.ilegal.front.domain.judgment.deserializer.JudgmentDetailsDeserializer;
+
+import java.util.Set;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonDeserialize(using = JudgmentDetailsDeserializer.class)
 public class JudgmentDetails {
     private Long id;
+    private Long saosId;
     private String textContent;
-    private ReferencedRegulation[] referencedRegulations;
-    private String[] legalBases;
-    private String[] keywords;
+    private Set<ReferencedRegulation> referencedRegulations;
+    private Set<String> legalBases;
+    private Set<String> keywords;
 }

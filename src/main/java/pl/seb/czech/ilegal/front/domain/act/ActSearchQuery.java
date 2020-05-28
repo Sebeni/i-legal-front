@@ -14,7 +14,6 @@ import pl.seb.czech.ilegal.front.ui.components.act.ActSearchForm;
 public class ActSearchQuery extends SearchQuery {
     public static final String IN_FORCE_ACTS = "Obowiązujące";
     public static final String ALL_ACTS = "Wszystkie";
-    
     private String onlyActInForce;
     private String title;
     private String keyWord;
@@ -24,33 +23,7 @@ public class ActSearchQuery extends SearchQuery {
     private Integer position;
 
     private Integer offset = 0;
-
-    @Override
-    public MultiValueMap<String, String> getQueryParams() {
-        queryParams = new LinkedMultiValueMap<>();
-        if (onlyActInForce != null) {
-            if (onlyActInForce.equals(IN_FORCE_ACTS)) {
-                queryParams.add("inForce", "1");
-            }
-        }
-
-        addToQueryParamsNotNull("title", title);
-        addToQueryParamsNotNull("keyword", keyWord);
-        addToQueryParamsNotNull("keywordName", properName);
-
-        if (publisher != null) {
-            if (!publisher.equals(ActPublisher.ALL)) {
-                queryParams.add("publisher", publisher.name());
-            }
-        }
-
-        addToQueryParamsNotNull("year", year);
-        addToQueryParamsNotNull("position", position);
-        addToQueryParamsNotNull("limit", resultLimitPerPage);
-        addToQueryParamsNotNull("offset", offset);
-        return queryParams;
-    }
-
+    
     public void setPageNumber(int pageNumber) {
         if (pageNumber > 0) {
             offset = ((pageNumber - 1) * resultLimitPerPage);
@@ -60,5 +33,4 @@ public class ActSearchQuery extends SearchQuery {
     public int getCurrentPageNumber() {
         return (offset / resultLimitPerPage) + 1;
     }
-
 }

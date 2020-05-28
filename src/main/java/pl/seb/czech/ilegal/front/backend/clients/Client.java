@@ -1,4 +1,4 @@
-package pl.seb.czech.ilegal.front.client;
+package pl.seb.czech.ilegal.front.backend.clients;
 
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
 import pl.seb.czech.ilegal.front.domain.SearchResult;

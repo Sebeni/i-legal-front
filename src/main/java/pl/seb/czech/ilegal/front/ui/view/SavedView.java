@@ -9,12 +9,12 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import pl.seb.czech.ilegal.front.domain.BaseEntity;
-import pl.seb.czech.ilegal.front.stub.StubDBService;
+import pl.seb.czech.ilegal.front.backend.clients.DbClient;
 import pl.seb.czech.ilegal.front.ui.components.CustomGrid;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;
 
-public abstract class SavedView<E extends BaseEntity<K>, K> extends VerticalLayout {
-    protected StubDBService<E, K> dbService;
+public abstract class SavedView<E extends BaseEntity> extends VerticalLayout {
+    protected DbClient<E> dbService;
     protected CustomGrid<E> grid;
     private DetailBox<E> detailBox;
     protected E selectedElement;
@@ -22,11 +22,12 @@ public abstract class SavedView<E extends BaseEntity<K>, K> extends VerticalLayo
     private Button hideDetailsButton;
     private Button refreshButton;
     private Button deleteButton;
+    private Button deleteAllButton;
     protected Button changeNameButton;
     protected Button checkForUpdatesButton;
     protected HorizontalLayout buttonTopBar;
     
-    public SavedView(StubDBService<E, K> dbService, CustomGrid<E> grid, DetailBox<E> detailBox) {
+    public SavedView(DbClient<E> dbService, CustomGrid<E> grid, DetailBox<E> detailBox) {
         this.dbService = dbService;
         this.grid = grid;
         this.detailBox = detailBox;
@@ -63,17 +64,25 @@ public abstract class SavedView<E extends BaseEntity<K>, K> extends VerticalLayo
         deleteButton.setEnabled(false);
         deleteButton.addClickListener(event -> {
             disableButtonsAndBox();
-            dbService.deleteById(selectedElement.getApiId());
+            dbService.deleteById(selectedElement.getId());
             updateActsFromDB();
         });
 
+        deleteAllButton = new Button("Usuń wszystkie", new Icon(VaadinIcon.CLOSE_CIRCLE_O));
+        deleteAllButton.addThemeVariants(ButtonVariant.LUMO_ERROR);
+        deleteAllButton.addClickListener(event -> {
+            disableButtonsAndBox();
+            dbService.deleteAll();
+            updateActsFromDB();
+        });
+                
         changeNameButton = new Button("Edytuj nazwę", new Icon(VaadinIcon.EDIT));
         changeNameButton.setVisible(false);
 
         checkForUpdatesButton = new Button("Aktualizuj wszystkie akty", new Icon(VaadinIcon.TIME_FORWARD));
         checkForUpdatesButton.setVisible(false);
         
-        buttonTopBar = new HorizontalLayout(refreshButton, hideDetailsButton, deleteButton, changeNameButton, checkForUpdatesButton);
+        buttonTopBar = new HorizontalLayout(refreshButton, hideDetailsButton, deleteButton, deleteAllButton, changeNameButton, checkForUpdatesButton);
     }
 
     private void showDetailsAndEnableButtons(E element) {

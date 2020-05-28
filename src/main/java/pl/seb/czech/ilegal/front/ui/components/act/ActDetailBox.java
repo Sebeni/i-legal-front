@@ -10,8 +10,8 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.QueryParameters;
 import com.vaadin.flow.router.RouterLink;
-import pl.seb.czech.ilegal.front.client.act.ActTextType;
-import pl.seb.czech.ilegal.front.client.act.IsapClient;
+import pl.seb.czech.ilegal.front.backend.clients.act.ActTextType;
+import pl.seb.czech.ilegal.front.backend.clients.act.ActIsapClient;
 import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.ui.components.DetailBox;
 import pl.seb.czech.ilegal.front.ui.view.judgment.JudgmentSearchView;
@@ -21,7 +21,7 @@ import java.time.LocalDate;
 
 public class ActDetailBox extends DetailBox<Act> {
     private Act currentAct = new Act();
-    private IsapClient isapClient;
+    private ActIsapClient actIsapClient;
 
     private Accordion detailsAccordion;
     private H3 actTitle;
@@ -36,8 +36,8 @@ public class ActDetailBox extends DetailBox<Act> {
     private Button unifiedTextButton = new Button("Ujednolicony");
     private RouterLink searchJudgmentLink;
 
-    public ActDetailBox(IsapClient isapClient) {
-        this.isapClient = isapClient;
+    public ActDetailBox(ActIsapClient actIsapClient) {
+        this.actIsapClient = actIsapClient;
         setClassName("act-details");
         configure();
     }
@@ -52,8 +52,6 @@ public class ActDetailBox extends DetailBox<Act> {
         configureAccordion();
 
         configureSearchJudgmentLink();
-        
-        
         
         add(actTitle, lastChange, showTextBar, new H3("Szczegóły:"), detailsAccordion, searchJudgmentLink);
     }
@@ -106,14 +104,14 @@ public class ActDetailBox extends DetailBox<Act> {
 
     private void updateShowTextButtons() {
         if(currentAct.getPublishedTextUrl() == null){
-            currentAct.setPublishedTextUrl(isapClient.generateDownloadActURI(currentAct, ActTextType.PUBLISHED).toString());
+            currentAct.setPublishedTextUrl(actIsapClient.getTxtDownloadUri(currentAct.getIsapId(), ActTextType.PUBLISHED).toString());
         }
         publishedTextShowAnchor.setHref(currentAct.getPublishedTextUrl());
         publishedTextShowAnchor.setTarget("_blank");
 
         if(currentAct.getUnifiedTextUrl() == null) {
-            URI unifiedTextUri = isapClient.generateDownloadActURI(currentAct, ActTextType.UNIFIED);
-            if(isapClient.validateTxtExists(unifiedTextUri)) {
+            URI unifiedTextUri = actIsapClient.getTxtDownloadUri(currentAct.getIsapId(), ActTextType.UNIFIED);
+            if(actIsapClient.validateTxtExists(unifiedTextUri)) {
                 currentAct.setUnifiedTextUrl(unifiedTextUri.toString());
             } else {
                 currentAct.setUnifiedTextUrl("");

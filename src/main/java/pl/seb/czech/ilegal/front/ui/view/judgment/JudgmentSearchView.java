@@ -2,10 +2,10 @@ package pl.seb.czech.ilegal.front.ui.view.judgment;
 
 import com.vaadin.flow.router.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.seb.czech.ilegal.front.client.judgment.SaosClient;
+import pl.seb.czech.ilegal.front.backend.clients.judgment.JudgmentSaosClient;
 import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
 import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsisSearchQuery;
-import pl.seb.czech.ilegal.front.stub.judgment.JudgmentDBService;
+import pl.seb.czech.ilegal.front.backend.clients.judgment.JudgmentDbClient;
 import pl.seb.czech.ilegal.front.ui.components.judgment.JudgmentDetailBox;
 import pl.seb.czech.ilegal.front.ui.components.judgment.JudgmentGrid;
 import pl.seb.czech.ilegal.front.ui.components.judgment.JudgmentSearchForm;
@@ -19,11 +19,11 @@ import java.util.Map;
 
 @PageTitle("I-Legal | Szukaj orzeczeń")
 @Route(value = "judgment/search", layout = MainLayout.class)
-public class JudgmentSearchView extends SearchView<JudgmentSynopsis, Long> implements HasUrlParameter<String> {
+public class JudgmentSearchView extends SearchView<JudgmentSynopsis> implements HasUrlParameter<String> {
 
     @Autowired
-    public JudgmentSearchView(SaosClient saosClient, JudgmentDBService judgmentDBService) {
-        super(judgmentDBService, saosClient, new JudgmentDetailBox(saosClient), new JudgmentSearchForm(), new JudgmentGrid(new ArrayList<>()));
+    public JudgmentSearchView(JudgmentSaosClient judgmentSaosClient, JudgmentDbClient judgmentDBService) {
+        super(judgmentDBService, judgmentSaosClient, new JudgmentDetailBox(judgmentSaosClient), new JudgmentSearchForm(), new JudgmentGrid(new ArrayList<>()));
     }
 
     @Override
