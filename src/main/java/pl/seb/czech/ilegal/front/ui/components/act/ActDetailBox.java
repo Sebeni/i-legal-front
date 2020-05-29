@@ -53,7 +53,7 @@ public class ActDetailBox extends DetailBox<Act> {
 
         configureSearchJudgmentLink();
         
-        add(actTitle, lastChange, showTextBar, new H3("Szczegóły:"), detailsAccordion, searchJudgmentLink);
+        add(actTitle, lastChange, showTextBar, searchJudgmentLink, new H3("Szczegóły:"), detailsAccordion);
     }
 
 
@@ -86,7 +86,7 @@ public class ActDetailBox extends DetailBox<Act> {
 
     private void configureSearchJudgmentLink() {
         searchJudgmentLink = new RouterLink();
-        Button searchJudgmentButton = new Button("Szukaj orzeczeń", new Icon(VaadinIcon.GAVEL));
+        Button searchJudgmentButton = new Button("Szukaj orzeczeń z tym aktem", new Icon(VaadinIcon.GAVEL));
         searchJudgmentLink = new RouterLink("", JudgmentSearchView.class);
         searchJudgmentLink.add(searchJudgmentButton);
     }

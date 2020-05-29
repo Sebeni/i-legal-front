@@ -35,7 +35,7 @@ public class JudgmentSearchForm extends SearchForm {
         signature = new TextField("Sygnatura sprawy");
         formFields.add(signature);
         
-        referencedRegulationYearPos = new TextField("Powołana ustawa Dz.U.(rok/poz.)", " np. 1964/93");
+        referencedRegulationYearPos = new TextField("Powołana ustawa (rok/poz.)", " np. 1964/93");
         formFields.add(referencedRegulationYearPos);
         
         articleNumber = new IntegerField("Numer artykułu", "tylko liczba");
