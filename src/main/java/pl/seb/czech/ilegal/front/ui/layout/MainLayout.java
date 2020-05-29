@@ -44,6 +44,7 @@ public class MainLayout extends AppLayout {
         RouterLink searchActsLink = new RouterLink("Szukaj aktów prawnych", ActSearchView.class);
         RouterLink savedJudgmentLink = new RouterLink("Zapisane orzeczenia", JudgmentSavedView.class);
         RouterLink searchJudgmentLink = new RouterLink("Szukaj orzeczeń", JudgmentSearchView.class);
+        RouterLink historyLink = new RouterLink("Historia", HistoryView.class);
         
         Checkbox themeSwitch = new Checkbox("Ciemny motyw", click -> switchThemes());
         themeSwitch.setValue(false);
@@ -54,6 +55,7 @@ public class MainLayout extends AppLayout {
                 new HorizontalLayout(new Icon(VaadinIcon.INSTITUTION), searchActsLink),
                 new HorizontalLayout(new Icon(VaadinIcon.BRIEFCASE), savedJudgmentLink),
                 new HorizontalLayout(new Icon(VaadinIcon.GAVEL), searchJudgmentLink),
+                new HorizontalLayout(new Icon(VaadinIcon.CLOCK), historyLink),
                 new HorizontalLayout(themeSwitch, new Icon(VaadinIcon.MOON))
         );
         

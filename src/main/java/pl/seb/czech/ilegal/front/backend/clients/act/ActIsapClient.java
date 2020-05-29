@@ -24,9 +24,6 @@ import java.util.*;
 public class ActIsapClient implements Client<Act> {
     @Autowired
     private RestTemplate restTemplate;
-    @Autowired
-    private ObjectMapper mapper;
-    
     @Value("${url.base.search}")
     private String searchEndpoint;
     @Value("${url.acts.isap}")
