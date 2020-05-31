@@ -26,9 +26,6 @@ public class JudgmentDbClient implements DbClient<JudgmentSynopsis> {
     @Value("${url.judgments.bySaosId}")
     private String searchByApiIdEndpoint;
     
-    @Value("${url.judgments.deleteAll}")
-    private String deleteAllEndpoint;
-    
     @Override
     public List<JudgmentSynopsis> getAll() {
         JudgmentSynopsis[] result = restTemplate.getForObject(dbEndpoint + judgmentEndpoint, JudgmentSynopsis[].class);
@@ -62,6 +59,6 @@ public class JudgmentDbClient implements DbClient<JudgmentSynopsis> {
 
     @Override
     public void deleteAll() {
-        restTemplate.delete(dbEndpoint + deleteAllEndpoint);
+        restTemplate.delete(dbEndpoint + judgmentEndpoint);
     }
 }

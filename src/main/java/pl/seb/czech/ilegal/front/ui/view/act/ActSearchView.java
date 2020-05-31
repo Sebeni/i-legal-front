@@ -2,7 +2,9 @@ package pl.seb.czech.ilegal.front.ui.view.act;
 
 import com.vaadin.flow.router.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import pl.seb.czech.ilegal.front.backend.clients.ChangeViewClient;
 import pl.seb.czech.ilegal.front.backend.clients.act.ActIsapClient;
+import pl.seb.czech.ilegal.front.domain.ChangeViewLog;
 import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.domain.act.ActSearchQuery;
 import pl.seb.czech.ilegal.front.backend.clients.act.ActDbClient;
@@ -21,8 +23,9 @@ import java.util.Map;
 public class ActSearchView extends SearchView<Act> implements HasUrlParameter<String> {
 
     @Autowired
-    public ActSearchView(ActIsapClient actIsapClient, ActDbClient actService) {
+    public ActSearchView(ActIsapClient actIsapClient, ActDbClient actService, ChangeViewClient changeViewClient) {
         super(actService, actIsapClient, new ActDetailBox(actIsapClient), new ActSearchForm(actService), new ActGrid(new ArrayList<>()));
+        changeViewClient.save(new ChangeViewLog(this.getClass().getSimpleName()));
         grid.removeColumn(grid.getColumnByKey("changeDate"));
     }
 

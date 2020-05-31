@@ -2,7 +2,9 @@ package pl.seb.czech.ilegal.front.ui.view.judgment;
 
 import com.vaadin.flow.router.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import pl.seb.czech.ilegal.front.backend.clients.ChangeViewClient;
 import pl.seb.czech.ilegal.front.backend.clients.judgment.JudgmentSaosClient;
+import pl.seb.czech.ilegal.front.domain.ChangeViewLog;
 import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
 import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsisSearchQuery;
 import pl.seb.czech.ilegal.front.backend.clients.judgment.JudgmentDbClient;
@@ -22,8 +24,10 @@ import java.util.Map;
 public class JudgmentSearchView extends SearchView<JudgmentSynopsis> implements HasUrlParameter<String> {
 
     @Autowired
-    public JudgmentSearchView(JudgmentSaosClient judgmentSaosClient, JudgmentDbClient judgmentDBService) {
+    public JudgmentSearchView(JudgmentSaosClient judgmentSaosClient, JudgmentDbClient judgmentDBService,
+                              ChangeViewClient changeViewClient) {
         super(judgmentDBService, judgmentSaosClient, new JudgmentDetailBox(judgmentSaosClient), new JudgmentSearchForm(), new JudgmentGrid(new ArrayList<>()));
+        changeViewClient.save(new ChangeViewLog(this.getClass().getSimpleName()));  
     }
 
     @Override

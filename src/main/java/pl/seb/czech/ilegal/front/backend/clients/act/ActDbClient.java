@@ -26,9 +26,6 @@ public class ActDbClient implements DbClient<Act> {
     @Value("${url.acts.byIsapId}")
     private String findIfExistsByApiIdEndpoint;
     
-    @Value("${url.acts.deleteAll}")
-    private String deleteAllEndpoint;
-    
     @Value("${url.acts.keywords}")
     private String getKeywordsEndpoint;
     
@@ -65,7 +62,7 @@ public class ActDbClient implements DbClient<Act> {
 
     @Override
     public void deleteAll() {
-        restTemplate.delete(dbEndpoint + deleteAllEndpoint);
+        restTemplate.delete(dbEndpoint + actsEndpoint);
     }
     
     

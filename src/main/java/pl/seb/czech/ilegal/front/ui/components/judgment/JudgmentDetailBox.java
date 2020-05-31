@@ -143,7 +143,7 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
             VerticalLayout content = new VerticalLayout();
             for (String element : stringSet) {
                 Text text = new Text(element);
-                content.add(text);
+                content.add(text + " ");
             }
             panelToSet.setContent(content);
         } else {

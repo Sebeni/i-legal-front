@@ -11,8 +11,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
+import pl.seb.czech.ilegal.front.backend.clients.ChangeViewClient;
 import pl.seb.czech.ilegal.front.backend.clients.act.ActHistoryClient;
 import pl.seb.czech.ilegal.front.backend.clients.judgment.JudgmentHistoryClient;
+import pl.seb.czech.ilegal.front.domain.ChangeViewLog;
 import pl.seb.czech.ilegal.front.domain.log.DeleteLog;
 import pl.seb.czech.ilegal.front.domain.log.SearchLog;
 import pl.seb.czech.ilegal.front.ui.components.log.DeleteLogGrid;
@@ -40,7 +42,9 @@ public class HistoryView extends VerticalLayout {
     private DeleteLogGrid judgmentDeleteGrid;
 
     @Autowired
-    public HistoryView(ActHistoryClient actHistoryClient, JudgmentHistoryClient judgmentHistoryClient) {
+    public HistoryView(ActHistoryClient actHistoryClient, JudgmentHistoryClient judgmentHistoryClient, 
+                       ChangeViewClient changeViewClient) {
+        changeViewClient.save(new ChangeViewLog(this.getClass().getSimpleName()));
         this.actHistoryClient = actHistoryClient;
         this.judgmentHistoryClient = judgmentHistoryClient;
         setSizeFull();

@@ -4,7 +4,9 @@ import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
+import pl.seb.czech.ilegal.front.backend.clients.ChangeViewClient;
 import pl.seb.czech.ilegal.front.backend.clients.judgment.JudgmentSaosClient;
+import pl.seb.czech.ilegal.front.domain.ChangeViewLog;
 import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
 import pl.seb.czech.ilegal.front.backend.clients.judgment.JudgmentDbClient;
 import pl.seb.czech.ilegal.front.ui.components.judgment.JudgmentDetailBox;
@@ -21,8 +23,9 @@ public class JudgmentSavedView extends SavedView<JudgmentSynopsis> {
     private JudgmentDbClient dbService;
 
     @Autowired
-    public JudgmentSavedView(JudgmentDbClient dbService, JudgmentSaosClient judgmentSaosClient) {
+    public JudgmentSavedView(JudgmentDbClient dbService, JudgmentSaosClient judgmentSaosClient, ChangeViewClient changeViewClient) {
         super(dbService, new JudgmentGrid(dbService.getAll()), new JudgmentDetailBox(judgmentSaosClient));
+        changeViewClient.save(new ChangeViewLog(this.getClass().getSimpleName()));
         this.dbService = dbService;
         configureChangeNameButton();
     }

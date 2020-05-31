@@ -1,13 +1,13 @@
 package pl.seb.czech.ilegal.front.ui.view;
 
-import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import pl.seb.czech.ilegal.front.backend.clients.ChangeViewClient;
+import pl.seb.czech.ilegal.front.domain.ChangeViewLog;
 import pl.seb.czech.ilegal.front.ui.layout.MainLayout;
 
 import java.io.*;
@@ -17,7 +17,10 @@ import java.io.*;
 @Route(value = "", layout = MainLayout.class)
 public class HomeView extends VerticalLayout {
     
-    public HomeView() {
+    @Autowired
+    public HomeView(ChangeViewClient changeViewClient) {
+        changeViewClient.save(new ChangeViewLog(this.getClass().getSimpleName()));
+        
         Label content = new Label();
         String welcomeMessage = "<h1>Witaj w aplikacji I-Legal</h1>";
         try {

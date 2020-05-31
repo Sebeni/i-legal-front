@@ -4,8 +4,10 @@ import com.vaadin.flow.component.Text;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
+import pl.seb.czech.ilegal.front.backend.clients.ChangeViewClient;
 import pl.seb.czech.ilegal.front.backend.clients.act.ActDifferenceClient;
 import pl.seb.czech.ilegal.front.backend.clients.act.ActIsapClient;
+import pl.seb.czech.ilegal.front.domain.ChangeViewLog;
 import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.backend.clients.act.ActDbClient;
 import pl.seb.czech.ilegal.front.domain.act.ActDifference;
@@ -27,8 +29,10 @@ public class ActSavedView extends SavedView<Act> {
     private ActDifferenceClient actDifferenceClient;
     
     @Autowired
-    public ActSavedView(ActDbClient actService, ActIsapClient actIsapClient, ActDifferenceClient actDifferenceClient) {
+    public ActSavedView(ActDbClient actService, ActIsapClient actIsapClient, ActDifferenceClient actDifferenceClient, 
+                        ChangeViewClient changeViewClient) {
         super(actService, new ActGrid(actService.getAll()), new ActDetailBox(actIsapClient));
+        changeViewClient.save(new ChangeViewLog(this.getClass().getSimpleName()));
         this.actDifferenceClient = actDifferenceClient;
         configureCheckForUpdatesButton();
 
