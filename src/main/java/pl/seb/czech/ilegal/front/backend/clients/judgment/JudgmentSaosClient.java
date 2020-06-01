@@ -10,8 +10,6 @@ import pl.seb.czech.ilegal.front.domain.judgment.JudgmentDetails;
 import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
 import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsisSearchResult;
 
-import java.net.URI;
-
 @Component
 public class JudgmentSaosClient implements Client<JudgmentSynopsis> {
     @Autowired

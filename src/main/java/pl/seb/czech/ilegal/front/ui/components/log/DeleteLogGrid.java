@@ -1,9 +1,7 @@
 package pl.seb.czech.ilegal.front.ui.components.log;
 
 import pl.seb.czech.ilegal.front.domain.log.DeleteLog;
-import pl.seb.czech.ilegal.front.domain.log.DeleteType;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class DeleteLogGrid extends LogGrid<DeleteLog>{

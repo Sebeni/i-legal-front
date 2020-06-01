@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import pl.seb.czech.ilegal.front.domain.ChangeViewLog;
-import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
 
 @Service
 public class ChangeViewClient {

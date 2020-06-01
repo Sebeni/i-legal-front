@@ -29,7 +29,8 @@ public class ActUpdateBox extends Dialog {
         } else {
             content.add(new HorizontalLayout(new Text("Następujące akty zostały zaktualizowane:")));
 
-           actsDifference.forEach(actDifference -> {
+            
+           actsDifference.stream().filter(ActDifference::isDifferentAfter).forEach(actDifference -> {
                content.add(new Div());
                content.add(new HorizontalLayout(new Text(actDifference.getTitle())));
                content.add(new HorizontalLayout(new Text(actDifference.getBeforeChangesText())));

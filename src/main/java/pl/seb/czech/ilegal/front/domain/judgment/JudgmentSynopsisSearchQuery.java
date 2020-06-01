@@ -1,8 +1,6 @@
 package pl.seb.czech.ilegal.front.domain.judgment;
 
 import lombok.*;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
 
 @AllArgsConstructor

@@ -1,8 +1,6 @@
 package pl.seb.czech.ilegal.front.domain.judgment;
 
 
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

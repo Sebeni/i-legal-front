@@ -1,10 +1,7 @@
 package pl.seb.czech.ilegal.front.domain.act;
 
 import lombok.*;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import pl.seb.czech.ilegal.front.domain.SearchQuery;
-import pl.seb.czech.ilegal.front.ui.components.act.ActSearchForm;
 
 @AllArgsConstructor
 @NoArgsConstructor

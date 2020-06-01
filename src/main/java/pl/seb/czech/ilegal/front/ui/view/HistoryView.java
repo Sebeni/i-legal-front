@@ -1,6 +1,5 @@
 package pl.seb.czech.ilegal.front.ui.view;
 
-import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -15,13 +14,9 @@ import pl.seb.czech.ilegal.front.backend.clients.ChangeViewClient;
 import pl.seb.czech.ilegal.front.backend.clients.act.ActHistoryClient;
 import pl.seb.czech.ilegal.front.backend.clients.judgment.JudgmentHistoryClient;
 import pl.seb.czech.ilegal.front.domain.ChangeViewLog;
-import pl.seb.czech.ilegal.front.domain.log.DeleteLog;
-import pl.seb.czech.ilegal.front.domain.log.SearchLog;
 import pl.seb.czech.ilegal.front.ui.components.log.DeleteLogGrid;
 import pl.seb.czech.ilegal.front.ui.components.log.SearchLogGrid;
 import pl.seb.czech.ilegal.front.ui.layout.MainLayout;
-
-import java.util.List;
 
 @PageTitle("I-Legal | Historia")
 @Route(value = "history", layout = MainLayout.class)

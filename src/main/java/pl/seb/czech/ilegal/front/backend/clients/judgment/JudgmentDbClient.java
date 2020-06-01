@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import pl.seb.czech.ilegal.front.backend.clients.DbClient;
-import pl.seb.czech.ilegal.front.domain.act.Act;
 import pl.seb.czech.ilegal.front.domain.judgment.JudgmentSynopsis;
 
 import java.util.ArrayList;

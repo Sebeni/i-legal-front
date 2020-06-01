@@ -1,9 +1,7 @@
 package pl.seb.czech.ilegal.front.ui.components.log;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import pl.seb.czech.ilegal.front.domain.log.SearchLog;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class SearchLogGrid extends LogGrid<SearchLog>{

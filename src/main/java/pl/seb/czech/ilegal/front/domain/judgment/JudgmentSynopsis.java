@@ -1,8 +1,6 @@
 package pl.seb.czech.ilegal.front.domain.judgment;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import pl.seb.czech.ilegal.front.domain.BaseEntity;
 import java.time.LocalDate;

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import pl.seb.czech.ilegal.front.backend.clients.DbClient;
 import pl.seb.czech.ilegal.front.domain.act.Act;
-import pl.seb.czech.ilegal.front.domain.act.ActDifference;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -3,7 +3,6 @@ package pl.seb.czech.ilegal.front.backend.clients.judgment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import pl.seb.czech.ilegal.front.domain.log.DeleteLog;
 import pl.seb.czech.ilegal.front.domain.log.SearchLog;
