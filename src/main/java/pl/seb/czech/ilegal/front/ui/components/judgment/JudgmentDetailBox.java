@@ -89,7 +89,7 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
     private void configureRefRegPanel() {
         refRegPanel.setContent(null);
         Set<ReferencedRegulation> referencedRegulations = judgmentDetails.getReferencedRegulations();
-        if (validateSet(referencedRegulations)) {
+        if (referencedRegulations != null && referencedRegulations.size() > 0) {
             refRegPanel.setEnabled(true);
             for (ReferencedRegulation refReg : referencedRegulations) {
                 Text refRegText = new Text(refReg.getText());
@@ -142,17 +142,16 @@ public class JudgmentDetailBox extends DetailBox<JudgmentSynopsis> {
             panelToSet.setEnabled(true);
             VerticalLayout content = new VerticalLayout();
             for (String element : stringSet) {
-                Text text = new Text(element);
-                content.add(text + " ");
+                Text text = new Text(element + " ");
+                content.add(text);
             }
             panelToSet.setContent(content);
         } else {
             panelToSet.setEnabled(false);
         }
     }
-
-    @SuppressWarnings("rawtypes")
-    private boolean validateSet(Set set) {
+    
+    private boolean validateSet(Set<String> set) {
         return set != null && set.size() > 0;
     }
 
