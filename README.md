@@ -3,7 +3,7 @@
 
 - frontend github repo: https://github.com/Sebeni/i-legal-front
 - backend github repo: https://github.com/Sebeni/i-legal-back
-- demo (heroku): https://i-legal-front.herokuapp.com/
+- demo (due to heroku dyno sleeping sometimes it is necessary to refresh couple times, first visit may take a while): https://i-legal-front.herokuapp.com/
 
 ### Specification 
 
