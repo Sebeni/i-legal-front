@@ -14,7 +14,7 @@
     "webpack": "4.42.0",
     "webpack-babel-multi-target-plugin": "2.3.3",
     "webpack-cli": "3.3.10",
-    "webpack-dev-server": "^3.11.0",
+    "webpack-dev-server": "3.9.0",
     "webpack-merge": "4.2.2"
   },
   "vaadinAppPackageHash": "717a3e61d9c03fde0135518830777b7a74a2de12300c39880577bdb46608fa3e"

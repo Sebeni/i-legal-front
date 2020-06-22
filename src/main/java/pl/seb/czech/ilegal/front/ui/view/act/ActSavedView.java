@@ -56,9 +56,9 @@ public class ActSavedView extends SavedView<Act> {
                 .map(ActDifference::getTitle)
                 .collect(Collectors.toList());
 
-        DateTimeFormatter format = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         
-        String updatedText = String.format("Ostatnia automatyczna aktualizacja: %s. Sprawdzono %d aktów prawnych.", 
+        String updatedText = String.format("Ostatnia automatyczna aktualizacja: %s. Liczba sprawdzonych aktów prawnych: %d.", 
                 scheduledMessage.getCreatedOn().format(format), scheduledMessage.getUpdatedActs().size());
         
         if(updated.size() > 0) {
