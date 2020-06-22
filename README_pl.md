@@ -3,7 +3,7 @@
 
 - link do frontendu: https://github.com/Sebeni/i-legal-front
 - link do backendu: https://github.com/Sebeni/i-legal-back
-- demo (heroku): https://i-legal-front.herokuapp.com/
+- demo (z uwagi na darmowy serwer heroku czasem niezbędne jest kilkukrotne odświeżenie strony w celu "zbudzenia" frontu i backu): https://i-legal-front.herokuapp.com/
 
 ### Specyfikacja projektu
 
