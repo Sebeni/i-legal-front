@@ -24,17 +24,13 @@ public class HistoryView extends VerticalLayout {
     private ActHistoryClient actHistoryClient;
     private JudgmentHistoryClient judgmentHistoryClient;
 
-    private final String searchActs = "wyszukiwań aktów";
-    private final String searchJudgments = "wyszukiwań orzeczeń";
-    private final String deleteAct = "usunięć aktów";
-    private final String deleteJudgments = "usunięć orzeczeń";
+    private final String searchActs = "aktów";
+    private final String searchJudgments = "orzeczeń";
     private VerticalLayout content;
     private Button deleteHistoryButton;
 
     private SearchLogGrid actSearchGrid;
     private SearchLogGrid judgmentSearchGrid;
-    private DeleteLogGrid actDeleteGrid;
-    private DeleteLogGrid judgmentDeleteGrid;
 
     @Autowired
     public HistoryView(ActHistoryClient actHistoryClient, JudgmentHistoryClient judgmentHistoryClient, 
@@ -49,9 +45,6 @@ public class HistoryView extends VerticalLayout {
 
         actSearchGrid = new SearchLogGrid(actHistoryClient.getSearchLogs());
         judgmentSearchGrid = new SearchLogGrid(judgmentHistoryClient.getSearchLogs());
-        
-        actDeleteGrid = new DeleteLogGrid(actHistoryClient.getDeleteLogs());
-        judgmentDeleteGrid = new DeleteLogGrid(judgmentHistoryClient.getDeleteLogs());
     }
 
     private HorizontalLayout getTopBar() {
@@ -64,8 +57,8 @@ public class HistoryView extends VerticalLayout {
         deleteHistoryButton.addThemeVariants(ButtonVariant.LUMO_ERROR);
         deleteHistoryButton.setVisible(false);
 
-        ComboBox<String> historyCombo = new ComboBox<>("Pokaż historię");
-        historyCombo.setItems(searchActs, searchJudgments, deleteAct, deleteJudgments);
+        ComboBox<String> historyCombo = new ComboBox<>("Pokaż historię wyszukiwań");
+        historyCombo.setItems(searchActs, searchJudgments);
         historyCombo.addValueChangeListener(event -> {
 
             switch (event.getValue()) {
@@ -79,12 +72,6 @@ public class HistoryView extends VerticalLayout {
                         judgmentSearchGrid.deleteGridContent();
                     });
                     break;
-                case deleteAct:
-                    showDeleteLogGrid(actDeleteGrid);
-                    break;
-                case deleteJudgments:
-                    showDeleteLogGrid(judgmentDeleteGrid);
-                    break;
             }
         });
 
@@ -97,11 +84,5 @@ public class HistoryView extends VerticalLayout {
         deleteHistoryButton.setVisible(true);
         content.removeAll();
         content.add(searchLogGrid);
-    }
-
-    private void showDeleteLogGrid(DeleteLogGrid deleteLogGrid) {
-        deleteHistoryButton.setVisible(false);
-        content.removeAll();
-        content.add(deleteLogGrid);
     }
 }

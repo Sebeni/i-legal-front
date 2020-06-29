@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 @Route(value = "acts/saved", layout = MainLayout.class)
 public class ActSavedView extends SavedView<Act> {
     private ActDifferenceClient actDifferenceClient;
+    private Text updateText;
     
     @Autowired
     public ActSavedView(ActDbClient actService, ActIsapClient actIsapClient, ActDifferenceClient actDifferenceClient, 
@@ -35,8 +36,9 @@ public class ActSavedView extends SavedView<Act> {
         changeViewClient.save(new ChangeViewLog(this.getClass().getSimpleName()));
         this.actDifferenceClient = actDifferenceClient;
         configureCheckForUpdatesButton();
-
-        add(new Text(getUpdateText()));
+        
+        updateText = new Text(getUpdateText());
+        add(updateText);
     }
 
     private void configureCheckForUpdatesButton() {
